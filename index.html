@@ -37,8 +37,9 @@
   --sombra:0 1px 3px rgba(16,51,44,.06),0 6px 20px rgba(16,51,44,.08);
   --ancho:1160px;
   /* escala tipográfica — móvil */
-  --f-base:15.5px; --f-chico:14px; --f-mini:12.5px;
-  --f-h1:clamp(27px,8.2vw,34px); --f-h2:22px; --f-h3:17px;
+  --f-base:14.5px; --f-chico:13.5px; --f-mini:12px;
+  --f-h1:clamp(27px,8.2vw,34px); --f-h2:20px; --f-h3:16px;
+  --interlineado:1.46;
   /* escala de espaciado: 8 · 16 · 24 · 40 · 64 */
   --e-1:8px; --e-2:16px; --e-3:24px; --e-4:40px;
   --gap-seccion:40px; --gap-bloque:28px;
@@ -49,15 +50,16 @@
     --f-base:17px; --f-chico:15px; --f-mini:13.5px;
     --f-h1:clamp(36px,3.6vw,50px); --f-h2:32px; --f-h3:20px;
     --gap-seccion:64px; --gap-bloque:44px; --alto-top:68px;
+    --interlineado:1.55;
   }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--alto-top) + 12px)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 html,body{overflow-x:clip}
-body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:var(--f-base);line-height:1.56;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:var(--f-base);line-height:var(--interlineado);-webkit-font-smoothing:antialiased;padding-bottom:76px}
 h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.14;letter-spacing:-.018em;font-weight:600;color:var(--hondo)}
-p{margin:0 0 .85em}
+p{margin:0 0 .75em}
 p:last-child{margin-bottom:0}
 img{max-width:100%;display:block}
 a{color:var(--marca)}
@@ -84,17 +86,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 .enlace{font-family:var(--display);font-weight:600;font-size:var(--f-chico);color:var(--marca);text-underline-offset:3px}
 
 /* ═════════ BIENVENIDA ═════════ */
-.bienvenida{position:fixed;inset:0;z-index:400;background:var(--hondo);display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:32px;text-align:center;transition:opacity .5s ease}
+.bienvenida{position:fixed;inset:0;z-index:400;background:var(--hondo);display:none;overflow:hidden;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:32px;text-align:center;transition:opacity .5s ease}
 .js .bienvenida.activa{display:flex}
 .bienvenida.sale{opacity:0}
+.bienvenida>.fondo-b{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;z-index:0}
+.bienvenida>.velo-b{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(11,34,29,.62) 0%,rgba(11,34,29,.8) 55%,rgba(11,34,29,.92) 100%)}
+.bienvenida>*:not(.fondo-b):not(.velo-b){position:relative;z-index:1}
 .bienvenida .marcas{justify-content:center;color:#fff}
 .bienvenida .logo-pe,.bienvenida .logo-ml{color:#fff;height:44px}
 .bienvenida .mas{color:var(--lima-claro)}
 .frases{position:relative;min-height:3.6em;width:min(560px,100%);font-family:var(--display);font-size:clamp(21px,5.4vw,32px);font-weight:500;line-height:1.25;color:#fff}
-.frases span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+.frases span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
 .frases span.ver{opacity:1;transform:none}
 .frases span:last-child{color:var(--lima-claro)}
-.bienvenida .saltar-intro{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom));background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--display);font-size:14px;padding:8px 18px;border-radius:100px;cursor:pointer}
+.bienvenida .saltar-intro{position:absolute!important;bottom:calc(24px + env(safe-area-inset-bottom));background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--display);font-size:14px;padding:8px 18px;border-radius:100px;cursor:pointer}
 
 /* ═════════ LOGOS ═════════ */
 .marcas{display:flex;align-items:center;gap:7px;text-decoration:none;flex-shrink:0}
@@ -140,7 +145,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 /* ═════════ PORTADA ═════════ */
 .portada{position:relative;overflow:hidden;background:var(--hondo);color:#fff}
 .portada .fondo{position:absolute;inset:0}
-.portada .fondo img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.portada .capa{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.portada .capa.activa{opacity:1}
+.portada .capa img,.portada img.capa{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:saturate(.85)}
+@media(prefers-reduced-motion:reduce){.portada .capa{transition:opacity 1.6s ease!important}}
 .portada .velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,34,29,.48) 0%,rgba(11,34,29,.72) 46%,rgba(11,34,29,.92) 100%)}
 .portada-in{position:relative;z-index:2;padding-top:24px;padding-bottom:24px;display:grid;gap:20px}
 .marbete{display:inline-flex;flex-wrap:wrap;gap:2px 8px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);font-family:var(--display);font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:100px;margin:0 0 12px}
@@ -185,7 +193,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 
 /* ═════════ SEPARADOR DE SECCIÓN ═════════ */
 .seccion{padding-top:var(--gap-seccion)}
-.seccion.seguida{padding-top:var(--e-3)}
 .cabeza-seccion{display:flex;align-items:center;gap:14px;margin-bottom:var(--e-3)}
 .cabeza-seccion h2{font-size:19px;color:var(--marca);font-weight:700;letter-spacing:-.012em;flex-shrink:0}
 .cabeza-seccion .raya{flex:1;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--lima) 0 48px,var(--linea-fuerte) 48px)}
@@ -203,12 +210,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 .sub{font-size:var(--f-h3)}
 .nota-fuente{font-size:var(--f-mini);color:var(--gris-2);margin:10px 0 0}
 .eyebrow{font-family:var(--display);font-weight:600;font-size:var(--f-mini);color:var(--medio);letter-spacing:.04em;text-transform:uppercase;margin:0 0 5px;display:block}
-/* título a la izquierda + entrada a la derecha: ahorra altura en escritorio */
-.cab-bloque{display:grid;gap:var(--e-1)}
+/* título con una bajada corta y pequeña debajo */
+.cab-bloque .entrada{font-size:var(--f-chico);line-height:1.5;max-width:62ch;margin-top:6px}
 @media(min-width:900px){
-  .cab-bloque{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:var(--e-4);align-items:end}
-  .cab-bloque .entrada{margin-top:0;font-size:17.5px}
-  .cab-bloque .tit{max-width:20ch}
+  .cab-bloque .tit{max-width:30ch}
+  .cab-bloque .entrada{font-size:15px;margin-top:10px}
 }
 
 /* ═════════ "CONOCE MÁS" ═════════ */
@@ -251,29 +257,32 @@ details.mas[open]>summary .cerrar{display:inline}
 .ruta .cuando{font-family:var(--display);font-size:12px;font-weight:700;color:var(--medio);margin:0;letter-spacing:.03em;text-transform:uppercase}
 .ruta h4{font-size:15px;margin:2px 0 3px}
 .ruta p{font-size:13.5px;margin:0;color:var(--gris);line-height:1.45}
-.cita{margin:var(--e-2) 0 0;padding:12px 16px;background:var(--tinte);border-left:4px solid var(--lima);border-radius:0 var(--r-s) var(--r-s) 0;font-family:var(--display);font-size:15.5px;font-weight:500;color:var(--hondo);line-height:1.4}
-.cita span{display:block;font-family:var(--texto);font-size:12.5px;font-weight:400;color:var(--gris-2);margin-top:5px}
 @media(min-width:900px){
   .ruta{grid-template-columns:repeat(4,1fr);gap:var(--e-2)}
   .ruta li{padding:14px 16px}.ruta h4{font-size:16.5px}
-  .cita{font-size:17px;padding:14px 20px}
 }
 
 /* ═════════ PROBLEMA ═════════ */
-.problema{display:grid;gap:var(--e-2);margin-top:var(--e-3)}
-.problema figure img{border-radius:var(--r-m);width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
-figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
-.problema .txt{color:var(--gris)}
-@media(min-width:900px){.problema{grid-template-columns:1fr 1fr;gap:var(--e-4);align-items:center}}
+.problema{display:grid;gap:var(--e-2);margin-top:var(--e-2)}
+.problema figure img{border-radius:var(--r-m);width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
+.problema .txt>p{color:var(--gris);font-size:var(--f-chico);line-height:1.5;margin-bottom:var(--e-2)}
+.problema .cifras-fila{margin:0}
+@media(min-width:900px){
+  .problema{grid-template-columns:1fr 1.1fr;gap:var(--e-3);align-items:center;margin-top:var(--e-3)}
+  .problema .txt>p{font-size:15px}
+  .problema .cifras-fila{grid-template-columns:repeat(5,1fr);gap:10px;padding:12px 14px}
+  .problema .cifras-fila b{font-size:18px}.problema .cifras-fila span{font-size:11.5px}
+}
 
 /* cifras */
 .datos{display:grid;grid-template-columns:1fr 1fr;gap:var(--e-1);margin-top:var(--e-1)}
 .dato{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-s);padding:11px 12px}
 .dato .n{font-family:var(--display);font-size:20px;font-weight:700;color:var(--marca);line-height:1.05;letter-spacing:-.02em;margin:0}
 .dato p{font-size:12.5px;color:var(--gris);margin:5px 0 0;line-height:1.4}
-.cifras-fila{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--e-1);padding:0;margin:0 0 var(--e-2);background:var(--tinte);border:1px solid #B9D3C4;border-radius:var(--r-m);padding:12px}
+.cifras-fila{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:0 0 var(--e-2);background:var(--tinte);border:1px solid #B9D3C4;border-radius:var(--r-m);padding:10px 12px}
 .cifras-fila li{text-align:left}
-.cifras-fila b{display:block;font-family:var(--display);font-size:18px;font-weight:700;color:var(--hondo);line-height:1.05;letter-spacing:-.02em}
+.cifras-fila b{display:block;font-family:var(--display);font-size:16px;font-weight:700;color:var(--hondo);line-height:1.05;letter-spacing:-.02em}
 .cifras-fila span{display:block;font-size:11.5px;color:var(--gris);line-height:1.3;margin-top:2px}
 .rotulo-datos{font-family:var(--display);font-weight:600;font-size:var(--f-mini);color:var(--marca);letter-spacing:.04em;text-transform:uppercase;margin:0 0 var(--e-1)}
 @media(min-width:900px){
@@ -351,6 +360,15 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .secuencia li.ahora{background:var(--tinte);border-color:#B9D3C4}
 .secuencia .bolita{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:13px;border:2px solid var(--linea-fuerte);color:var(--marca);background:var(--blanco)}
 .secuencia li.ahora .bolita{background:var(--marca);border-color:var(--marca);color:#fff}
+.secuencia li.abre{position:relative;cursor:pointer;transition:border-color .18s,box-shadow .18s}
+.secuencia li.abre:hover{border-color:var(--marca);box-shadow:var(--sombra)}
+.secuencia li.abre.activa{border-color:var(--marca);background:var(--crema-2)}
+.secuencia .abre-btn{all:unset;cursor:pointer;font:inherit;color:inherit}
+.secuencia .abre-btn::after{content:"";position:absolute;inset:0;border-radius:var(--r-m)}
+.secuencia .abre-btn:focus-visible::after{outline:3px solid var(--lima);outline-offset:2px}
+.secuencia .ver-fase{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--marca);margin-top:6px}
+.secuencia .ver-fase::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform .2s}
+.secuencia li.abre.activa .ver-fase::after{transform:rotate(-135deg) translate(-1px,-1px)}
 .secuencia .cuando{font-family:var(--display);font-size:12px;font-weight:600;color:var(--marca);margin:0}
 .secuencia h3{font-size:16px;margin:1px 0 2px}
 .secuencia p{font-size:13.5px;color:var(--gris);margin:0}
@@ -361,13 +379,6 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .mini-specs span{font-size:12.5px}
 @media(min-width:900px){.secuencia{grid-template-columns:repeat(3,1fr);gap:var(--e-2)}.secuencia li{padding:16px 18px}.secuencia h3{font-size:18px}.secuencia p{font-size:14px}.sanrafael{grid-template-columns:1fr 1.15fr;gap:var(--e-3);align-items:center}}
 
-/* transición entre secciones */
-.siguiente-sec{display:flex;justify-content:center;margin-top:var(--e-3)}
-.siguiente-sec a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-weight:600;color:var(--marca);font-size:14.5px;background:var(--blanco);border:1px solid var(--linea-fuerte);border-radius:100px;padding:8px 18px}
-.siguiente-sec a:hover{border-color:var(--marca)}
-.siguiente-sec a small{font-weight:500;color:var(--gris-2);font-size:12.5px}
-.siguiente-sec svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:559px){.siguiente-sec a small{display:none}}
 
 /* ═════════ META ═════════ */
 .meta{background:var(--hondo);color:#fff;border-radius:var(--r-l);padding:20px 18px}
@@ -420,6 +431,23 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .via-card:hover{border-color:var(--linea-fuerte);box-shadow:var(--sombra)}
 .via-card[aria-selected="true"]{border-color:var(--marca);background:var(--crema-2);box-shadow:var(--sombra)}
 .via-card[aria-selected="true"] .ver::after{transform:rotate(-135deg) translate(-1px,-1px)}
+.via-card .nom-corto{display:none}
+/* móvil: las cuatro vías como una franja fija que acompaña al panel */
+@media(max-width:899px){
+  .vias{position:sticky;top:var(--alto-top);z-index:60;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;overflow-anchor:none;margin:var(--e-2) -18px 0;padding:8px 18px;background:rgba(247,248,241,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+  .vias::-webkit-scrollbar{display:none}
+  .vias.fija{border-bottom-color:var(--linea);box-shadow:0 6px 14px rgba(16,51,44,.07)}
+  .via-card{flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:7px 2px 6px;border:1.5px solid var(--linea-fuerte);border-radius:var(--r-s);box-shadow:none;text-align:center;min-width:0}
+  .via-card .eyebrow,.via-card .una,.via-card .ver,.via-card .nom-largo{display:none}
+  .via-card .nom{font-size:12px;line-height:1.1;white-space:nowrap;letter-spacing:-.01em}
+  .via-card .nom-corto{display:inline}
+  .via-card::before{content:"";width:18px;height:3px;border-radius:3px;background:var(--lima);flex-shrink:0}
+  .via-card.cap::before{background:var(--medio)}
+  .via-card[aria-selected="true"]{background:var(--marca);border-color:var(--marca);box-shadow:none}
+  .via-card[aria-selected="true"] .nom{color:#fff}
+  .via-card[aria-selected="true"]::before{background:#fff}
+  .panel-via{margin-top:6px;padding:14px}
+}
 @media(min-width:900px){
   .vias{grid-template-columns:repeat(4,1fr);gap:var(--e-2);margin-top:var(--e-4)}
   .via-card{padding:18px 20px 16px}
@@ -431,17 +459,20 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .panel-via{margin-top:var(--e-1);background:var(--blanco);border:1.5px solid var(--marca);border-radius:var(--r-m);padding:16px}
 .panel-via[hidden]{display:none}
 .panel-via>.lead{font-size:var(--f-chico);color:var(--gris);margin:0 0 var(--e-2);max-width:72ch}
-.tripleta{display:grid;gap:10px;margin:0}
-.tripleta>div{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r-s);padding:10px 12px}
-.tripleta dt{font-family:var(--display);font-weight:600;color:var(--marca);font-size:12px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 3px}
-.tripleta dd{margin:0;font-size:13.5px;color:var(--gris);line-height:1.42}
+.tripleta{display:grid;gap:0;margin:0;background:var(--papel);border:1px solid var(--linea);border-radius:var(--r-s)}
+.tripleta>div{display:grid;grid-template-columns:86px 1fr;gap:10px;padding:8px 12px;border-top:1px solid var(--linea)}
+.tripleta>div:first-child{border-top:0}
+.tripleta dt{font-family:var(--display);font-weight:600;color:var(--marca);font-size:11px;letter-spacing:.03em;text-transform:uppercase;margin:0;line-height:1.35;padding-top:1px}
+.tripleta dd{margin:0;font-size:13px;color:var(--gris);line-height:1.4}
 .panel-esp{margin-top:var(--e-2);padding-top:var(--e-2);border-top:1px solid var(--linea)}
 .panel-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--e-2)}
 .panel-cta .btn{flex:1 1 auto;white-space:normal;text-align:center}
 @media(min-width:900px){
   .panel-via{margin-top:var(--e-2);padding:26px 28px}
-  .tripleta{grid-template-columns:repeat(3,1fr);gap:var(--e-2)}
-  .tripleta>div{padding:14px 16px}
+  .tripleta{grid-template-columns:repeat(3,1fr);gap:var(--e-2);background:none;border:0}
+  .tripleta>div{display:block;padding:14px 16px;background:var(--papel);border:1px solid var(--linea);border-radius:var(--r-s)}
+  .tripleta>div:first-child{border-top:1px solid var(--linea)}
+  .tripleta dt{font-size:12px;margin-bottom:3px}
   .tripleta dd{font-size:14.5px}
   .panel-cta .btn{flex:0 0 auto}
 }
@@ -458,22 +489,41 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .fila-copia code{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--hondo);letter-spacing:0;word-break:break-all}
 .copiar{font-family:var(--display);font-weight:600;font-size:13px;color:var(--marca);background:var(--crema-2);border:1px solid var(--linea-fuerte);border-radius:100px;padding:7px 13px;cursor:pointer;min-width:74px}
 .copiar.ok{background:var(--marca);color:#fff;border-color:var(--marca)}
+.fila-copia.concepto{background:#FFF8E1;border-top:2px solid var(--amarillo)}
+.fila-copia.concepto span{color:#7A5600;font-weight:600;font-family:var(--display)}
+.fila-copia.concepto code{word-break:normal}
+.aviso-concepto{background:#FFF8E1;border:1px solid #EACB73;border-left:4px solid var(--amarillo);border-radius:var(--r-s);padding:10px 13px;font-size:13.5px;color:var(--tinta);margin:0 0 10px;line-height:1.45}
+.aviso-concepto b{font-family:var(--display)}
 .donar-nota{font-size:13px;color:var(--gris);margin:0}
 @media(min-width:900px){.donar-grid{grid-template-columns:1fr 1fr;gap:var(--e-3);align-items:start}}
 
 /* niveles de empresa */
+/* niveles y Frutos comparten el ámbar: son las categorías de auspicio */
 .niveles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--e-1)}
-.nivel{background:var(--papel);border:1.5px solid var(--linea);border-radius:var(--r-m);padding:12px 12px 13px}
-.nivel.n3{border:2px solid var(--marca);background:var(--crema-2)}
-.nivel .nom{display:block;font-family:var(--display);font-weight:600;font-size:15px;color:var(--hondo)}
-.nivel .precio{display:block;font-family:var(--display);font-weight:700;font-size:19px;color:var(--marca);letter-spacing:-.02em;line-height:1.1;margin-top:1px}
+.nivel{display:flex;flex-direction:column;background:#FDF7E6;border:1.5px solid #EDD595;border-radius:var(--r-m);padding:12px 12px 13px}
+.nivel.n3{border:2px solid var(--amarillo);background:#FAEDC4}
+.nivel .nom{display:block;font-family:var(--display);font-weight:600;font-size:15px;color:#6B4A00}
+.nivel .precio{display:block;font-family:var(--display);font-weight:700;font-size:19px;color:var(--hondo);letter-spacing:-.02em;line-height:1.1;margin-top:1px}
 .nivel .precio small{display:block;font-size:11px;font-weight:500;color:var(--gris);letter-spacing:0;line-height:1.25;margin-top:2px}
 .ben{list-style:none;padding:0;margin:9px 0 0}
-.ben li{display:flex;gap:7px;padding:5px 0;font-size:12.5px;color:var(--gris);border-top:1px solid var(--linea);line-height:1.35}
+.ben{flex:1}
+.ben li{display:flex;gap:7px;padding:5px 0;font-size:12.5px;color:var(--gris);border-top:1px solid #EFDDAA;line-height:1.35}
 .ben li:first-child{border-top:0}
-.ben li svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;stroke:var(--medio);fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.ben li svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;stroke:#B07F00;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
 .ben li b{font-weight:600;color:var(--hondo)}
 .nivel .btn{margin-top:10px;width:100%}
+.btn-ambar{background:var(--amarillo);color:#14231F;border-color:var(--amarillo)}
+.btn-ambar:hover{background:#CF9C00;border-color:#CF9C00}
+.btn-ambar-linea{background:transparent;color:#6B4A00;border-color:#C99A1E}
+.btn-ambar-linea:hover{background:var(--amarillo);color:#14231F;border-color:var(--amarillo)}
+.desliza-niveles{display:none}
+/* móvil: los tres niveles en una fila horizontal, Territorio siempre a la vista al deslizar */
+@media(max-width:899px){
+  .niveles{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:76%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -14px;padding:0 14px 4px;scroll-padding:0 14px}
+  .niveles::-webkit-scrollbar{display:none}
+  .nivel{scroll-snap-align:start}
+  .desliza-niveles{display:flex;justify-content:space-between;font-size:12px;color:var(--gris-2);margin:6px 0 0}
+}
 @media(min-width:900px){
   .niveles{gap:var(--e-2)}
   .nivel{padding:18px 18px 18px}
@@ -487,18 +537,20 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:7px}
 .recibe p{font-size:11.5px;color:var(--gris);margin:0;line-height:1.35}
 @media(min-width:900px){.recibe{gap:var(--e-2)}.recibe div{padding:14px 16px}.recibe h4{font-size:15.5px}.recibe p{font-size:13.5px}}
 
-.frutos{background:var(--papel);border:1px solid var(--linea);border-left:4px solid var(--amarillo);border-radius:var(--r-m);padding:14px;margin-top:var(--e-2)}
-.frutos h4{font-size:16px;margin-bottom:5px}
+.frutos{background:#FDF7E6;border:1.5px solid #EDD595;border-left:4px solid var(--amarillo);border-radius:var(--r-m);padding:14px;margin-top:var(--e-1)}
+.frutos h4{font-size:16px;margin-bottom:5px;color:#6B4A00}
 .frutos p{color:var(--gris);font-size:13.5px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:9px 0 11px}
-.chips li{font-size:12.5px;background:var(--blanco);border:1px solid var(--linea);border-radius:100px;padding:4px 11px;color:var(--gris)}
-@media(min-width:900px){.frutos{padding:20px 22px}.frutos h4{font-size:18px}}
+.chips li{font-size:12.5px;background:var(--blanco);border:1px solid #EDD595;border-radius:100px;padding:4px 11px;color:var(--gris)}
+@media(min-width:900px){.frutos{padding:20px 22px;margin-top:var(--e-2)}.frutos h4{font-size:18px}}
 
 /* franja de transparencia */
 .franja-confianza{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:var(--tinte);border:1px solid #B9D3C4;border-radius:var(--r-l);padding:14px 16px}
 .franja-confianza svg{width:30px;height:30px;stroke:var(--marca);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .franja-confianza p{margin:0;font-size:13.5px;color:var(--gris)}
 .franja-confianza strong{display:block;font-family:var(--display);color:var(--hondo);font-size:15.5px;margin-bottom:2px}
+.franja-confianza .temas{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;font-family:var(--display);font-weight:500;font-size:12.5px;color:var(--marca)}
+.franja-confianza .temas span::before{content:"· ";color:var(--lima-osc)}
 .franja-confianza .btn{grid-column:1/-1}
 @media(min-width:900px){.franja-confianza{grid-template-columns:auto 1fr auto;padding:18px 24px;gap:18px}.franja-confianza .btn{grid-column:auto}.franja-confianza p{font-size:15px}}
 
@@ -605,6 +657,8 @@ body.panel-abierto{overflow:hidden}
 
 <!-- ══════ BIENVENIDA (≈3 s, una vez por sesión) ══════ -->
 <div class="bienvenida" id="bienvenida" aria-hidden="true">
+  <img class="fondo-b" src="assets/img/portada-bosque-800.webp" alt="">
+  <div class="velo-b"></div>
   <div class="marcas">
     <svg class="logo-pe" viewBox="0 0 1537 847"><use href="#s-pe" width="1537" height="847"/></svg>
     <span class="mas">+</span>
@@ -642,10 +696,15 @@ body.panel-abierto{overflow:hidden}
 
 <!-- ══════ PORTADA ══════ -->
 <section class="portada" id="inicio" aria-labelledby="titulo-principal">
-  <picture class="fondo">
-    <source media="(max-width:640px)" srcset="assets/img/portada-bosque-800.webp">
-    <img src="assets/img/portada-bosque-1400.webp" alt="" width="1400" height="787" fetchpriority="high">
-  </picture>
+  <div class="fondo" aria-hidden="true">
+    <picture class="capa activa">
+      <source media="(max-width:640px)" srcset="assets/img/portada-bosque-800.webp">
+      <img src="assets/img/portada-bosque-1400.webp" alt="" width="1400" height="787" fetchpriority="high">
+    </picture>
+    <img class="capa" data-src="assets/img/portada-render.webp" alt="" width="1040" height="585">
+    <img class="capa" data-src="assets/img/portada-comunidad.webp" alt="" width="420" height="560" style="object-position:center 30%">
+    <img class="capa" data-src="assets/img/portada-equipo.webp" alt="" width="880" height="576">
+  </div>
   <div class="velo"></div>
   <div class="wrap portada-in">
     <div>
@@ -713,38 +772,34 @@ body.panel-abierto{overflow:hidden}
           <li><p class="cuando">2025–2026</p><h4>Talleres con la comunidad</h4><p>Madres e infancias en Umukai y estudiantes de secundaria en Chiriaco definen qué necesita la residencia.</p></li>
           <li><p class="cuando">Feb 2026</p><h4>Aula Viva Awajún</h4><p>El workshop que traduce todo lo anterior en el diseño de Casa Semilla y en el sistema constructivo.</p></li>
         </ol>
-        <p class="cita">«Primero lo seguro, luego lo funcional, luego lo bonito.»<span>El orden de prioridades que fijó la comunidad en los talleres, y que ordena el presupuesto de esta campaña.</span></p>
       </div>
     </details>
   </div>
 
   <!-- El problema -->
   <div class="bloque" id="problema">
-    <div class="cab-bloque">
-      <h2 class="tit">Largas distancias y situaciones de vulnerabilidad</h2>
-      <p class="entrada">Hay estudiantes que no pueden ir y volver cada día. Se quedan cerca de la escuela durante la semana, sin un lugar con condiciones para dormir, cocinar ni asearse. Los espacios donde se alojan son de madera, caña y calamina, y el calor dentro es difícil de soportar.</p>
-    </div>
+    <h2 class="tit">Largas distancias y situaciones de vulnerabilidad</h2>
     <div class="problema">
       <figure>
         <img src="assets/img/problema-camino.webp" alt="Un grupo de escolares con mochilas cruza a pie un río poco profundo camino a la escuela" loading="lazy" width="410" height="274">
-        <figcaption>Llegar a clase puede significar cruzar el río. Para quienes viven más lejos, quedarse cerca de la escuela es la única opción.</figcaption>
+        <figcaption>Llegar a clase puede significar cruzar el río.</figcaption>
       </figure>
       <div class="txt">
-        <p>Es una situación que se repite en toda la frontera amazónica: territorios pequeños, dispersos y difíciles de alcanzar, donde la inversión pública casi nunca llega. No es un problema de voluntad de las familias, es un problema de distancia y de infraestructura.</p>
+        <p>Hay estudiantes que no pueden ir y volver cada día. Se quedan cerca de la escuela durante la semana, en espacios de madera, caña y calamina, sin condiciones para dormir, cocinar ni asearse. Es una situación que se repite en toda la frontera amazónica, donde la inversión pública casi nunca llega.</p>
+        <p class="rotulo-datos">Wawaín, en cifras</p>
+        <ul class="cifras-fila">
+          <li><b>294</b><span>habitantes</span></li>
+          <li><b>334</b><span>estudiantes matriculados</span></li>
+          <li><b>3</b><span>escuelas</span></li>
+          <li><b>30 min</b><span>de caminata, los más lejanos</span></li>
+          <li><b>En bote</b><span>por el río Chiriaco</span></li>
+        </ul>
       </div>
     </div>
 
     <details class="mas">
-      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">las cifras que hay detrás</span></summary>
+      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">lo que pasa en la escuela rural del país</span></summary>
       <div class="mas-cuerpo">
-        <p class="rotulo-datos">Wawaín, en cifras</p>
-        <ul class="cifras-fila">
-          <li><b>294</b><span>habitantes en la comunidad</span></li>
-          <li><b>334</b><span>estudiantes matriculados</span></li>
-          <li><b>3</b><span>escuelas en el ámbito</span></li>
-          <li><b>30 min</b><span>de caminata para los que viven más lejos</span></li>
-          <li><b>En bote</b><span>el acceso, por el río Chiriaco</span></li>
-        </ul>
         <p class="rotulo-datos">Lo que pasa en la escuela rural del país</p>
         <div class="datos">
           <div class="dato"><p class="n">1 de cada 5</p><p>estudiantes rurales logra aprendizajes satisfactorios. En las zonas más alejadas, 1 de cada 10.</p></div>
@@ -869,10 +924,10 @@ body.panel-abierto{overflow:hidden}
     </div>
     <ol class="secuencia">
       <li class="ahora"><span class="bolita" aria-hidden="true">1</span><div><p class="cuando">Fase 1 · en obra</p><h3>Wawaín</h3><p>Casa Semilla Awajún, residencia estudiantil. 120 m², 28 camas. Es la fase que esta campaña financia.</p></div></li>
-      <li><span class="bolita" aria-hidden="true">2</span><div><p class="cuando">Fase 2 · después</p><h3>San Rafael</h3><p>Semillero de aprendizaje. 25 m², 60 beneficiarios. Empieza con el excedente de la fase 1.</p></div></li>
+      <li class="abre" id="fase-sanrafael"><span class="bolita" aria-hidden="true">2</span><div><p class="cuando">Fase 2 · después</p><h3><button type="button" class="abre-btn" aria-controls="det-sanrafael" aria-expanded="false">San Rafael</button></h3><p>Semillero de aprendizaje. 25 m², 60 beneficiarios. Empieza con el excedente de la fase 1.</p><span class="ver-fase" aria-hidden="true">Ver el proyecto</span></div></li>
       <li><span class="bolita" aria-hidden="true">3</span><div><p class="cuando">Más adelante</p><h3>El modelo</h3><p>Las dos obras dejan un antecedente documentado y transferible a otras comunidades amazónicas.</p></div></li>
     </ol>
-    <details class="mas">
+    <details class="mas" id="det-sanrafael">
       <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">el proyecto de San Rafael, ya diseñado</span></summary>
       <div class="mas-cuerpo">
         <div class="sanrafael">
@@ -887,14 +942,10 @@ body.panel-abierto{overflow:hidden}
       </div>
     </details>
   </div>
-
-  <div class="siguiente-sec">
-    <a href="#participa">Siguiente: Súmate<small>— la meta y cómo participar</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
-  </div>
 </section>
 
 <!-- ══════════════════ SÚMATE ══════════════════ -->
-<section class="seccion seguida wrap" id="participa" aria-labelledby="h-participa">
+<section class="seccion wrap" id="participa" aria-labelledby="h-participa">
   <div class="cabeza-seccion"><h2 id="h-participa">Súmate</h2><span class="raya" aria-hidden="true"></span></div>
 
   <!-- La meta -->
@@ -940,25 +991,25 @@ body.panel-abierto{overflow:hidden}
     <div class="vias" role="tablist" aria-label="Maneras de sumarse">
       <button type="button" class="via-card" role="tab" id="t-personas" aria-controls="donar" aria-selected="true" tabindex="0">
         <span class="eyebrow">Recursos</span>
-        <span class="nom">Donación de personas</span>
+        <span class="nom"><span class="nom-largo">Donación de personas</span><span class="nom-corto">Personas</span></span>
         <span class="una">Un aporte libre, sin mínimo, por Yape, Plin o transferencia.</span>
         <span class="ver">Ver cómo</span>
       </button>
       <button type="button" class="via-card" role="tab" id="t-empresas" aria-controls="empresas" aria-selected="false" tabindex="-1">
         <span class="eyebrow">Recursos</span>
-        <span class="nom">Donación de empresas</span>
+        <span class="nom"><span class="nom-largo">Donación de empresas</span><span class="nom-corto">Empresas</span></span>
         <span class="una">Tres niveles de auspicio, en dinero o en materiales de la obra.</span>
         <span class="ver">Ver cómo</span>
       </button>
       <button type="button" class="via-card cap" role="tab" id="t-alianzas" aria-controls="alianzas" aria-selected="false" tabindex="-1">
         <span class="eyebrow">Capacidades</span>
-        <span class="nom">Formemos alianzas</span>
+        <span class="nom"><span class="nom-largo">Formemos alianzas</span><span class="nom-corto">Alianzas</span></span>
         <span class="una">Organizaciones que asumen tareas concretas del proyecto.</span>
         <span class="ver">Ver cómo</span>
       </button>
       <button type="button" class="via-card cap" role="tab" id="t-rsc" aria-controls="rsc" aria-selected="false" tabindex="-1">
         <span class="eyebrow">Capacidades</span>
-        <span class="nom">Responsabilidad social</span>
+        <span class="nom"><span class="nom-largo">Responsabilidad social</span><span class="nom-corto">Resp. social</span></span>
         <span class="una">Empresas que involucran a su equipo más allá del aporte.</span>
         <span class="ver">Ver cómo</span>
       </button>
@@ -969,8 +1020,8 @@ body.panel-abierto{overflow:hidden}
       <p class="lead">Invitación abierta: cualquier persona puede sumarse con el monto que pueda, sin mínimo. Es la vía más frecuente.</p>
       <dl class="tripleta">
         <div><dt>Qué aportas</dt><dd>Un aporte libre por Yape, Plin o transferencia a la cuenta institucional.</dd></div>
-        <div><dt>Qué recibes</dt><dd>Comprobante de recepción válido ante SUNAT y el reporte del avance de obra.</dd></div>
-        <div><dt>Cómo empieza</dt><dd>Donas con los datos de abajo y nos envías la constancia por WhatsApp.</dd></div>
+        <div><dt>Qué recibes</dt><dd>Transparencia: sumamos cada aporte al avance de la campaña y mostramos en qué se convierte, con evidencia de obra.</dd></div>
+        <div><dt>Cómo empieza</dt><dd>Donas con los datos de abajo, con el concepto «Donativo proyecto Awajún».</dd></div>
       </dl>
       <div class="panel-esp">
         <div class="donar-grid">
@@ -979,12 +1030,14 @@ body.panel-abierto{overflow:hidden}
             <div class="fila-copia"><div><span>BCP · Cuenta</span><code>19310982313044</code></div><button type="button" class="copiar" data-copiar="19310982313044">Copiar</button></div>
             <div class="fila-copia"><div><span>CCI</span><code>00279300109823130480</code></div><button type="button" class="copiar" data-copiar="00279300109823130480">Copiar</button></div>
             <div class="fila-copia"><div><span>Yape / Plin</span><code>982 778 028</code></div><button type="button" class="copiar" data-copiar="982778028">Copiar</button></div>
+            <div class="fila-copia concepto"><div><span>Concepto o descripción</span><code>Donativo proyecto Awajún</code></div><button type="button" class="copiar" data-copiar="Donativo proyecto Awajún">Copiar</button></div>
           </div>
           <div>
-            <p class="donar-nota">Después de tu aporte, escríbenos y envíanos la constancia: te hacemos llegar el comprobante válido ante SUNAT y te sumamos al reporte de avance de obra.</p>
+            <p class="aviso-concepto"><b>Importante:</b> al transferir o yapear, escribe en el concepto o descripción <b>«Donativo proyecto Awajún»</b>. Así identificamos tu aporte y lo sumamos al avance de la campaña.</p>
+            <p class="donar-nota">Las donaciones de personas no generan comprobante tributario. Lo que sí hacemos es rendir cuentas: sumamos los aportes y publicamos en qué se convierten. Si prefieres, también puedes donar o enviarnos tu constancia por WhatsApp.</p>
             <div class="panel-cta">
-              <a class="btn btn-lima btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener">Quiero donar por WhatsApp</a>
-              <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20acabo%20de%20hacer%20un%20aporte%20a%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn%20y%20les%20env%C3%ADo%20la%20constancia." target="_blank" rel="noopener">Enviar constancia</a>
+              <a class="btn btn-lima btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener">Donar por WhatsApp</a>
+              <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20acabo%20de%20hacer%20un%20donativo%20a%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn%20y%20les%20env%C3%ADo%20la%20constancia." target="_blank" rel="noopener">Enviar constancia</a>
             </div>
           </div>
         </div>
@@ -996,30 +1049,31 @@ body.panel-abierto{overflow:hidden}
       <p class="lead">Para empresas que pueden auspiciar la obra, en dinero o en materiales del listado técnico. Cada nivel incluye todo lo del anterior y suma algo más.</p>
       <dl class="tripleta">
         <div><dt>Qué aportas</dt><dd>Un monto económico o materiales de construcción valorizados a precio de mercado.</dd></div>
-        <div><dt>Qué recibes</dt><dd>Certificado de donación deducible, reporte de impacto y visibilidad según el nivel.</dd></div>
+        <div><dt>Qué recibes</dt><dd>Visibilidad y reporte de impacto según el nivel; certificado de donación deducible desde el nivel Bosque.</dd></div>
         <div><dt>Cómo empieza</dt><dd>Eliges el nivel, lo conversamos por WhatsApp y formalizamos el aporte.</dd></div>
       </dl>
       <div class="panel-esp">
-        <div class="niveles">
+        <div class="niveles" aria-label="Niveles de auspicio">
           <div class="nivel n1">
             <span class="nom">Semilla</span>
             <span class="precio">S/ 100</span>
             <ul class="ben">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Certificado de donación deducible</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Reporte de cierre con evidencia de obra</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención en la inauguración</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención en redes sociales</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Reporte de cierre con evidencia de obra</li>
             </ul>
-            <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Semilla%20%28S/%20100%29." target="_blank" rel="noopener">Auspiciar</a>
+            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Semilla%20%28S/%20100%29." target="_blank" rel="noopener">Auspiciar</a>
           </div>
           <div class="nivel n2">
             <span class="nom">Bosque</span>
             <span class="precio">S/ 500<small>o su equivalente en materiales</small></span>
             <ul class="ben">
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><b>Todo lo de Semilla</b></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Certificado de donación deducible</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Logo en materiales de campaña</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Publicaciones en redes durante el proyecto</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Kit de publicaciones en redes durante el proyecto</li>
             </ul>
-            <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Bosque%20%28S/%20500%20o%20su%20equivalente%20en%20materiales%29." target="_blank" rel="noopener">Auspiciar</a>
+            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Bosque%20%28S/%20500%20o%20su%20equivalente%20en%20materiales%29." target="_blank" rel="noopener">Auspiciar</a>
           </div>
           <div class="nivel n3">
             <span class="nom">Territorio</span>
@@ -1031,22 +1085,23 @@ body.panel-abierto{overflow:hidden}
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Kit de fotos e historia para tu comunicación</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención especial en el video de cierre</li>
             </ul>
-            <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Territorio%20%28S/%201%2C000%20a%20m%C3%A1s%29." target="_blank" rel="noopener">Auspiciar</a>
+            <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Territorio%20%28S/%201%2C000%20a%20m%C3%A1s%29." target="_blank" rel="noopener">Auspiciar</a>
           </div>
         </div>
-        <div class="recibe">
-          <div><h4>Certificado de donación</h4><p>Válido para deducción tributaria ante SUNAT.</p></div>
-          <div><h4>Reporte de impacto</h4><p>Rendición con comprobantes y evidencia fotográfica de obra.</p></div>
-          <div><h4>Visibilidad</h4><p>Presencia en la obra, en materiales de campaña y en redes, según el nivel.</p></div>
-        </div>
+        <p class="desliza-niveles" aria-hidden="true"><span>Semilla · Bosque · Territorio</span><span>Desliza →</span></p>
         <div class="frutos" id="frutos">
           <h4>Frutos: donar materiales en vez de dinero</h4>
-          <p>Frutos no es un nivel aparte, es otra forma de hacer el mismo aporte. El material se valoriza a precio de mercado y ese monto ubica al donante en el nivel que le corresponde, con los mismos beneficios y el mismo certificado.</p>
+          <p>Frutos no es un nivel aparte, es otra forma de hacer el mismo aporte. El material se valoriza a precio de mercado y ese monto ubica al donante en el nivel que le corresponde, con los mismos beneficios.</p>
           <ul class="chips">
             <li>Fijaciones y tornillería</li><li>Herramientas de corte</li><li>Preservantes para madera</li><li>Mallas y cerramientos</li><li>Aparatos sanitarios</li><li>Cableado eléctrico</li>
           </ul>
           <p style="font-size:13px;margin-bottom:11px">Si tienes un material que no está en esta lista, también puede servir: se revisa caso por caso con logística antes de confirmar la donación.</p>
-          <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20materiales%20%28v%C3%ADa%20Frutos%29%20para%20la%20residencia%20de%20Wawa%C3%ADn." target="_blank" rel="noopener">Coordinar una donación de materiales</a>
+          <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20materiales%20%28v%C3%ADa%20Frutos%29%20para%20la%20residencia%20de%20Wawa%C3%ADn." target="_blank" rel="noopener">Coordinar una donación de materiales</a>
+        </div>
+        <div class="recibe">
+          <div><h4>Certificado de donación</h4><p>Deducible ante SUNAT, desde el nivel Bosque.</p></div>
+          <div><h4>Reporte de impacto</h4><p>Rendición con comprobantes y evidencia fotográfica de obra.</p></div>
+          <div><h4>Visibilidad</h4><p>En la obra, en materiales de campaña y en redes, según el nivel.</p></div>
         </div>
         <p class="nota-fuente">El detalle completo de beneficios por nivel está en el <a href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener">brochure de la campaña</a>.</p>
       </div>
@@ -1082,8 +1137,8 @@ body.panel-abierto{overflow:hidden}
   <!-- Franja de confianza -->
   <div class="bloque franja-confianza">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-    <p><strong>En qué se convierte cada aporte</strong>La cuenta receptora está a nombre de Paisajes Educativos, no de una persona. El Yape también es institucional.</p>
-    <a class="btn btn-marca btn-sm" href="#transparencia" data-abrir-panel>Ver transparencia y preguntas</a>
+    <p><strong>Transparencia</strong>Paisajes Educativos y Manifiesto Lab se unen para sumar esfuerzos y aportes que hagan posible esta obra. Aquí te contamos cómo rendimos cuentas y respondemos tus dudas.<span class="temas"><span>En qué se convierte cada aporte</span><span>Preguntas frecuentes</span><span>Quiénes están detrás</span></span></p>
+    <a class="btn btn-marca btn-sm" href="#transparencia" data-abrir-panel>Ver transparencia</a>
   </div>
 
   <!-- Cierre -->
@@ -1127,7 +1182,7 @@ body.panel-abierto{overflow:hidden}
         <details><summary>¿De quién es la obra al terminar?</summary><p class="r">De la comunidad y de la institución educativa.</p></details>
         <details><summary>¿Qué pasa si no se alcanza la primera submeta?</summary><p class="r">Se trabaja con lo que haya y la campaña sigue sumando. La obra avanza por etapas, así que lo que entre después se destina a la etapa siguiente.</p></details>
         <details><summary>¿Qué pasa si se supera la meta?</summary><p class="r">El excedente inicia la Fase 2 en San Rafael. Nada sale de la campaña.</p></details>
-        <details><summary>¿Se puede donar material en vez de dinero?</summary><p class="r">Sí, es la vía Frutos. Hay un listado técnico, el material se valoriza a precio de mercado y el donante recibe certificado igual.</p></details>
+        <details><summary>¿Se puede donar material en vez de dinero?</summary><p class="r">Sí, es la vía Frutos. Hay un listado técnico, el material se valoriza a precio de mercado y el donante recibe los mismos beneficios del nivel que le corresponde.</p></details>
         <details><summary>¿Qué materiales se aceptan?</summary><p class="r">Los del listado del proyecto. Un material que no esté en la lista puede aceptarse si resulta acorde a la obra: se coordina caso por caso con logística antes de confirmar la donación.</p></details>
         <details><summary>¿Se puede pedir exclusividad o naming?</summary><p class="r">No hay precios de exclusividad. Si aparece algo extraordinario, se resuelve por acuerdo previo.</p></details>
         <details><summary>¿Quién habla a nombre de la campaña?</summary><p class="r">Paisajes Educativos y Manifiesto Lab.</p></details>
@@ -1247,16 +1302,32 @@ body.panel-abierto{overflow:hidden}
   (function(){
     var b=$('#bienvenida'); if(!b) return;
     var vista=false; try{vista=sessionStorage.getItem('bienvenida')==='1';}catch(e){}
-    if(vista||reducir||location.hash) return;
+    if(vista||location.hash) return;
     try{sessionStorage.setItem('bienvenida','1');}catch(e){}
     var frases=$$('.frases span',b), t=[];
     b.classList.add('activa');
     var fin=function(){ t.forEach(clearTimeout); b.classList.add('sale'); setTimeout(function(){b.classList.remove('activa');b.remove();},500); };
-    frases.forEach(function(f,i){ t.push(setTimeout(function(){ f.classList.add('ver'); },120+i*1050)); if(i<frases.length-1) t.push(setTimeout(function(){ f.classList.remove('ver'); },120+i*1050+760)); });
-    t.push(setTimeout(fin,120+frases.length*1050+250));
+    var PASO=1800, VISIBLE=1350;   /* cada frase queda ~1,4 s a la vista; total ≈ 5,8 s */
+    frases.forEach(function(f,i){ t.push(setTimeout(function(){ f.classList.add('ver'); },150+i*PASO)); if(i<frases.length-1) t.push(setTimeout(function(){ f.classList.remove('ver'); },150+i*PASO+VISIBLE)); });
+    t.push(setTimeout(fin,150+frases.length*PASO+200));
     $('.saltar-intro',b).addEventListener('click',fin);
     b.addEventListener('click',fin);
     document.addEventListener('keydown',function k(){fin();document.removeEventListener('keydown',k);});
+  })();
+
+  /* ── Portada: fondo que alterna imágenes cada 5 s ── */
+  (function(){
+    var capas=$$('.portada .capa'); if(capas.length<2) return;
+    var i=0, timer=null, visible=true, cargadas=false;
+    function cargar(){ if(cargadas) return; cargadas=true; capas.forEach(function(c){ var src=c.getAttribute('data-src'); if(src){ c.src=src; c.removeAttribute('data-src'); } }); }
+    function siguiente(){ capas[i].classList.remove('activa'); i=(i+1)%capas.length; capas[i].classList.add('activa'); }
+    function arrancar(){ if(timer||!visible||document.hidden) return; timer=setInterval(siguiente,5000); }
+    function parar(){ clearInterval(timer); timer=null; }
+    window.addEventListener('load',function(){ setTimeout(function(){ cargar(); arrancar(); },600); });
+    document.addEventListener('visibilitychange',function(){ document.hidden?parar():arrancar(); });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ visible=e[0].isIntersecting; visible?arrancar():parar(); }).observe($('#inicio'));
+    }
   })();
 
   /* ── Navegación activa + barra inferior ── */
@@ -1287,8 +1358,22 @@ body.panel-abierto{overflow:hidden}
       });
       if(foco) tabs[i].focus();
     }
+    var franja=$('.vias'), movil=window.matchMedia('(max-width:899px)');
+    function alinear(i){
+      if(!movil.matches||!paneles[i]) return;
+      /* tras el reajuste del navegador: si el panel nuevo quedó bajo la franja, se sube hasta justo debajo de ella */
+      requestAnimationFrame(function(){
+        var tope=$('.top').offsetHeight+franja.offsetHeight;
+        var y=paneles[i].getBoundingClientRect().top+window.pageYOffset-tope-4;
+        if(paneles[i].getBoundingClientRect().top<tope-2) window.scrollTo({top:y,behavior:'instant'});
+      });
+    }
+    if('IntersectionObserver' in window && franja){
+      var cent=document.createElement('div'); cent.setAttribute('aria-hidden','true'); franja.parentNode.insertBefore(cent,franja);
+      new IntersectionObserver(function(e){ franja.classList.toggle('fija',!e[0].isIntersecting && e[0].boundingClientRect.top<0); },{rootMargin:'-80px 0px 0px 0px'}).observe(cent);
+    }
     tabs.forEach(function(t,i){
-      t.addEventListener('click',function(){ activar(i); });
+      t.addEventListener('click',function(){ activar(i); alinear(i); });
       t.addEventListener('keydown',function(e){
         var n=null;
         if(e.key==='ArrowRight'||e.key==='ArrowDown') n=(i+1)%tabs.length;
@@ -1305,6 +1390,37 @@ body.panel-abierto{overflow:hidden}
       return false;
     }};
   })();
+
+  /* ── Fase 2: tocar la tarjeta abre el proyecto de San Rafael ── */
+  (function(){
+    var li=$('#fase-sanrafael'), det=$('#det-sanrafael'); if(!li||!det) return;
+    var btn=$('.abre-btn',li);
+    function sync(){ li.classList.toggle('activa',det.open); btn.setAttribute('aria-expanded',det.open?'true':'false'); }
+    btn.addEventListener('click',function(){
+      det.open=!det.open; sync();
+      if(det.open){ var r=det.getBoundingClientRect(); if(r.bottom>window.innerHeight-70){ window.scrollBy({top:Math.min(r.top-($('.top').offsetHeight+12),r.bottom-window.innerHeight+90),behavior:reducir?'auto':'smooth'}); } }
+    });
+    det.addEventListener('toggle',sync);
+  })();
+
+  /* ── "Conoce más": se cierran solos cuando quedan atrás en el scroll ── */
+  var navegando=false, tNav;
+  function cerrarSiFuera(det){
+    if(!det.open||navegando) return;
+    var r=det.getBoundingClientRect();
+    if(r.bottom>0 && r.top<window.innerHeight) return;           /* sigue a la vista */
+    if(r.bottom<=0){                                             /* quedó arriba: se compensa para que nada salte */
+      var antes=det.offsetHeight; det.open=false;
+      window.scrollBy({top:-(antes-det.offsetHeight),behavior:'instant'});
+    } else det.open=false;                                       /* quedó abajo: se cierra sin mover nada */
+  }
+  var desplegables=$$('details.mas');
+  if('IntersectionObserver' in window){
+    var ioMas=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ if(!en.isIntersecting) setTimeout(function(){ cerrarSiFuera(en.target); },400); });
+    });
+    desplegables.forEach(function(d){ ioMas.observe(d); });
+  }
 
   /* ── Copiar datos ── */
   var aviso=$('#aviso'), tAviso;
@@ -1337,8 +1453,19 @@ body.panel-abierto{overflow:hidden}
     var abierto = vias && vias.abrir(id);
     var dest = document.getElementById(abierto?'como':id) || document.getElementById(id);
     if(!dest) return;
+    navegando=true; clearTimeout(tNav);
     var y=dest.getBoundingClientRect().top+window.pageYOffset-($('.top').offsetHeight+10);
     window.scrollTo({top:Math.max(0,y),behavior:reducir?'auto':'smooth'});
+    tNav=setTimeout(function(){
+      navegando=false;
+      /* al terminar el salto, se cierran los que quedaron arriba y se reubica el destino */
+      var abiertos=desplegables.filter(function(d){ return d.open && d.getBoundingClientRect().bottom<=0; });
+      if(abiertos.length){
+        abiertos.forEach(function(d){ d.open=false; });
+        var y2=dest.getBoundingClientRect().top+window.pageYOffset-($('.top').offsetHeight+10);
+        window.scrollTo({top:Math.max(0,y2),behavior:'instant'});
+      }
+    },reducir?50:1100);
   }
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]'); if(!a) return;
