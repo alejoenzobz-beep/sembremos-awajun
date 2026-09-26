@@ -37,8 +37,8 @@
   --sombra:0 1px 3px rgba(16,51,44,.06),0 6px 20px rgba(16,51,44,.08);
   --ancho:1160px;
   /* escala tipográfica — móvil */
-  --f-base:14.5px; --f-chico:13.5px; --f-mini:12px;
-  --f-h1:clamp(27px,8.2vw,34px); --f-h2:20px; --f-h3:16px;
+  --f-base:14px; --f-chico:13px; --f-mini:11.5px;
+  --f-h1:clamp(23px,7vw,29px); --f-h2:17px; --f-h3:14.5px;
   --interlineado:1.46;
   /* escala de espaciado: 8 · 16 · 24 · 40 · 64 */
   --e-1:8px; --e-2:16px; --e-3:24px; --e-4:40px;
@@ -156,18 +156,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[
 .portada h1{color:#fff;font-size:var(--f-h1);line-height:1.04;letter-spacing:-.024em;text-wrap:balance}
 .portada h1 span{display:block}
 .portada h1 .l2{color:var(--lima-claro)}
-.portada .bajada{color:#E4EDE6;font-size:15px;max-width:44ch;margin:12px 0 0}
+.portada .bajada{color:#E4EDE6;font-size:13.5px;line-height:1.45;max-width:44ch;margin:10px 0 0}
 .portada .bajada strong{color:#fff}
-.portada .lugar{color:#B7CCC2;font-size:13px;margin:6px 0 0}
-.portada-btns{display:flex;gap:10px;margin-top:16px}
-.portada-btns .btn{flex:1}
+.portada .lugar{color:#B7CCC2;font-size:12px;margin:5px 0 0}
+.portada-btns{display:flex;gap:8px;margin-top:14px}
+.portada-btns .btn{min-height:38px;padding:7px 16px;font-size:14px}
+@media(max-width:899px){
+  .marbete{flex-wrap:nowrap;gap:6px;font-size:10.5px;padding:3px 10px;margin-bottom:10px;max-width:100%}
+  .marbete span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .portada-in{gap:16px}
+}
 @media(min-width:900px){
   .portada .velo{background:linear-gradient(103deg,rgba(11,34,29,.92) 0%,rgba(11,34,29,.78) 46%,rgba(11,34,29,.34) 100%)}
   .portada-in{grid-template-columns:minmax(0,1fr) 360px;align-items:end;gap:48px;padding-top:60px;padding-bottom:60px;min-height:min(580px,calc(100vh - var(--alto-top)))}
   .marbete{font-size:13.5px;padding:7px 15px;margin-bottom:20px}
   .portada .bajada{font-size:18px;margin-top:18px}
   .portada .lugar{font-size:15px}
-  .portada-btns{margin-top:24px}.portada-btns .btn{flex:0 0 auto}
+  .portada-btns{margin-top:24px;gap:10px}.portada-btns .btn{min-height:46px;padding:11px 22px;font-size:16px}
 }
 
 /* tarjeta de avance (jerarquía: reunido → submeta activa → meta → siguiente etapa) */
@@ -300,6 +305,11 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .par .ahora .etq{background:rgba(16,51,44,.86)}
 .par .luego .etq{background:var(--lima);color:#14231F}
 .par figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px;line-height:1.35}
+@media(max-width:899px){
+  .par figure{display:flex;flex-direction:column}
+  .par .etq{position:static;order:-1;align-self:flex-start;background:none!important;color:var(--marca)!important;padding:0;margin:0 0 4px;font-size:11.5px;white-space:nowrap}
+  .par .luego .etq{color:var(--lima-osc)!important}
+}
 @media(min-width:900px){
   .par{gap:var(--e-2);margin-top:var(--e-4)}
   .par .etq{font-size:13px;top:12px;left:12px;padding:5px 13px}
@@ -349,6 +359,20 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .hito .q{font-family:var(--display);font-weight:600;color:var(--marca);font-size:14px;margin:2px 0 0}
 .hito.obra .q{color:#4F7A22}
 .hito p{font-size:13px;color:var(--gris);margin:3px 0 0;line-height:1.4}
+.hitos-leyenda{display:none}
+@media(max-width:899px){
+  .hitos{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:auto;overflow:visible;margin:var(--e-3) 0 0;padding:0;counter-reset:hito}
+  .hito{counter-increment:hito;padding:15px 4px 0 0}
+  .hito::before{content:counter(hito);top:-11px;width:20px;height:20px;border-width:2px;display:grid;place-items:center;font-family:var(--display);font-size:10.5px;font-weight:700;color:var(--marca)}
+  .hito.obra::before{color:#4F7A22}
+  .hito .f{font-size:12px;white-space:nowrap}
+  .hito .q,.hito>p:not(.f){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .hitos-leyenda{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;list-style:none;padding:0;margin:12px 0 0}
+  .hitos-leyenda li{display:grid;grid-template-columns:18px 1fr;gap:7px;align-items:start;font-size:12px;color:var(--gris);line-height:1.35}
+  .hitos-leyenda b{width:18px;height:18px;border-radius:50%;background:var(--marca);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:10px}
+  .hitos-leyenda .obra b{background:var(--lima-osc)}
+  .hitos-leyenda strong{font-family:var(--display);font-weight:600;color:var(--hondo)}
+}
 .leyenda{display:flex;gap:16px;font-size:var(--f-mini);color:var(--gris);margin-top:12px}
 .leyenda span{display:inline-flex;align-items:center;gap:6px}
 .leyenda i{width:18px;height:4px;border-radius:4px}
@@ -577,8 +601,9 @@ footer p{font-size:14px;color:var(--sobre-oscuro)}
 .pie-lista a{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--sobre-oscuro);text-decoration:underline;text-underline-offset:3px;min-height:30px;word-break:break-word}
 .pie-lista a:hover{color:#fff}
 .pie-lista svg{width:16px;height:16px;flex-shrink:0;stroke:var(--lima-claro);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.legal{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);display:grid;gap:4px}
-.legal p{margin:0;font-size:12.5px;color:#A9BFB5}
+.legal{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);display:grid;gap:4px}
+.legal p{margin:0;font-size:11.5px;color:#A9BFB5;line-height:1.4}
+.legal b{font-weight:600;color:var(--sobre-oscuro)}
 @media(min-width:900px){footer{padding:44px 0 30px}.pie{grid-template-columns:1.5fr 1fr 1fr;gap:var(--e-4)}.pie>div:first-child{grid-column:auto}.pie-lista a{font-size:15px}}
 
 /* ═════════ PANEL DE TRANSPARENCIA ═════════ */
@@ -613,12 +638,17 @@ body.panel-abierto{overflow:hidden}
 .faq summary::after{content:"";position:absolute;right:17px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:2px solid var(--marca);border-bottom:2px solid var(--marca);transform:rotate(45deg);transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
 .faq .r{padding:0 13px 11px;font-size:13.5px;color:var(--gris);margin:0;line-height:1.45}
-.aliados{display:grid;gap:var(--e-1);margin-top:var(--e-2)}
-.aliado{background:var(--tinte);border:1px solid #B9D3C4;border-radius:var(--r-m);padding:12px 14px}
-.aliado h3{font-size:16px;margin-bottom:3px}
-.aliado p{font-size:13px;color:var(--gris);margin-bottom:7px;line-height:1.45}
-.aliado .lista li{font-size:12.5px;padding:2px 0 2px 15px}
-.aliado .lista li::before{top:9px;width:6px;height:6px}
+.aliados{display:grid;gap:var(--e-2);margin-top:var(--e-2)}
+.aliado{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:var(--r-m);background:var(--hondo);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.aliado-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.aliado::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,34,29,.05) 0%,rgba(11,34,29,.45) 38%,rgba(11,34,29,.93) 78%)}
+.aliado-txt{position:relative;z-index:2;padding:12px 14px 13px}
+.aliado h3{margin:0 0 6px;line-height:0}
+.aliado h3 svg{height:28px;width:auto;color:#fff;display:inline-block}
+.aliado p{font-size:12px;color:#E4EDE6;margin:0 0 5px;line-height:1.4}
+.aliado .lista li{font-size:11.5px;color:#fff;padding:1px 0 1px 14px;line-height:1.35}
+.aliado .lista li::before{top:7px;width:6px;height:6px;background:var(--lima-claro)}
+@media(min-width:900px){.aliado h3 svg{height:32px}.aliado p{font-size:13.5px}.aliado .lista li{font-size:12.5px}.aliado-txt{padding:18px 20px}}
 .transparencia .bloque-p{margin-top:var(--e-3)}
 .transparencia .bloque-p:first-child{margin-top:0}
 .transparencia .tit{font-size:20px;max-width:none}
@@ -629,6 +659,26 @@ body.panel-abierto{overflow:hidden}
 /* ═════════ AVISO COPIADO ═════════ */
 .aviso{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);z-index:300;background:var(--hondo);color:#fff;font-family:var(--display);font-size:14px;padding:9px 18px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+/* ═════ MÓVIL: títulos al ~85 % y bloques más compactos ═════ */
+@media(max-width:899px){
+  .cabeza-seccion h2{font-size:16px}
+  .cabeza-seccion{margin-bottom:var(--e-2)}
+  .pieza h3{font-size:14.5px}
+  .aporta h3,.frutos h4{font-size:14.5px}
+  .secuencia h3{font-size:14.5px}
+  .spec .n{font-size:17px}
+  .dato .n{font-size:17px}
+  .nivel .nom{font-size:14px}.nivel .precio{font-size:17px}
+  .meta-cifras .reunido{font-size:29px}.meta-cifras .total b{font-size:17px}
+  .desglose .n{font-size:16.5px}
+  .esc .n{font-size:14.5px}
+  .cierre h2{font-size:19.5px}
+  .transparencia .tit{font-size:17px}
+  .transparencia .sub{font-size:14.5px}
+  .panel-cab h2{font-size:14.5px}
+  .avance .cifra{font-size:26px}
+}
 
 /* sin JS: se muestran los cuatro paneles */
 .no-js .via-card .ver{display:none}
@@ -913,6 +963,12 @@ body.panel-abierto{overflow:hidden}
       <li class="hito obra"><p class="f">12–17 oct</p><p class="q">Lab de construcción</p><p>El equipo técnico trabaja junto a la comunidad en obra.</p></li>
       <li class="hito obra"><p class="f">18–31 oct</p><p class="q">Construcción comunitaria</p><p>La comunidad continúa la obra. La campaña sigue abierta.</p></li>
     </ol>
+    <ol class="hitos-leyenda" aria-hidden="true">
+      <li><b>1</b><span><strong>Lanzamiento:</strong> se abre la campaña</span></li>
+      <li class="obra"><b>2</b><span><strong>Excavación</strong> de la cimentación</span></li>
+      <li class="obra"><b>3</b><span><strong>Lab de construcción</strong> con el equipo técnico</span></li>
+      <li class="obra"><b>4</b><span><strong>Construcción comunitaria;</strong> la campaña sigue abierta</span></li>
+    </ol>
     <p class="leyenda" aria-hidden="true"><span><i style="background:var(--marca)"></i>Campaña</span><span><i style="background:var(--lima)"></i>Obra</span></p>
   </div>
 
@@ -1193,22 +1249,28 @@ body.panel-abierto{overflow:hidden}
       <h3 class="sub">Quiénes están detrás</h3>
       <div class="aliados">
         <div class="aliado">
-          <h3>Paisajes Educativos</h3>
-          <p>Asociación interdisciplinaria de voluntariado sin fines de lucro, con 5 años de trabajo participativo con comunidades. 12 coordinadores, +200 voluntarios, 9 proyectos, 4 regiones.</p>
-          <ul class="lista">
-            <li>Reconocida por el MIMP como asociación de voluntariado</li>
-            <li>Registrada en SUNARP, con RUC activo y cuenta institucional</li>
-            <li>Emite certificados de donación válidos ante SUNAT</li>
-          </ul>
+          <img class="aliado-foto" src="assets/img/equipo-paisajes.webp" alt="" loading="lazy" width="682" height="512">
+          <div class="aliado-txt">
+            <h3><svg class="logo-pe" viewBox="0 0 1537 847" aria-hidden="true"><use href="#s-pe" width="1537" height="847"/></svg><span class="oculto">Paisajes Educativos</span></h3>
+            <p>Asociación de voluntariado sin fines de lucro. 5 años, 12 coordinadores, +200 voluntarios, 9 proyectos en 4 regiones.</p>
+            <ul class="lista">
+              <li>Reconocida por el MIMP</li>
+              <li>RUC activo y cuenta institucional</li>
+              <li>Emite certificados de donación (SUNAT)</li>
+            </ul>
+          </div>
         </div>
         <div class="aliado">
-          <h3>Manifiesto Lab</h3>
-          <p>Colectivo de arquitectura social y laboratorio creativo peruano, enfocado en el diseño participativo, la autoconstrucción y la bioconstrucción en comunidades vulnerables.</p>
-          <ul class="lista">
-            <li>Premio Nacional de la Juventud 2023 por diseño de refugios de emergencia</li>
-            <li>Asistencia técnica en comunidades vulnerables</li>
-            <li>Especialistas en construcción con bambú y tierra</li>
-          </ul>
+          <img class="aliado-foto" src="assets/img/equipo-manifiesto.webp" alt="" loading="lazy" width="848" height="636">
+          <div class="aliado-txt">
+            <h3><svg class="logo-ml" viewBox="0 0 2466 1456" aria-hidden="true"><use href="#s-ml" width="2466" height="1456"/></svg><span class="oculto">Manifiesto Lab</span></h3>
+            <p>Colectivo de arquitectura social y bioconstrucción, con diseño participativo en comunidades vulnerables.</p>
+            <ul class="lista">
+              <li>Premio Nacional de la Juventud 2023</li>
+              <li>Especialistas en bambú y tierra</li>
+              <li>Asistencia técnica en comunidades</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -1247,8 +1309,8 @@ body.panel-abierto{overflow:hidden}
       </div>
     </div>
     <div class="legal">
-      <p>Paisajes Educativos · Learning Landscapes — Asociación de voluntariado sin fines de lucro registrada en SUNARP y reconocida por el MIMP.</p>
-      <p>Manifiesto Lab — Colectivo de arquitectura social especializado en bioconstrucción y autoconstrucción. Premio Nacional de la Juventud 2023.</p>
+      <p><b>Paisajes Educativos</b> — Asociación de voluntariado sin fines de lucro.</p>
+      <p><b>Manifiesto Lab</b> — Colectivo de arquitectura social y bioconstrucción.</p>
     </div>
   </div>
 </footer>
