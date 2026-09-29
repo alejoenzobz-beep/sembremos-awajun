@@ -11,10 +11,10 @@
 <meta property="og:url" content="https://sembremos-awajun.netlify.app/">
 <meta property="og:title" content="Sembremos espacios de Aprendizaje Awajún">
 <meta property="og:description" content="La construcción ya está en marcha. La comunidad de Wawaín necesita sumar esfuerzos para lograr su residencia estudiantil.">
-<meta property="og:image" content="https://sembremos-awajun.netlify.app/og-image.jpg">
+<meta property="og:image" content="https://sembremos-awajun.netlify.app/og-image.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sembremos espacios de Aprendizaje Awajún — campaña de construcción comunitaria">
+<meta property="og:image:alt" content="Sembremos espacios de Aprendizaje Awajún — la comunidad de Wawaín construye su residencia estudiantil. Súmate.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1F5F54">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -351,12 +351,6 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .aporta .enlace{display:inline-block;margin-top:8px}
 @media(min-width:900px){.aporta-2{grid-template-columns:1fr 1fr;gap:var(--e-2)}.aporta{padding:18px 22px}.aporta h3{font-size:18px}}
 
-/* rejilla de datos técnicos dentro de un "Conoce más" */
-.tecnica{display:grid;grid-template-columns:1fr 1fr;gap:var(--e-1)}
-.tecnica div{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-s);padding:11px 13px}
-.tecnica h4{font-size:14.5px;margin-bottom:3px}
-.tecnica p{margin:0;font-size:13px;line-height:1.42}
-@media(min-width:900px){.tecnica{grid-template-columns:repeat(4,1fr);gap:var(--e-2)}.tecnica div{padding:14px 16px}.tecnica h4{font-size:16px}.tecnica p{font-size:14px}}
 
 /* ═════════ BITÁCORA DE OBRA ═════════ */
 .bitacora{margin-top:var(--e-3)}
@@ -519,25 +513,20 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
   .panel-cta .btn{flex:0 0 auto}
 }
 
-/* datos de la cuenta */
-.donar-grid{display:grid;gap:var(--e-2)}
-.cuenta{border:1px solid var(--linea);border-radius:var(--r-m);overflow:hidden}
-.cuenta-tit{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--tinte);padding:9px 13px}
-.cuenta-tit p{margin:0;font-size:12px;color:var(--gris)}
-.cuenta-tit strong{display:block;font-family:var(--display);font-size:15px;color:var(--hondo);letter-spacing:.01em}
-.sello-inst{font-family:var(--display);font-size:11px;font-weight:600;color:var(--marca);background:var(--blanco);border:1px solid #B9D3C4;padding:3px 9px;border-radius:100px;white-space:nowrap}
-.fila-copia{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 13px;border-top:1px solid var(--linea)}
-.fila-copia span{display:block;font-size:12px;color:var(--gris)}
-.fila-copia code{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--hondo);letter-spacing:0;word-break:break-all}
-.copiar{font-family:var(--display);font-weight:600;font-size:13px;color:var(--marca);background:var(--crema-2);border:1px solid var(--linea-fuerte);border-radius:100px;padding:7px 13px;cursor:pointer;min-width:74px}
-.copiar.ok{background:var(--marca);color:#fff;border-color:var(--marca)}
-.fila-copia.concepto{background:#FFF8E1;border-top:2px solid var(--amarillo)}
-.fila-copia.concepto span{color:#7A5600;font-weight:600;font-family:var(--display)}
-.fila-copia.concepto code{word-break:normal}
-.aviso-concepto{background:#FFF8E1;border:1px solid #EACB73;border-left:4px solid var(--amarillo);border-radius:var(--r-s);padding:10px 13px;font-size:13.5px;color:var(--tinta);margin:0 0 10px;line-height:1.45}
-.aviso-concepto b{font-family:var(--display)}
-.donar-nota{font-size:13px;color:var(--gris);margin:0}
-@media(min-width:900px){.donar-grid{grid-template-columns:1fr 1fr;gap:var(--e-3);align-items:start}}
+/* donación de personas: por qué los datos + dos caminos */
+.nota-datos{background:#FFF8E1;border:1px solid #EACB73;border-left:4px solid var(--amarillo);border-radius:var(--r-s);padding:10px 13px;font-size:13px;line-height:1.45;color:var(--tinta);margin:0 0 var(--e-2)}
+.nota-datos b{font-family:var(--display)}
+.vias-donar{display:grid;gap:var(--e-1)}
+.via-don{display:flex;flex-direction:column;gap:6px;background:var(--papel);border:1px solid var(--linea);border-radius:var(--r-m);padding:13px 15px}
+.via-don h4{font-size:15px}
+.via-don p{flex:1;margin:0;font-size:13px;color:var(--gris);line-height:1.42}
+.via-don .btn{margin-top:6px;width:100%}
+@media(min-width:900px){
+  .nota-datos{font-size:14px;padding:12px 16px}
+  .vias-donar{grid-template-columns:1fr 1fr;gap:var(--e-2)}
+  .via-don{padding:18px 20px}.via-don h4{font-size:17px}.via-don p{font-size:14px}
+  .via-don .btn{width:auto;align-self:flex-start}
+}
 
 /* niveles de empresa */
 /* niveles y Frutos comparten el ámbar: son las categorías de auspicio */
@@ -674,30 +663,6 @@ body.panel-abierto{overflow:hidden}
 .transparencia .sub{font-size:17px}
 .no-js-only{display:block}.js .no-js-only{display:none}
 
-/* ═════════ AVISO COPIADO ═════════ */
-.aviso{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);z-index:300;background:var(--hondo);color:#fff;font-family:var(--display);font-size:14px;padding:9px 18px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
-.aviso.ver{opacity:1;transform:translate(-50%,0)}
-
-/* ═════ MÓVIL: títulos al ~85 % y bloques más compactos ═════ */
-@media(max-width:899px){
-  .cabeza-seccion h2{font-size:16px}
-  .cabeza-seccion{margin-bottom:var(--e-2)}
-  .pieza h3{font-size:14.5px}
-  .aporta h3,.frutos h4{font-size:14.5px}
-  .secuencia h3{font-size:14.5px}
-  .spec .n{font-size:17px}
-  .dato .n{font-size:17px}
-  .nivel .nom{font-size:14px}.nivel .precio{font-size:17px}
-  .meta-cifras .reunido{font-size:29px}.meta-cifras .total b{font-size:17px}
-  .desglose .n{font-size:16.5px}
-  .esc .n{font-size:14.5px}
-  .cierre h2{font-size:19.5px}
-  .transparencia .tit{font-size:17px}
-  .transparencia .sub{font-size:14.5px}
-  .panel-cab h2{font-size:14.5px}
-  .avance .cifra{font-size:26px}
-}
-
 /* sin JS: se muestran los cuatro paneles */
 .no-js .via-card .ver{display:none}
 
@@ -819,6 +784,82 @@ body.panel-abierto{overflow:hidden}
 <section class="seccion wrap" id="proyecto" aria-labelledby="h-proyecto">
   <div class="cabeza-seccion"><h2 id="h-proyecto">El proyecto</h2><span class="raya" aria-hidden="true"></span></div>
 
+  <!-- Casa Semilla -->
+  <div class="bloque" id="casa-semilla">
+    <div class="cab-bloque">
+      <div>
+        <p class="eyebrow">Casa Semilla Awajún · residencia estudiantil</p>
+        <h2 class="tit">Un lugar para dormir, cocinar y descansar</h2>
+      </div>
+      <p class="entrada">Un módulo de madera y bambú sobre cimentación de concreto, diseñado para los estudiantes que lo van a habitar. Optimiza la capacidad de camas y deja un espacio flexible al centro, para que la residencia sirva también para estudiar y compartir.</p>
+    </div>
+
+    <div class="par">
+      <figure class="ahora">
+        <img src="assets/img/residencia-hoy-680.webp" srcset="assets/img/residencia-hoy-680.webp 680w, assets/img/residencia-hoy-1200.webp 1200w" sizes="(min-width:900px) 550px, 46vw" alt="Interior del alojamiento actual: camas bajo un techo de calamina, paredes de caña, piso de tierra y ropa tendida" loading="lazy" width="680" height="425">
+        <span class="etq">Hoy</span>
+        <figcaption>Donde duermen hoy: caña, calamina y piso de tierra, sin cocina ni servicios.</figcaption>
+      </figure>
+      <figure class="luego">
+        <img src="assets/img/casa-semilla-render-680.webp" srcset="assets/img/casa-semilla-render-680.webp 680w, assets/img/casa-semilla-render-936.webp 936w" sizes="(min-width:900px) 550px, 46vw" alt="Render de Casa Semilla Awajún: volumen de madera y bambú con celosías, techo de calamina y alero de palma" loading="lazy" width="680" height="425">
+        <span class="etq">Lo que construimos juntos</span>
+        <figcaption>Casa Semilla Awajún: ventilación cruzada, camas protegidas y un espacio común al centro.</figcaption>
+      </figure>
+    </div>
+
+    <div class="specs">
+      <div class="spec"><p class="n">120 m²</p><p>área a construir</p></div>
+      <div class="spec"><p class="n">28</p><p>camas</p></div>
+      <div class="spec"><p class="n">1</p><p>cocina</p></div>
+      <div class="spec"><p class="n">1</p><p>baño</p></div>
+    </div>
+
+    <div class="aporta-2">
+      <div class="aporta comunidad">
+        <h3>Lo que ya puso la comunidad</h3>
+        <ul class="lista">
+          <li>Madera recolectada y curada</li>
+          <li>Bolsas de cemento</li>
+          <li>Herramientas de construcción</li>
+          <li>Las faenas organizadas y la mano de obra</li>
+        </ul>
+      </div>
+      <div class="aporta campana">
+        <h3>Lo que suma la campaña</h3>
+        <ul class="lista">
+          <li>Fijaciones y conectores estructurales</li>
+          <li>Herramientas de corte</li>
+          <li>Preservantes, mallas y cerramientos</li>
+          <li>Instalación sanitaria y eléctrica</li>
+        </ul>
+        <a class="enlace" href="#meta">Ver la meta y en qué se convierte</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bitácora de obra -->
+  <div class="bloque" id="bitacora">
+    <div class="cab-bloque">
+      <h2 class="tit">Así avanza Wawaín</h2>
+      <p class="entrada">La comunidad ya prepara la madera. Estas son las tres etapas del trabajo que está en curso ahora mismo, antes de que llegue el material de la campaña.</p>
+    </div>
+    <div class="carrusel bitacora" tabindex="0" aria-label="Avance de obra en Wawaín">
+      <figure>
+        <img src="assets/img/obra-1-poza.webp" alt="Poza de curado armada con estructura de caña y plástico, junto a la escuela de la comunidad" loading="lazy" width="420" height="315">
+        <figcaption><b>Se arma la poza</b>Estructura de caña y geomembrana, levantada en faena junto a la escuela.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/obra-2-faena.webp" alt="Comuneros acomodan listones de madera dentro de la poza de tratamiento" loading="lazy" width="420" height="315">
+        <figcaption><b>La faena acomoda la madera</b>Los listones recolectados por la comunidad entran a la poza, pieza por pieza.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/obra-3-curado.webp" alt="Madera sumergida en la solución de preservante dentro de la poza" loading="lazy" width="420" height="315">
+        <figcaption><b>La madera se cura</b>Sumergida en preservante, queda protegida contra hongos e insectos.</figcaption>
+      </figure>
+    </div>
+    <p class="desliza">Desliza para ver las tres etapas.</p>
+  </div>
+
   <!-- Qué es -->
   <div class="bloque" id="que-es">
     <div class="cab-bloque">
@@ -890,95 +931,6 @@ body.panel-abierto{overflow:hidden}
         <p class="nota-fuente">MINEDU (2023, 2024) · ComexPerú (2025) · PRONIED–UGM, «Innovación educativa en Frontera» (2026) · Memoria del proyecto.</p>
       </div>
     </details>
-  </div>
-
-  <!-- Casa Semilla -->
-  <div class="bloque" id="casa-semilla">
-    <div class="cab-bloque">
-      <div>
-        <p class="eyebrow">Casa Semilla Awajún · residencia estudiantil</p>
-        <h2 class="tit">Un lugar para dormir, cocinar y descansar</h2>
-      </div>
-      <p class="entrada">Un módulo de madera y bambú sobre cimentación de concreto, diseñado para los estudiantes que lo van a habitar. Optimiza la capacidad de camas y deja un espacio flexible al centro, para que la residencia sirva también para estudiar y compartir.</p>
-    </div>
-
-    <div class="par">
-      <figure class="ahora">
-        <img src="assets/img/residencia-hoy-680.webp" srcset="assets/img/residencia-hoy-680.webp 680w, assets/img/residencia-hoy-1200.webp 1200w" sizes="(min-width:900px) 550px, 46vw" alt="Interior del alojamiento actual: camas bajo un techo de calamina, paredes de caña, piso de tierra y ropa tendida" loading="lazy" width="680" height="425">
-        <span class="etq">Hoy</span>
-        <figcaption>Donde duermen hoy: caña, calamina y piso de tierra, sin cocina ni servicios.</figcaption>
-      </figure>
-      <figure class="luego">
-        <img src="assets/img/casa-semilla-render-680.webp" srcset="assets/img/casa-semilla-render-680.webp 680w, assets/img/casa-semilla-render-936.webp 936w" sizes="(min-width:900px) 550px, 46vw" alt="Render de Casa Semilla Awajún: volumen de madera y bambú con celosías, techo de calamina y alero de palma" loading="lazy" width="680" height="425">
-        <span class="etq">Lo que construimos juntos</span>
-        <figcaption>Casa Semilla Awajún: ventilación cruzada, camas protegidas y un espacio común al centro.</figcaption>
-      </figure>
-    </div>
-
-    <div class="specs">
-      <div class="spec"><p class="n">120 m²</p><p>área a construir</p></div>
-      <div class="spec"><p class="n">28</p><p>camas</p></div>
-      <div class="spec"><p class="n">1</p><p>cocina</p></div>
-      <div class="spec"><p class="n">1</p><p>baño</p></div>
-    </div>
-
-    <div class="aporta-2">
-      <div class="aporta comunidad">
-        <h3>Lo que ya puso la comunidad</h3>
-        <ul class="lista">
-          <li>Madera recolectada y curada</li>
-          <li>Bolsas de cemento</li>
-          <li>Herramientas de construcción</li>
-          <li>Las faenas organizadas y la mano de obra</li>
-        </ul>
-      </div>
-      <div class="aporta campana">
-        <h3>Lo que suma la campaña</h3>
-        <ul class="lista">
-          <li>Fijaciones y conectores estructurales</li>
-          <li>Herramientas de corte</li>
-          <li>Preservantes, mallas y cerramientos</li>
-          <li>Instalación sanitaria y eléctrica</li>
-        </ul>
-        <a class="enlace" href="#meta">Ver la meta y en qué se convierte</a>
-      </div>
-    </div>
-
-    <details class="mas">
-      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">materiales, norma y sistema constructivo</span></summary>
-      <div class="mas-cuerpo">
-        <p>Bambú Guadua y madera local sobre una cimentación de concreto. Es el acero vegetal del territorio: un material que crece cerca, que la comunidad sabe trabajar y que, bien diseñado, cumple norma.</p>
-        <div class="tecnica">
-          <div><h4>Bambú Guadua</h4><p>Material local, de crecimiento rápido, con buen comportamiento estructural en clima húmedo.</p></div>
-          <div><h4>Norma E.100</h4><p>El diseño sigue la norma peruana de construcción con bambú: uniones, arriostres y protección.</p></div>
-          <div><h4>Ventilación cruzada</h4><p>Celosías y aleros que bajan la temperatura interior, que hoy es el principal problema del alojamiento.</p></div>
-          <div><h4>Construcción comunitaria</h4><p>Se levanta en faena, con oficios que la comunidad domina, y queda documentada para replicarse.</p></div>
-        </div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Bitácora de obra -->
-  <div class="bloque" id="bitacora">
-    <div class="cab-bloque">
-      <h2 class="tit">Así avanza Wawaín</h2>
-      <p class="entrada">La comunidad ya prepara la madera. Estas son las tres etapas del trabajo que está en curso ahora mismo, antes de que llegue el material de la campaña.</p>
-    </div>
-    <div class="carrusel bitacora" tabindex="0" aria-label="Avance de obra en Wawaín">
-      <figure>
-        <img src="assets/img/obra-1-poza.webp" alt="Poza de curado armada con estructura de caña y plástico, junto a la escuela de la comunidad" loading="lazy" width="420" height="315">
-        <figcaption><b>1 · Se arma la poza</b>Estructura de caña y geomembrana, levantada en faena junto a la escuela.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/obra-2-faena.webp" alt="Comuneros acomodan listones de madera dentro de la poza de tratamiento" loading="lazy" width="420" height="315">
-        <figcaption><b>2 · La faena acomoda la madera</b>Los listones recolectados por la comunidad entran a la poza, pieza por pieza.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/obra-3-curado.webp" alt="Madera sumergida en la solución de preservante dentro de la poza" loading="lazy" width="420" height="315">
-        <figcaption><b>3 · La madera se cura</b>Sumergida en preservante, queda protegida contra hongos e insectos.</figcaption>
-      </figure>
-    </div>
-    <p class="desliza">Desliza para ver las tres etapas.</p>
   </div>
 
   <!-- Cronograma -->
@@ -1078,7 +1030,7 @@ body.panel-abierto{overflow:hidden}
       <button type="button" class="via-card" role="tab" id="t-personas" aria-controls="donar" aria-selected="true" tabindex="0">
         <span class="eyebrow">Recursos</span>
         <span class="nom"><span class="nom-largo">Donación de personas</span><span class="nom-corto">Personas</span></span>
-        <span class="una">Un aporte libre, sin mínimo, por Yape, Plin o transferencia.</span>
+        <span class="una">Un aporte libre, sin mínimo. Coordinamos contigo cómo donar.</span>
         <span class="ver">Ver cómo</span>
       </button>
       <button type="button" class="via-card" role="tab" id="t-empresas" aria-controls="empresas" aria-selected="false" tabindex="-1">
@@ -1105,26 +1057,22 @@ body.panel-abierto{overflow:hidden}
     <div class="panel-via" id="donar" role="tabpanel" aria-labelledby="t-personas">
       <p class="lead">Invitación abierta: cualquier persona puede sumarse con el monto que pueda, sin mínimo. Es la vía más frecuente.</p>
       <dl class="tripleta">
-        <div><dt>Qué aportas</dt><dd>Un aporte libre por Yape, Plin o transferencia a la cuenta institucional.</dd></div>
+        <div><dt>Qué aportas</dt><dd>Un aporte libre, sin mínimo, como donación a Paisajes Educativos.</dd></div>
         <div><dt>Qué recibes</dt><dd>Transparencia: sumamos cada aporte al avance de la campaña y mostramos en qué se convierte, con evidencia de obra.</dd></div>
-        <div><dt>Cómo empieza</dt><dd>Donas con los datos de abajo, con el concepto «Donativo proyecto Awajún».</dd></div>
+        <div><dt>Cómo empieza</dt><dd>Nos dejas tus datos en el formulario o por WhatsApp y coordinamos contigo cómo donar.</dd></div>
       </dl>
       <div class="panel-esp">
-        <div class="donar-grid">
-          <div class="cuenta">
-            <div class="cuenta-tit"><div><p>Titular</p><strong>PAISAJES EDUCATIVOS</strong></div><span class="sello-inst">Cuenta institucional</span></div>
-            <div class="fila-copia"><div><span>BCP · Cuenta</span><code>19310982313044</code></div><button type="button" class="copiar" data-copiar="19310982313044">Copiar</button></div>
-            <div class="fila-copia"><div><span>CCI</span><code>00279300109823130480</code></div><button type="button" class="copiar" data-copiar="00279300109823130480">Copiar</button></div>
-            <div class="fila-copia"><div><span>Yape / Plin</span><code>982 778 028</code></div><button type="button" class="copiar" data-copiar="982778028">Copiar</button></div>
-            <div class="fila-copia concepto"><div><span>Concepto o descripción</span><code>Donativo proyecto Awajún</code></div><button type="button" class="copiar" data-copiar="Donativo proyecto Awajún">Copiar</button></div>
+        <p class="nota-datos"><b>¿Por qué te pedimos tus datos?</b> Paisajes Educativos solo puede recibir dinero bajo el concepto de donación. Por eso, antes de que dones necesitamos algunos datos tuyos: así dejamos constancia de cada aporte, lo sumamos al avance de la campaña y podemos rendir cuentas. Las donaciones de personas no generan comprobante tributario.</p>
+        <div class="vias-donar">
+          <div class="via-don">
+            <h4>Completa el formulario</h4>
+            <p>Déjanos tus datos y nos ponemos en contacto para indicarte cómo hacer tu donación.</p>
+            <a class="btn btn-lima btn-sm" href="https://forms.gle/t7DSD425azM6dUjV9" target="_blank" rel="noopener">Ir al formulario</a>
           </div>
-          <div>
-            <p class="aviso-concepto"><b>Importante:</b> al transferir o yapear, escribe en el concepto o descripción <b>«Donativo proyecto Awajún»</b>. Así identificamos tu aporte y lo sumamos al avance de la campaña.</p>
-            <p class="donar-nota">Las donaciones de personas no generan comprobante tributario. Lo que sí hacemos es rendir cuentas: sumamos los aportes y publicamos en qué se convierten. Si prefieres, también puedes donar o enviarnos tu constancia por WhatsApp.</p>
-            <div class="panel-cta">
-              <a class="btn btn-lima btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener">Donar por WhatsApp</a>
-              <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20acabo%20de%20hacer%20un%20donativo%20a%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn%20y%20les%20env%C3%ADo%20la%20constancia." target="_blank" rel="noopener">Enviar constancia</a>
-            </div>
+          <div class="via-don">
+            <h4>Coordina por WhatsApp</h4>
+            <p>Escríbenos y coordinamos tu donación por chat, con el equipo de la campaña.</p>
+            <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener">Escribir por WhatsApp</a>
           </div>
         </div>
       </div>
@@ -1252,13 +1200,13 @@ body.panel-abierto{overflow:hidden}
     <div class="bloque-p">
       <div class="cabeza-seccion no-js-only"><h2>Transparencia</h2><span class="raya" aria-hidden="true"></span></div>
       <h2 class="tit">En qué se convierte cada aporte</h2>
-      <p class="entrada">La cuenta receptora está a nombre de Paisajes Educativos, no de una persona. El Yape también es institucional.</p>
+      <p class="entrada">Los aportes se reciben a nombre de Paisajes Educativos, una asociación, no de una persona.</p>
       <ol class="flujo">
         <li><span class="n" aria-hidden="true">1</span><div><h3>Aporte</h3><p>Ingresa a la cuenta institucional de la asociación.</p></div></li>
         <li><span class="n" aria-hidden="true">2</span><div><h3>Ejecución</h3><p>Compra de material con comprobante y obra junto a la comunidad.</p></div></li>
         <li><span class="n" aria-hidden="true">3</span><div><h3>Evidencia</h3><p>Reporte periódico mientras dure la campaña, publicaciones de avance e informe final al donante.</p></div></li>
       </ol>
-      <p style="margin-top:10px"><a class="enlace" href="#donar" data-cerrar-panel>Ver los datos de la cuenta</a></p>
+      <p style="margin-top:10px"><a class="enlace" href="#donar" data-cerrar-panel>Ver cómo donar</a></p>
     </div>
 
     <div class="bloque-p faq">
@@ -1282,7 +1230,7 @@ body.panel-abierto{overflow:hidden}
           <img class="aliado-foto" src="assets/img/equipo-paisajes.webp" alt="" loading="lazy" width="682" height="512">
           <div class="aliado-txt">
             <h3><svg class="logo-pe" viewBox="0 0 1537 847" aria-hidden="true"><use href="#s-pe" width="1537" height="847"/></svg><span class="oculto">Paisajes Educativos</span></h3>
-            <p>Asociación de voluntariado sin fines de lucro. 5 años, 12 coordinadores, +200 voluntarios, 9 proyectos en 4 regiones.</p>
+            <p>Asociación de voluntariado sin fines de lucro. 5 años, 15 coordinadores, +200 voluntarios, 7 proyectos en 4 regiones.</p>
             <ul class="lista">
               <li>Reconocida por el MIMP</li>
               <li>RUC activo y cuenta institucional</li>
@@ -1355,7 +1303,6 @@ body.panel-abierto{overflow:hidden}
   <a class="btn btn-lima btn-sm" href="#donar">Donar</a>
 </div>
 
-<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
 <script>
 (function(){
@@ -1518,18 +1465,6 @@ body.panel-abierto{overflow:hidden}
     });
     desplegables.forEach(function(d){ ioMas.observe(d); });
   }
-
-  /* ── Copiar datos ── */
-  var aviso=$('#aviso'), tAviso;
-  function avisar(m){ aviso.textContent=m; aviso.classList.add('ver'); clearTimeout(tAviso); tAviso=setTimeout(function(){aviso.classList.remove('ver');},1800); }
-  $$('[data-copiar]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var v=b.getAttribute('data-copiar');
-      var ok=function(){ b.textContent='Copiado'; b.classList.add('ok'); avisar('Copiado: '+v); setTimeout(function(){b.textContent='Copiar';b.classList.remove('ok');},1800); };
-      if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(v).then(ok,function(){fallback();}); } else fallback();
-      function fallback(){ var t=document.createElement('textarea'); t.value=v; t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select(); try{document.execCommand('copy');ok();}catch(e){avisar(v);} t.remove(); }
-    });
-  });
 
   /* ── Panel de transparencia ── */
   var panel=$('#transparencia'), velo=$('.velo-panel'), ultimoFoco=null;
