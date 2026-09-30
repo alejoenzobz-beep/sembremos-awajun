@@ -234,6 +234,10 @@ html.intro .portada-in{opacity:0}
 .tit{font-size:var(--f-h2);max-width:24ch;text-wrap:balance}
 .entrada{font-size:var(--f-base);color:var(--gris);max-width:62ch;margin:var(--e-1) 0 0}
 .sub{font-size:var(--f-h3)}
+.entrada strong,.pieza p strong,.problema .txt strong{color:var(--hondo);font-weight:600}
+.meta .entrada strong,.meta .intro-esc strong{color:#fff;font-weight:600}
+.cab-bloque .tit.tit-2{max-width:none;text-wrap:initial}
+.tit-2 span{display:block}
 .nota-fuente{font-size:var(--f-mini);color:var(--gris-2);margin:10px 0 0}
 .eyebrow{font-family:var(--display);font-weight:600;font-size:var(--f-mini);color:var(--medio);letter-spacing:.04em;text-transform:uppercase;margin:0 0 5px;display:block}
 /* título con una bajada corta y pequeña debajo */
@@ -292,11 +296,14 @@ details.mas[open]>summary .cerrar{display:inline}
 .problema{display:grid;gap:var(--e-2);margin-top:var(--e-2)}
 .problema figure img{border-radius:var(--r-m);width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
-.problema .txt>p{color:var(--gris);font-size:var(--f-chico);line-height:1.5;margin-bottom:var(--e-2)}
+.problema .txt>p{color:var(--gris);font-size:var(--f-chico);line-height:1.5;margin-bottom:10px}
+.problema .txt>p.lema-dist{font-family:var(--display);font-weight:600;font-size:15.5px;line-height:1.25;letter-spacing:-.01em;color:var(--hondo);margin-bottom:8px}
+.problema .txt>p.rotulo-datos{margin-top:var(--e-2)}
 .problema .cifras-fila{margin:0}
 @media(min-width:900px){
   .problema{grid-template-columns:1fr 1.1fr;gap:var(--e-3);align-items:center;margin-top:var(--e-3)}
   .problema .txt>p{font-size:15px}
+  .problema .txt>p.lema-dist{font-size:20px;margin-bottom:10px}
   .problema .cifras-fila{grid-template-columns:repeat(5,1fr);gap:10px;padding:12px 14px}
   .problema .cifras-fila b{font-size:18px}.problema .cifras-fila span{font-size:11.5px}
 }
@@ -441,9 +448,15 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .esc .n{font-family:var(--display);font-size:16px;font-weight:700;color:#fff;margin:0;white-space:nowrap}
 .esc .n small{display:block;font-size:11.5px;font-weight:600;color:var(--lima-claro)}
 .esc p{font-size:13px;color:var(--sobre-oscuro);margin:0;line-height:1.4}
+.esc p b{color:#fff;font-weight:600}
+.esc.actual p b{color:var(--hondo)}
 .esc.logrado{border-color:var(--lima)}
 .esc.actual{background:#fff;border-color:#fff}
 .esc.actual .n{color:var(--hondo)}.esc.actual .n small{color:var(--marca)}.esc.actual p{color:var(--gris)}
+@media(max-width:899px){
+  .esc{grid-template-columns:88px 1fr;gap:10px}
+  .esc .n small{white-space:normal;line-height:1.2;margin-bottom:2px}
+}
 .meta .pie-meta{font-size:12.5px;color:var(--sobre-oscuro);margin:12px 0 0}
 .meta .intro-esc{font-size:13.5px;color:var(--sobre-oscuro);margin:var(--e-2) 0 0}
 @media(min-width:900px){
@@ -758,7 +771,7 @@ body.panel-abierto{overflow:hidden}
     <div>
       <p class="marbete"><span>Campaña de construcción comunitaria</span><b>Fase 1 en obra</b></p>
       <h1 id="titulo-principal"><span class="l1">Sembremos espacios de</span><span class="l2">Aprendizaje Awajún</span></h1>
-      <p class="bajada"><strong>¡La construcción ya está en marcha!</strong> La comunidad de Wawaín necesita sumar todos los esfuerzos para lograr su residencia estudiantil.</p>
+      <p class="bajada"><strong>¡La construcción ya está en marcha!</strong> Te invitamos a sumarte a la creación de <strong>una residencia estudiantil</strong>, un lugar seguro donde vivir, alimentarse, descansar y seguir aprendiendo.</p>
       <p class="lugar">Wawaín y San Rafael — Imaza, Bagua, Amazonas.</p>
       <div class="portada-btns">
         <a class="btn btn-lima" href="#donar">Donar</a>
@@ -792,9 +805,9 @@ body.panel-abierto{overflow:hidden}
     <div class="cab-bloque">
       <div>
         <p class="eyebrow">Casa Semilla Awajún · residencia estudiantil</p>
-        <h2 class="tit">Un lugar para dormir, cocinar y descansar</h2>
+        <h2 class="tit tit-2"><span>Un lugar para quedarse.</span><span>Un lugar para seguir aprendiendo.</span></h2>
       </div>
-      <p class="entrada">Un módulo de madera y bambú sobre cimentación de concreto, diseñado para los estudiantes que lo van a habitar. Optimiza la capacidad de camas y deja un espacio flexible al centro, para que la residencia sirva también para estudiar y compartir.</p>
+      <p class="entrada">Un módulo de madera y bambú sobre cimentación de concreto, pensado para que niñas, niños y jóvenes de comunidades alejadas puedan <strong>dormir, alimentarse, estudiar y compartir</strong> en un espacio <strong>seguro</strong>. Su espacio flexible al centro la hace también un lugar para seguir aprendiendo.</p>
     </div>
 
     <div class="par">
@@ -867,21 +880,21 @@ body.panel-abierto{overflow:hidden}
   <div class="bloque" id="que-es">
     <div class="cab-bloque">
       <h2 class="tit">Una apuesta por acortar brechas y mejorar la seguridad de nuestros niños en la Amazonía</h2>
-      <p class="entrada">En Wawaín, comunidad awajún del distrito de Imaza, la asamblea decidió construir una residencia para los estudiantes que viven lejos de la escuela. Ya reunieron madera, cemento y herramientas, y organizaron las faenas. Lo que falta es el material técnico que no se consigue en el territorio.</p>
+      <p class="entrada"><strong>En Wawaín, la comunidad awajún del distrito de Imaza decidió no esperar. Decidió construir.</strong> Se organizó, reunió madera, cemento y herramientas, y comenzó las faenas para levantar una residencia para los estudiantes que viven lejos de la escuela. <strong>Ahora necesitamos poner lo que falta:</strong> el material técnico que el territorio no puede proveer.</p>
     </div>
 
     <div class="carrusel trio">
       <article class="pieza">
         <img src="assets/img/trio-comunidad.webp" alt="Comuneros trasladan listones de madera hacia la poza de curado en Wawaín" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>La comunidad construye</h3><p>La mano de obra es comunitaria y de voluntarios. La obra es de la comunidad desde el inicio y también al terminar.</p></div>
+        <div class="pieza-txt"><h3>La comunidad construye</h3><p>La mano de obra es comunitaria y de voluntarios. <strong>La obra es de la comunidad</strong> desde el inicio y también al terminar.</p></div>
       </article>
       <article class="pieza">
         <img src="assets/img/trio-acompanamos-420.webp" srcset="assets/img/trio-acompanamos-420.webp 420w, assets/img/trio-acompanamos-720.webp 720w" sizes="(min-width:900px) 360px, 78vw" alt="Equipo de voluntarios sobre una estructura de bambú en medio del bosque" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>Nosotros acompañamos</h3><p>Paisajes Educativos y Manifiesto Lab aportan el criterio técnico: mejores uniones, sistemas constructivos y diseño.</p></div>
+        <div class="pieza-txt"><h3>Nosotros acompañamos</h3><p>Paisajes Educativos y Manifiesto Lab aportan <strong>acompañamiento técnico</strong>: mejores uniones, sistemas constructivos y diseño.</p></div>
       </article>
       <article class="pieza">
         <img src="assets/img/trio-campana.webp" alt="Madera sumergida en la poza de tratamiento con preservantes" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>La campaña compra</h3><p>Fijaciones, herramientas de corte, preservantes, cerramientos y lo sanitario: las mejoras técnicas que hacen que la obra sea segura y dure.</p></div>
+        <div class="pieza-txt"><h3>La campaña compra</h3><p>Fijaciones, herramientas de corte, preservantes, cerramientos y lo sanitario: las mejoras técnicas que hacen que la obra sea segura y dure. <strong>Entre todos podemos completarla.</strong></p></div>
       </article>
     </div>
     <p class="desliza">Desliza para ver las tres piezas.</p>
@@ -909,7 +922,9 @@ body.panel-abierto{overflow:hidden}
         <figcaption>Llegar a clase puede significar cruzar el río.</figcaption>
       </figure>
       <div class="txt">
-        <p>Hay estudiantes que no pueden ir y volver cada día. Se quedan cerca de la escuela durante la semana, en espacios de madera, caña y calamina, sin condiciones para dormir, cocinar ni asearse. Es una situación que se repite en toda la frontera amazónica, donde la inversión pública casi nunca llega.</p>
+        <p class="lema-dist">La distancia no debería ser una barrera para seguir aprendiendo.</p>
+        <p>¿Sabías que hay estudiantes que cruzan un río para llegar a la escuela? Para ellos, estudiar implica recorrer grandes distancias, atravesar caminos que no siempre son fáciles y, muchas veces, permanecer lejos de casa. <strong>Lo hacen porque quieren seguir aprendiendo.</strong></p>
+        <p>Hoy, muchos deben quedarse en espacios que no cuentan con las condiciones necesarias para dormir, alimentarse, asearse y estudiar. <strong>En Wawaín, la residencia busca cambiar esa realidad.</strong></p>
         <p class="rotulo-datos">Wawaín, en cifras</p>
         <ul class="cifras-fila">
           <li><b>294</b><span>habitantes</span></li>
@@ -993,8 +1008,8 @@ body.panel-abierto{overflow:hidden}
   <div class="bloque meta" id="meta">
     <div class="meta-grid">
       <div>
-        <h2 class="tit">Qué significa esta meta</h2>
-        <p class="entrada">No es una cifra simbólica: es lo que cuesta completar la residencia de Wawaín, incluidos los gastos operativos y de transporte.</p>
+        <h2 class="tit"><span data-campo="meta">S/ 15,770</span> para hacer habitable la Casa Semilla</h2>
+        <p class="entrada">No es una cifra abstracta. Es la suma de los materiales, instalaciones, transporte y recursos que faltan para completar esta etapa de la residencia.</p>
         <div class="meta-cifras">
           <p class="reunido"><span data-campo="reunido">S/ 800</span><small data-campo="pct-meta">5.1 % de la meta</small></p>
           <p class="total">Meta Wawaín<b data-campo="meta">S/ 15,770</b></p>
@@ -1010,12 +1025,12 @@ body.panel-abierto{overflow:hidden}
         </div>
       </div>
       <div>
-        <p class="intro-esc">Las marcas del medidor son cuatro escalones, de lo urgente a lo completo. Cada uno desbloquea una parte de la obra, y el primero es la prioridad: sin buenas uniones y sin herramientas de corte, la estructura no se levanta bien.</p>
+        <p class="intro-esc"><strong>Cuatro etapas. Un mismo objetivo.</strong> Cada nivel permite avanzar una parte de la obra, y el primero es la prioridad: sin buenas uniones y sin herramientas de corte, la estructura no se levanta bien.</p>
         <ol class="escalones" id="escalones">
-          <li class="esc" data-monto="4600"><p class="n"><small>Submeta 1 · prioridad</small>S/ 4,600</p><p>Fijaciones y conectores estructurales, y herramientas de corte. Es lo que permite ensamblar bien la estructura.</p></li>
-          <li class="esc" data-monto="7500"><p class="n"><small>Submeta 2</small>S/ 7,500</p><p>Lo anterior, más la preservación de la madera, las mallas y los cerramientos.</p></li>
-          <li class="esc" data-monto="10000"><p class="n"><small>Submeta 3</small>S/ 10,000</p><p>Lo anterior, más la instalación sanitaria básica de la residencia.</p></li>
-          <li class="esc" data-monto="15770"><p class="n"><small>Meta general</small><span data-campo="meta">S/ 15,770</span></p><p>Lo anterior, más la instalación eléctrica, los acabados y los gastos operativos.</p></li>
+          <li class="esc" data-monto="4600"><p class="n"><small>Submeta 1 · prioridad</small>S/ 4,600</p><p><b>Hagamos posible la estructura.</b> Fijaciones y conectores estructurales, y herramientas de corte: lo que permite ensamblar bien.</p></li>
+          <li class="esc" data-monto="7500"><p class="n"><small>Submeta 2</small>S/ 7,500</p><p><b>Protejamos lo construido.</b> Lo anterior, más la preservación de la madera, las mallas y los cerramientos.</p></li>
+          <li class="esc" data-monto="10000"><p class="n"><small>Submeta 3</small>S/ 10,000</p><p><b>Hagámosla habitable.</b> Lo anterior, más la instalación sanitaria básica de la residencia.</p></li>
+          <li class="esc" data-monto="15770"><p class="n"><small>Meta general</small><span data-campo="meta">S/ 15,770</span></p><p><b>Completemos la residencia.</b> Lo anterior, más la instalación eléctrica, los acabados y los gastos operativos.</p></li>
         </ol>
         <p class="pie-meta">Si al empezar la construcción la meta no está cubierta, se arranca con lo que haya y la campaña sigue sumando.</p>
       </div>
