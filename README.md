@@ -18,12 +18,18 @@ apple-touch-icon.png    Ícono al guardar en la pantalla de un iPhone
 icon-192.png            Íconos del manifiesto
 icon-512.png
 site.webmanifest        Nombre, colores e íconos del sitio
-og-image.jpg            Imagen que aparece al compartir el enlace (WhatsApp, Facebook, LinkedIn)
-qr-yape.png             QR de Yape descargable desde la página
+assets/img/og-compartir.jpg  Imagen que aparece al compartir el enlace (WhatsApp, Facebook, LinkedIn)
+sumate/index.html       Página de enlace para compartir: lleva la vista previa y manda a la web
 robots.txt              Indicaciones para buscadores
 sitemap.xml             Mapa del sitio para buscadores
 assets/marca/           Logos vectorizados y QR en SVG (para uso del equipo)
 ```
+
+### Cómo compartir el enlace por WhatsApp
+
+WhatsApp guarda la vista previa de cada dirección que ya vio y no la actualiza aunque cambie la imagen. Por eso se comparte una dirección nueva, `https://sembremos-awajun.netlify.app/sumate/`, que lleva la imagen y el texto de la vista previa y manda a la persona directo a la web.
+
+Cuando cambie la imagen de compartir: guardar la nueva con **otro nombre** en `assets/img/`, cambiar su ruta en `sumate/index.html` y en `index.html` (etiquetas `og:image`), y compartir una dirección que no se haya enviado antes (por ejemplo `/sumate/?v=2`). Para ver qué lee un rastreador: https://developers.facebook.com/tools/debug/
 
 ---
 
