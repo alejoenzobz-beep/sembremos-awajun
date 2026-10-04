@@ -69,13 +69,12 @@ Todos los cambios se hacen editando el archivo en GitHub (ícono del lápiz) y g
 
 ### Monto reunido
 
-En `index.html`, busca `datos-campana`. Encontrarás esta línea cerca del inicio del `<body>`:
+El monto se lee **de la celda A1 de la hoja de Google «Monto website campaña» (pestaña «Monto website»)**. Para actualizarlo, cambia ese número en la hoja (sin símbolos) y recarga la web: se ve en uno o dos minutos, sin tocar GitHub.
 
-```html
-<script id="datos-campana" type="application/json">{"reunido": 800, "meta": 15000}</script>
-```
-
-Cambia solo el número de `reunido` (sin comas ni símbolos). Las dos barras, el porcentaje y los textos se recalculan solos.
+- Las tres partes donde aparece el monto (portada, la meta y la barra de abajo), las barras y los porcentajes se recalculan solos, y el número cuenta de 0 al monto al aparecer.
+- La hoja debe estar compartida como **«Cualquier persona con el enlace: Lector»** y solo quien administra la campaña debe poder editarla. Si estuviera como Editor, cualquiera con el enlace podría cambiar el monto que ve el público.
+- Esa pestaña debe ser la **primera** de la hoja y no debe llevar datos de personas.
+- Si la hoja no responde, la web muestra el número de respaldo que está en `index.html`, en la línea `datos-campana` (`"reunido"`). Conviene ponerlo al día de vez en cuando.
 
 ### Datos bancarios
 
