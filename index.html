@@ -678,6 +678,7 @@ body.panel-abierto{overflow:hidden}
 .transparencia .sub{font-size:17px}
 .no-js-only{display:block}.js .no-js-only{display:none}
 
+[data-campo="reunido"]{font-variant-numeric:tabular-nums}
 /* ═════ íconos y ganchos (uso moderado) ═════ */
 .ic{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .btn .ic{width:17px;height:17px}
@@ -730,12 +731,13 @@ body.panel-abierto{overflow:hidden}
 </svg>
 
 <!-- ═══════ DATOS DE LA CAMPAÑA — actualizar aquí los montos ═══════
-     reunido   : lo recaudado hasta hoy (S/)
+     reunido   : lo recaudado hasta hoy (S/). Es el valor de respaldo: el monto que se muestra
+                 se lee de la celda A1 de la hoja de Google (ver HOJA en el script de abajo)
      meta      : meta total de Wawaín (memoria del proyecto)
      submetas  : escalones intermedios, en orden
      siguiente : la etapa que se activa con el excedente
 ═══════════════════════════════════════════════════════════════════ -->
-<script id="datos-campana" type="application/json">{"reunido": 800, "meta": 15770, "submetas": [4600, 7500, 10000], "siguiente": {"nombre": "San Rafael", "monto": 15000}}</script>
+<script id="datos-campana" type="application/json">{"reunido": 1024, "meta": 15770, "submetas": [4600, 7500, 10000], "siguiente": {"nombre": "San Rafael", "monto": 15000}}</script>
 
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
@@ -816,13 +818,13 @@ body.panel-abierto{overflow:hidden}
 
     <div class="avance" aria-label="Avance de la campaña">
       <div class="avance-fila">
-        <p class="cifra"><span data-campo="reunido">S/ 800</span><small>reunidos</small></p>
+        <p class="cifra"><span data-campo="reunido">S/ 1,024</span><small>reunidos</small></p>
         <p class="rot">Fase 1 · Casa Semilla Awajún</p>
       </div>
       <div class="riel" role="img" data-aria-submeta aria-label="Avance hacia la submeta actual">
-        <i data-barra-submeta style="width:17.4%"></i>
+        <i data-barra-submeta style="width:22.3%"></i>
       </div>
-      <p class="bajo-riel"><span data-campo="pct-submeta">17 %</span><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></p>
+      <p class="bajo-riel"><span data-campo="pct-submeta">22 %</span><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></p>
       <div class="metas">
         <p class="principal"><span>Meta Wawaín</span><span data-campo="meta">S/ 15,770</span></p>
         <p class="siguiente"><span>Siguiente etapa: <span data-campo="sig-nombre">San Rafael</span></span><span data-campo="sig-monto">S/ 15,000</span></p>
@@ -1046,11 +1048,11 @@ body.panel-abierto{overflow:hidden}
         <h2 class="tit">Qué significa esta meta</h2>
         <p class="entrada">No es una cifra abstracta. Es la suma de los materiales, instalaciones, transporte y recursos que faltan para completar esta etapa de la residencia.</p>
         <div class="meta-cifras">
-          <p class="reunido"><span data-campo="reunido">S/ 800</span><small data-campo="pct-meta">5.1 % de la meta</small></p>
+          <p class="reunido"><span data-campo="reunido">S/ 1,024</span><small data-campo="pct-meta">6.5 % de la meta</small></p>
           <p class="total">Meta Wawaín<b data-campo="meta">S/ 15,770</b></p>
         </div>
         <div class="riel-g" role="img" data-aria-meta aria-label="Avance de la meta">
-          <i data-barra-meta style="width:5.1%"></i>
+          <i data-barra-meta style="width:6.5%"></i>
           <span class="m" style="left:29.2%"></span><span class="m" style="left:47.6%"></span><span class="m" style="left:63.4%"></span>
         </div>
         <p class="siguiente-etapa"><span><b>Siguiente etapa: <span data-campo="sig-nombre">San Rafael</span></b></span><span data-campo="sig-monto">S/ 15,000</span></p>
@@ -1362,8 +1364,8 @@ body.panel-abierto{overflow:hidden}
 <div class="barra-aporte" id="barra-aporte">
   <p class="lema" style="margin:0">Con tu aporte, siembras algo que crece</p>
   <div class="mini" aria-hidden="true">
-    <div class="mini-cifras"><b data-campo="reunido">S/ 800</b><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></div>
-    <div class="mini-riel"><i data-barra-submeta style="width:17.4%"></i></div>
+    <div class="mini-cifras"><b data-campo="reunido">S/ 1,024</b><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></div>
+    <div class="mini-riel"><i data-barra-submeta style="width:22.3%"></i></div>
   </div>
   <a class="btn btn-lima btn-sm" href="#donar">Donar</a>
 </div>
@@ -1378,29 +1380,114 @@ body.panel-abierto{overflow:hidden}
   function $(s,c){return (c||document).querySelector(s);}
   function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
 
-  /* ── Cifras de la campaña ── */
-  try{
-    var d=JSON.parse($('#datos-campana').textContent);
-    var r=Number(d.reunido)||0, meta=Number(d.meta)||1, subs=(d.submetas||[]).map(Number).concat([meta]);
+  /* ── Cifras de la campaña ──
+     El monto reunido se lee de la celda A1 de la hoja de Google, así se actualiza sin tocar la web.
+     Si la hoja no responde se usa el número guardado en #datos-campana.
+     Al aparecer en pantalla cada bloque cuenta de 0 al monto, con sus barras y porcentajes. */
+  var HOJA='14MKaNymQgEbC7nnABOXTh53uo7CnB3-jkD0xJkWEjNM', LIMITE=1e7;
+  (function(){
+    var d; try{ d=JSON.parse($('#datos-campana').textContent); }catch(e){ return; }
+    var meta=Number(d.meta)||1, subs=(d.submetas||[]).map(Number).concat([meta]);
     var fmt=function(n){return 'S/ '+Math.round(n).toLocaleString('en-US');};
-    var idx=0; while(idx<subs.length-1 && r>=subs[idx]) idx++;
-    var objetivo=subs[idx], esFinal=(idx===subs.length-1);
-    var pctSub=Math.min(100,r/objetivo*100), pctMeta=Math.min(100,r/meta*100);
-    var txtSub=esFinal?('Meta: '+fmt(meta)):('Submeta '+(idx+1)+': '+fmt(objetivo));
     var set=function(campo,val){ $$('[data-campo="'+campo+'"]').forEach(function(el){el.textContent=val;}); };
-    set('reunido',fmt(r)); set('meta',fmt(meta)); set('submeta-txt',txtSub);
-    set('pct-submeta',Math.floor(pctSub)+' %'); set('pct-meta',(Math.round(pctMeta*10)/10)+' % de la meta');
-    if(d.siguiente){ set('sig-nombre',d.siguiente.nombre); set('sig-monto',fmt(d.siguiente.monto)); }
-    $$('[data-barra-submeta]').forEach(function(el){el.style.width=pctSub+'%';});
-    $$('[data-barra-meta]').forEach(function(el){el.style.width=pctMeta+'%';});
-    $$('[data-aria-submeta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos. '+txtSub+', '+Math.floor(pctSub)+' por ciento.');});
-    $$('[data-aria-meta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos de '+fmt(meta)+', '+(Math.round(pctMeta*10)/10)+' por ciento.');});
-    var marcas=$$('.riel-g .m'); (d.submetas||[]).forEach(function(s,i){ if(marcas[i]) marcas[i].style.left=(s/meta*100)+'%'; });
-    $$('#escalones .esc').forEach(function(li,i){
-      var ult=(i===subs.length-1); if(ult) li.setAttribute('data-monto',meta);
-      if(r>=subs[i]) li.classList.add('logrado'); else if(i===idx) li.classList.add('actual');
+    var r=Number(d.reunido)||0, idx=0, objetivo=1;
+
+    /* ── lectura de la hoja ── */
+    function primerCampo(linea){ var m=/^\s*(?:"([^"]*)"|([^,]*))/.exec(linea); return m?(m[1]!==undefined?m[1]:m[2]):''; }
+    function aNumero(t){
+      t=String(t||'').replace(/["\s]|S\/\.?/gi,'').replace(/[^0-9.,-]/g,'');
+      if(!t) return NaN;
+      var c=t.lastIndexOf(','), p=t.lastIndexOf('.');
+      if(c>-1&&p>-1){ t = c>p ? t.replace(/\./g,'').replace(',','.') : t.replace(/,/g,''); }
+      else if(c>-1||p>-1){ var sep=c>-1?',':'.', partes=t.split(sep);
+        t = (partes.length>2||partes[1].length===3) ? partes.join('') : t.replace(sep,'.'); }
+      return parseFloat(t);
+    }
+    function valorDe(csv){            /* la primera línea con un número válido (la 1.ª puede ser el rótulo de la columna) */
+      var ls=String(csv||'').split(/\r?\n/).slice(0,4);
+      for(var i=0;i<ls.length;i++){ var v=aNumero(primerCampo(ls[i])); if(isFinite(v)&&v>=0&&v<=LIMITE) return v; }
+      return null;
+    }
+    function leerHoja(){
+      if(!window.fetch) return Promise.resolve(null);
+      var base='https://docs.google.com/spreadsheets/d/'+HOJA;
+      var urls=[ base+'/gviz/tq?tqx=out:csv&headers=0&range=A1', base+'/export?format=csv&range=A1' ];
+      function probar(i){
+        if(i>=urls.length) return Promise.resolve(null);
+        var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){ if(ctl) ctl.abort(); },2500);
+        return fetch(urls[i],{cache:'no-store',credentials:'omit',signal:ctl?ctl.signal:undefined})
+          .then(function(res){ if(!res.ok) throw 0; return res.text(); })
+          .then(function(txt){ clearTimeout(t); var v=valorDe(txt); if(v===null) throw 0; return v; })
+          .catch(function(){ clearTimeout(t); return probar(i+1); });
+      }
+      return probar(0);
+    }
+
+    /* ── lo que depende del monto final: etiquetas, accesibilidad y estado de las etapas ── */
+    function fijar(v){
+      r=v; idx=0; while(idx<subs.length-1 && r>=subs[idx]) idx++;
+      objetivo=subs[idx];
+      var esFinal=(idx===subs.length-1);
+      var pctSub=Math.min(100,r/objetivo*100), pctMeta=Math.min(100,r/meta*100);
+      var txtSub=esFinal?('Meta: '+fmt(meta)):('Submeta '+(idx+1)+': '+fmt(objetivo));
+      set('meta',fmt(meta)); set('submeta-txt',txtSub);
+      if(d.siguiente){ set('sig-nombre',d.siguiente.nombre); set('sig-monto',fmt(d.siguiente.monto)); }
+      $$('[data-aria-submeta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos. '+txtSub+', '+Math.floor(pctSub)+' por ciento.');});
+      $$('[data-aria-meta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos de '+fmt(meta)+', '+(Math.round(pctMeta*10)/10)+' por ciento.');});
+      var marcas=$$('.riel-g .m'); (d.submetas||[]).forEach(function(s,i){ if(marcas[i]) marcas[i].style.left=(s/meta*100)+'%'; });
+      $$('#escalones .esc').forEach(function(li,i){
+        if(i===subs.length-1) li.setAttribute('data-monto',meta);
+        li.classList.remove('logrado','actual');
+        if(r>=subs[i]) li.classList.add('logrado'); else if(i===idx) li.classList.add('actual');
+      });
+    }
+
+    /* ── lo que se ve mientras cuenta: número, porcentajes y barras de un bloque ── */
+    function pintar(cont,v){
+      var pctSub=Math.min(100,v/objetivo*100), pctMeta=Math.min(100,v/meta*100);
+      $$('[data-campo="reunido"]',cont).forEach(function(el){el.textContent=fmt(v);});
+      $$('[data-campo="pct-submeta"]',cont).forEach(function(el){el.textContent=Math.floor(pctSub)+' %';});
+      $$('[data-campo="pct-meta"]',cont).forEach(function(el){el.textContent=(Math.round(pctMeta*10)/10)+' % de la meta';});
+      $$('[data-barra-submeta]',cont).forEach(function(el){el.style.width=pctSub+'%';});
+      $$('[data-barra-meta]',cont).forEach(function(el){el.style.width=pctMeta+'%';});
+    }
+    var grupos=[];
+    function grupo(sel){ var el=$(sel); if(!el) return null; var g={el:el,mostrado:0,anim:null,iniciado:false}; grupos.push(g); return g; }
+    function contar(g,hasta,ms){
+      if(g.anim) cancelAnimationFrame(g.anim);
+      var desde=g.mostrado, t0=null;
+      if(desde===hasta){ g.anim=null; pintar(g.el,hasta); return; }
+      function paso(t){
+        if(t0===null) t0=t;
+        var k=Math.min(1,(t-t0)/ms), e=1-Math.pow(1-k,3);
+        g.mostrado=k<1?desde+(hasta-desde)*e:hasta; pintar(g.el,g.mostrado);
+        g.anim=k<1?requestAnimationFrame(paso):null;
+      }
+      g.anim=requestAnimationFrame(paso);
+    }
+    function iniciar(g){ if(!g||g.iniciado) return; g.iniciado=true; contar(g,r,reducir?1000:1900); }
+
+    fijar(r);
+    var gPortada=[grupo('.avance'),grupo('#barra-aporte')], gMeta=grupo('#meta');
+    grupos.forEach(function(g){ pintar(g.el,0); });          /* arrancan en 0 */
+
+    /* la portada cuenta al cargar (espera a la hoja hasta 0,6 s); la meta, al llegar a ella */
+    var portadaLista=false;
+    function arrancarPortada(){ if(portadaLista) return; portadaLista=true; gPortada.forEach(iniciar); }
+    setTimeout(arrancarPortada,600);
+    if(gMeta){
+      if('IntersectionObserver' in window){
+        var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); iniciar(gMeta); } },{threshold:.3});
+        io.observe(gMeta.el);
+      } else iniciar(gMeta);
+    }
+    leerHoja().then(function(v){
+      if(v===null||v===r){ arrancarPortada(); return; }
+      fijar(v);
+      if(!portadaLista) arrancarPortada();
+      else grupos.forEach(function(g){ if(g.iniciado) contar(g,v,700); });   /* llegó tarde: se reajusta suave */
     });
-  }catch(e){}
+  })();
 
   /* ── Bienvenida: las frases se suman una a una y todo se desvanece hacia la portada (≈7,5 s, una vez por sesión, saltable) ── */
   (function(){
