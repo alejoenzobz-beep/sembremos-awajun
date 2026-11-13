@@ -18,7 +18,10 @@ apple-touch-icon.png    Ícono al guardar en la pantalla de un iPhone
 icon-192.png            Íconos del manifiesto
 icon-512.png
 site.webmanifest        Nombre, colores e íconos del sitio
-assets/img/og-compartir.jpg  Imagen que aparece al compartir el enlace (WhatsApp, Facebook, LinkedIn)
+assets/img/og-compartir.jpg  Imagen que aparece al compartir el enlace (WhatsApp, Facebook, LinkedIn); og-image.jpg es la misma
+assets/img/hero/        Fotos de la portada
+assets/img/galeria/     Fotos de «Así avanza Wawaín»
+assets/img/aliados/     Logos de aliados (ver más abajo)
 sumate/index.html       Página de enlace para compartir: lleva la vista previa y manda a la web
 robots.txt              Indicaciones para buscadores
 sitemap.xml             Mapa del sitio para buscadores
@@ -67,14 +70,51 @@ Sin este cambio, la vista previa al compartir el enlace por WhatsApp no mostrar�
 
 Todos los cambios se hacen editando el archivo en GitHub (ícono del lápiz) y guardando con *Commit changes*. Netlify publica solo en uno o dos minutos.
 
-### Monto reunido
+### Monto reunido y etapas
 
-El monto se lee **de la celda A1 de la hoja de Google «Monto website campaña» (pestaña «Monto website»)**. Para actualizarlo, cambia ese número en la hoja (sin símbolos) y recarga la web: se ve en uno o dos minutos, sin tocar GitHub.
+Las cifras se configuran en **un solo objeto, `CAMPANA`, al inicio del `<script>` de `index.html`**:
 
-- Las tres partes donde aparece el monto (portada, la meta y la barra de abajo), las barras y los porcentajes se recalculan solos, y el número cuenta de 0 al monto al aparecer.
+```js
+var CAMPANA={
+  totalFuente:'excel',        // el monto general se lee de la hoja de Google (no tocar)
+  totalRespaldo:2075,         // lo que se muestra si la hoja no responde
+  etapa1:{ meta:4600, estado:'cubierta' },   // etapa 1 cerrada: se muestra completa, no se borra
+  etapa2:{ reunido:100, meta:2900 },         // tramo 4,600 → 7,500
+  sumarEtapa2AlTotal:true,    // true mientras la hoja NO incluya la etapa 2; ponerlo en false cuando ya la incluya
+  metaGeneral:15770,
+  escalones:[4600,7500,10000],
+  siguiente:{ nombre:'San Rafael', monto:15000 }
+};
+```
+
+- **Total reunido** = monto de la hoja + etapa 2 (si `sumarEtapa2AlTotal` es `true`). Nada se resta. Hoy: 2,075 + 100 = **S/ 2,175**.
+- La portada y la barra de abajo muestran la **etapa 2** (S/ 100 de S/ 2,900); la portada y «Qué significa esta meta» muestran además el total.
+- Cuando las donaciones nuevas ya estén en la hoja, pon `sumarEtapa2AlTotal:false` para no contarlas dos veces.
+- Todos los textos con cifras (porcentajes, barras, etiquetas de accesibilidad) salen de este objeto: no hay montos escritos a mano.
+
+El monto general se lee **de la celda A1 de la hoja de Google «Monto website campaña» (pestaña «Monto website»)**. Para actualizarlo, cambia ese número en la hoja (sin símbolos) y recarga la web: se ve en uno o dos minutos, sin tocar GitHub.
+
 - La hoja debe estar compartida como **«Cualquier persona con el enlace: Lector»** y solo quien administra la campaña debe poder editarla. Si estuviera como Editor, cualquiera con el enlace podría cambiar el monto que ve el público.
 - Esa pestaña debe ser la **primera** de la hoja y no debe llevar datos de personas.
-- Si la hoja no responde, la web muestra el número de respaldo que está en `index.html`, en la línea `datos-campana` (`"reunido"`). Conviene ponerlo al día de vez en cuando.
+- Si la hoja no responde, la web usa `CAMPANA.totalRespaldo`. Conviene ponerlo al día de vez en cuando.
+
+### Idioma (ES | EN)
+
+El botón **ES | EN** de la cabecera (y de la pantalla de bienvenida) cambia todo el texto. El español es la base del HTML; el inglés vive en el diccionario `I18N`, dentro de `index.html` (bloque entre `I18N:inicio` y `I18N:fin`), con las mismas claves y el mismo orden por sección para revisarlos lado a lado. Cada elemento traducible lleva `data-i18n="clave"` (`data-i18n-alt`, `data-i18n-aria` para imágenes y accesibilidad; `data-wa` para los mensajes precargados de WhatsApp). La elección se recuerda en el navegador (`localStorage`).
+
+- Para corregir una frase en inglés: buscar su clave en `en:{ … }` y editar el texto.
+- Para agregar un texto nuevo: ponerle `data-i18n="seccion.nnn"` y agregar la clave en **ambos** idiomas.
+- No se traducen los nombres propios, el formulario, los datos bancarios ni los montos. El brochure solo existe en español: en inglés los enlaces muestran la marca «ES».
+
+### Fotos
+
+- **Portada** (5 fotos que rotan cada 5 s): `assets/img/hero/hero-N-…-800.webp` (móvil, recorte vertical 4:5) y `…-1600.webp` (escritorio).
+- **Así avanza Wawaín** (galería y visor): `assets/img/galeria/g-NN-640.webp` (miniatura) y `g-NN-1600.webp` (visor). El orden de las miniaturas en `index.html` (`#galeria`) es el orden del visor. Para agregar el hito «Techado», añadir sus `<button class="miniatura" data-hito="techado" data-mes="2027-01" …>` al final de `#galeria` y las claves de texto en `I18N`.
+- Los originales de alta resolución no se publican: si se guardan en el repositorio, van en `fotos-origen/` (está en `.gitignore`).
+
+### Logos de aliados
+
+Ponerlos en `assets/img/aliados/` (SVG o PNG con fondo transparente, todos a la misma altura). Mientras no estén, el panel de transparencia muestra el nombre en texto. Para usar el logo, reemplazar el texto del `<span class="marca-apoyo">` por `<img src="assets/img/aliados/archivo.svg" alt="Nombre">`; se muestra en gris automáticamente.
 
 ### Datos bancarios
 

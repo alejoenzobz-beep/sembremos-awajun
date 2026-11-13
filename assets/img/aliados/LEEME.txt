@@ -1,0 +1,5 @@
+Logos oficiales de los aliados (SVG o PNG con fondo transparente, misma altura).
+Pendientes:
+  - Tech Studio Coworking                        -> tech-studio.svg
+  - Servicio de Neurocirugía, Hospital Nacional Arzobispo Loayza -> loayza-neurocirugia.svg
+Mientras no estén, el panel de Transparencia muestra el nombre en texto. Ver README.
