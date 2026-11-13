@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sembremos espacios de Aprendizaje Awajún — Paisajes Educativos + Manifiesto Lab</title>
+<title data-i18n="meta.title">Sembremos espacios de Aprendizaje Awajún — Paisajes Educativos + Manifiesto Lab</title>
 <meta name="description" content="La comunidad awajún de Wawaín ya está construyendo Casa Semilla Awajún, su residencia estudiantil. Esta campaña suma los materiales técnicos que faltan. Imaza, Bagua, Amazonas.">
 <link rel="canonical" href="https://sembremos-awajun.netlify.app/">
 <meta property="og:type" content="website">
@@ -145,6 +145,32 @@ html.intro .portada-in{opacity:0}
 @media(max-width:399px){.top .mas{display:none}}
 @media(max-width:359px){.top .logo-ml{display:none}}
 
+/* ═════════ SELECTOR DE IDIOMA (ES | EN) ═════════ */
+.idioma{display:inline-flex;flex-shrink:0;border:1px solid var(--linea-fuerte);border-radius:100px;overflow:hidden;background:rgba(255,255,255,.5)}
+.idioma button{font-family:var(--display);font-weight:600;font-size:11.5px;line-height:1;letter-spacing:.03em;color:var(--gris);background:none;border:0;padding:6px 8px;cursor:pointer}
+.idioma button+button{border-left:1px solid var(--linea-fuerte)}
+.idioma button[aria-pressed="true"]{background:var(--marca);color:#fff}
+.idioma button:focus-visible{outline-offset:-3px}
+@media(max-width:899px){
+  .top-in{gap:6px}
+  .top .secciones{gap:0}
+  .top .secciones a{font-size:12.5px;padding:6px 6px}
+  .top .idioma button{font-size:10.5px;padding:6px 6px}
+}
+@media(max-width:420px){
+  .top .top-in{padding:0 12px;gap:4px}
+  .top .marcas{gap:5px}
+  .top .logo-pe{height:22px}.top .logo-ml{height:24px}
+  .top .secciones a{font-size:12px;padding:6px 4px}
+}
+@media(min-width:900px){.idioma button{font-size:13px;padding:8px 12px}}
+.bienvenida .idioma{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:5;background:rgba(11,34,29,.45);border-color:rgba(255,255,255,.45)}
+.bienvenida .idioma button{color:#fff}
+.bienvenida .idioma button[aria-pressed="true"]{background:#fff;color:var(--hondo)}
+.bienvenida .idioma button+button{border-left-color:rgba(255,255,255,.45)}
+/* el brochure solo existe en español: en inglés se avisa con una marca «ES» */
+html[lang="en"] a[href*="drive.google.com/file/d/1ft0l8"]::after{content:"ES";display:inline-block;margin-left:6px;padding:1px 5px;border:1px solid currentColor;border-radius:4px;font-family:var(--display);font-size:.72em;font-weight:700;letter-spacing:.04em;line-height:1.3;vertical-align:.08em;opacity:.85}
+
 /* ═════════ BARRA INFERIOR PERMANENTE ═════════ */
 .barra-aporte{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--hondo);color:#fff;padding:9px 14px calc(9px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .3s ease;box-shadow:0 -6px 24px rgba(16,51,44,.18)}
 .barra-aporte.visible{transform:none}
@@ -170,7 +196,7 @@ html.intro .portada-in{opacity:0}
 .portada .capa.activa{opacity:1}
 .portada .capa img,.portada img.capa{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:saturate(.85)}
 @media(prefers-reduced-motion:reduce){.portada .capa{transition:opacity 1.6s ease!important}}
-.portada .velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,34,29,.48) 0%,rgba(11,34,29,.72) 46%,rgba(11,34,29,.92) 100%)}
+.portada .velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,34,29,.34) 0%,rgba(11,34,29,.58) 46%,rgba(11,34,29,.88) 100%)}
 .portada-in{position:relative;z-index:2;padding-top:24px;padding-bottom:24px;display:grid;gap:20px}
 .marbete{display:inline-flex;flex-wrap:wrap;gap:2px 8px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);font-family:var(--display);font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:100px;margin:0 0 12px}
 .marbete b{color:var(--lima-claro);font-weight:600;white-space:nowrap}
@@ -188,7 +214,7 @@ html.intro .portada-in{opacity:0}
   .portada-in{gap:16px}
 }
 @media(min-width:900px){
-  .portada .velo{background:linear-gradient(103deg,rgba(11,34,29,.92) 0%,rgba(11,34,29,.78) 46%,rgba(11,34,29,.34) 100%)}
+  .portada .velo{background:linear-gradient(103deg,rgba(11,34,29,.92) 0%,rgba(11,34,29,.74) 46%,rgba(11,34,29,.14) 100%)}
   .portada-in{grid-template-columns:minmax(0,1fr) 360px;align-items:end;gap:48px;padding-top:60px;padding-bottom:60px;min-height:min(580px,calc(100vh - var(--alto-top)))}
   .marbete{font-size:13.5px;padding:7px 15px;margin-bottom:20px}
   .portada .bajada{font-size:18px;margin-top:18px}
@@ -209,12 +235,27 @@ html.intro .portada-in{opacity:0}
 .metas p{margin:0;display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--gris)}
 .metas .principal{font-family:var(--display);font-weight:600;color:var(--hondo);font-size:14.5px}
 .metas .siguiente{font-size:12.5px;color:var(--gris-2)}
+/* etapas dentro de la tarjeta de avance */
+.avance .rot{margin-bottom:9px}
+.et{margin:0}
+.et+.et{margin-top:12px}
+.et-fila{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0;font-family:var(--display);font-size:13px;font-weight:600;color:var(--hondo)}
+.et-estado{display:inline-flex;align-items:center;gap:4px;color:var(--marca);font-size:12.5px;white-space:nowrap}
+.et-estado svg{width:13px;height:13px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.et-nota{margin:0;font-size:12px;color:var(--gris);line-height:1.35}
+.riel.hecha{margin:7px 0 5px;height:7px}
+.riel.hecha i{background:var(--linea-fuerte)}
+.et2 .cifra{margin-top:2px}
+.rot-e2{font-weight:500;font-size:12px;color:var(--gris)}
+.et2 .riel{margin-top:8px}
 @media(min-width:900px){
   .avance{padding:22px}
   .avance .cifra{font-size:38px}
   .riel{height:13px;margin:16px 0 8px}
   .avance .bajo-riel{font-size:13.5px}
   .metas p{font-size:15px}.metas .principal{font-size:16px}.metas .siguiente{font-size:13.5px}
+  .et-fila{font-size:14.5px}.et-estado{font-size:13.5px}.et-nota{font-size:13px}
+  .et+.et{margin-top:16px}.riel.hecha{height:9px}
 }
 
 /* ═════════ SEPARADOR DE SECCIÓN ═════════ */
@@ -286,8 +327,11 @@ details.mas[open]>summary .cerrar{display:inline}
 .ruta .cuando{font-family:var(--display);font-size:12px;font-weight:700;color:var(--medio);margin:0;letter-spacing:.03em;text-transform:uppercase}
 .ruta h4{font-size:15px;margin:2px 0 3px}
 .ruta p{font-size:13.5px;margin:0;color:var(--gris);line-height:1.45}
+.ruta .btn{margin-top:9px}
+.ruta li.nuevo{border-top-color:var(--lima)}
+.ruta li.nuevo .cuando{color:#4F7A22}
 @media(min-width:900px){
-  .ruta{grid-template-columns:repeat(4,1fr);gap:var(--e-2)}
+  .ruta{grid-template-columns:repeat(5,1fr);gap:var(--e-2)}
   .ruta li{padding:14px 16px}.ruta h4{font-size:16.5px}
 }
 
@@ -349,55 +393,66 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 @media(min-width:900px){.specs{padding:16px 10px;margin-top:var(--e-2)}.spec .n{font-size:24px}.spec p{font-size:13.5px}}
 
 .aporta-2{display:grid;gap:var(--e-1);margin-top:var(--e-2)}
-.aporta{border-radius:var(--r-m);padding:13px 15px}
-.aporta.comunidad{background:var(--tinte);border:1px solid #B9D3C4}
-.aporta.campana{background:var(--blanco);border:1px solid var(--linea);border-left:4px solid var(--lima)}
-.aporta h3{font-size:16px;margin-bottom:5px}
+.aporta{border-radius:var(--r-m);padding:16px 18px}
+.aporta p{margin:0;font-size:var(--f-base);line-height:1.5}
+.aporta strong{font-family:var(--display);font-weight:700}
+.aporta.comunidad{background:var(--marca);color:#fff}
+.aporta.comunidad strong{color:var(--lima-claro)}
+.aporta.campana{background:var(--lima-claro);color:var(--hondo)}
+.aporta .enlace{display:inline-block;margin-top:10px;color:inherit}
+.acompanamos{margin:var(--e-2) 0 0;font-size:var(--f-chico);color:var(--gris);max-width:72ch;line-height:1.5}
+.acompanamos strong{font-family:var(--display);color:var(--hondo)}
 .lista{list-style:none;padding:0;margin:0}
 .lista li{position:relative;padding:3px 0 3px 17px;font-size:var(--f-chico);color:var(--tinta);line-height:1.4}
 .lista li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:50%;background:var(--medio)}
-.aporta.campana .lista li::before{background:var(--lima-osc)}
-.aporta .enlace{display:inline-block;margin-top:8px}
-@media(min-width:900px){.aporta-2{grid-template-columns:1fr 1fr;gap:var(--e-2)}.aporta{padding:18px 22px}.aporta h3{font-size:18px}}
+@media(min-width:900px){.aporta-2{grid-template-columns:1fr 1fr;gap:var(--e-2)}.aporta{padding:22px 26px}}
 
+/* ═════════ BITÁCORA DE OBRA (galería «Así avanza») ═════════ */
+/* Orden por hito: poza de curado → cimentación → laboratorio constructivo → armado de la estructura → (techado: se agrega al final) */
+.galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:var(--e-3)}
+.miniatura{position:relative;display:block;width:100%;padding:0;border:0;border-radius:var(--r-s);overflow:hidden;background:var(--hondo);cursor:pointer;aspect-ratio:4/3;font:inherit;text-align:left}
+.miniatura img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.miniatura:hover img{transform:scale(1.04)}
+.miniatura .mt{position:absolute;left:0;right:0;bottom:0;padding:20px 9px 7px;font-family:var(--display);font-weight:600;font-size:12px;line-height:1.2;color:#fff;background:linear-gradient(to top,rgba(16,51,44,.85),rgba(16,51,44,0))}
+.galeria-pie{margin:var(--e-2) 0 0}
+@media(min-width:900px){.galeria{grid-template-columns:repeat(3,1fr);gap:14px}.miniatura .mt{font-size:14px;padding:30px 14px 10px}}
 
-/* ═════════ BITÁCORA DE OBRA ═════════ */
-.bitacora{margin-top:var(--e-3)}
-.bitacora figure{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-m);overflow:hidden}
-.bitacora img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.bitacora figcaption{margin:0;padding:10px 13px 12px;font-size:13px;color:var(--gris);line-height:1.4}
-.bitacora figcaption b{display:block;font-family:var(--display);font-weight:600;color:var(--hondo);font-size:14.5px;margin-bottom:2px}
-@media(min-width:900px){.bitacora figcaption{padding:12px 16px 14px;font-size:14px}.bitacora figcaption b{font-size:16px}}
+/* visor a pantalla casi completa (mismo lenguaje que el panel de transparencia, más ancho) */
+.visor{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:rgba(10,32,27,.9);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
+.visor.abierto{opacity:1;visibility:visible;transition:opacity .25s ease}
+.visor-panel{width:95vw;max-width:1500px;height:94vh;height:94dvh;background:var(--papel);border-radius:22px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.visor-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid var(--linea)}
+.visor-cab h2{font-size:15px;color:var(--marca);margin:0}
+.visor-escena{position:relative;flex:1;min-height:0;background:#0B221D;touch-action:pan-y;user-select:none}
+.visor-escena img{position:absolute;inset:0;margin:auto;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.visor-flecha{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(247,248,241,.92);color:var(--hondo);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.visor-flecha:hover{background:#fff}
+.visor-flecha svg{width:20px;height:20px;stroke:currentColor;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.visor-flecha.prev{left:10px}.visor-flecha.next{right:10px}
+.visor-pie{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 18px 13px}
+.visor-leyenda{margin:0;font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--hondo)}
+.visor-cuenta{margin:0;font-family:var(--display);font-size:13.5px;color:var(--gris);white-space:nowrap}
+body.visor-abierto{overflow:hidden}
+@media(min-width:900px){.visor-panel{width:94vw}.visor-cab h2{font-size:17px}.visor-cab{padding:12px 16px 12px 26px}.visor-flecha{width:54px;height:54px;left:auto}.visor-flecha.prev{left:18px}.visor-flecha.next{right:18px}.visor-leyenda{font-size:16.5px}.visor-pie{padding:13px 26px 16px}}
 
-/* ═════════ CRONOGRAMA ═════════ */
-.hitos{list-style:none;padding:0;margin:var(--e-3) -18px 0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,44%);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 18px;scroll-padding:0 18px}
-.hitos::-webkit-scrollbar{display:none}
-.hito{position:relative;scroll-snap-align:start;padding:18px 14px 0 0;border-top:3px solid var(--marca)}
-.hito.obra{border-top-color:var(--lima)}
-.hito::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--papel);border:3px solid var(--marca)}
-.hito.obra::before{border-color:var(--lima-osc)}
-.hito .f{font-family:var(--display);font-size:17px;font-weight:700;color:var(--hondo);margin:0}
-.hito .q{font-family:var(--display);font-weight:600;color:var(--marca);font-size:14px;margin:2px 0 0}
-.hito.obra .q{color:#4F7A22}
-.hito p{font-size:13px;color:var(--gris);margin:3px 0 0;line-height:1.4}
-.hitos-leyenda{display:none}
-@media(max-width:899px){
-  .hitos{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-auto-columns:auto;overflow:visible;margin:var(--e-3) 0 0;padding:0;counter-reset:hito}
-  .hito{counter-increment:hito;padding:15px 4px 0 0}
-  .hito::before{content:counter(hito);top:-11px;width:20px;height:20px;border-width:2px;display:grid;place-items:center;font-family:var(--display);font-size:10.5px;font-weight:700;color:var(--marca)}
-  .hito.obra::before{color:#4F7A22}
-  .hito .f{font-size:12px;white-space:nowrap}
-  .hito .q,.hito>p:not(.f){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .hitos-leyenda{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;list-style:none;padding:0;margin:12px 0 0}
-  .hitos-leyenda li{display:grid;grid-template-columns:18px 1fr;gap:7px;align-items:start;font-size:12px;color:var(--gris);line-height:1.35}
-  .hitos-leyenda b{width:18px;height:18px;border-radius:50%;background:var(--marca);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:10px}
-  .hitos-leyenda .obra b{background:var(--lima-osc)}
-  .hitos-leyenda strong{font-family:var(--display);font-weight:600;color:var(--hondo)}
-}
-.leyenda{display:flex;gap:16px;font-size:var(--f-mini);color:var(--gris);margin-top:12px}
-.leyenda span{display:inline-flex;align-items:center;gap:6px}
-.leyenda i{width:18px;height:4px;border-radius:4px}
-@media(min-width:900px){.hitos{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);gap:var(--e-2);margin:var(--e-3) 0 0;padding:0;overflow:visible}.hito .f{font-size:20px}.hito .q{font-size:15.5px}.hito p{font-size:14px}}
+/* ═════════ CRONOGRAMA (por etapas) ═════════ */
+.hitos{list-style:none;padding:0;margin:var(--e-3) 0 0;display:grid;gap:var(--e-3)}
+.hito{position:relative;padding:18px 4px 0 0;border-top:3px solid var(--linea-fuerte)}
+.hito::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--papel);border:3px solid var(--linea-fuerte)}
+.hito.hecho{border-top-color:var(--marca)}
+.hito.hecho::before{background:var(--marca);border-color:var(--marca)}
+.hito.enproceso{border-top-color:var(--medio)}
+.hito.enproceso::before{background:var(--medio);border-color:var(--medio);box-shadow:0 0 0 4px rgba(47,133,117,.2)}
+.hito.futuro::before{border-style:dashed;border-color:var(--medio)}
+.hito .est{display:inline-flex;align-items:center;gap:5px;margin:0 0 4px;font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gris-2)}
+.hito .est svg{width:14px;height:14px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hito.hecho .est{color:var(--marca)}
+.hito.enproceso .est{color:var(--medio)}
+.hito .f{font-family:var(--display);font-size:20px;font-weight:700;color:var(--hondo);margin:0}
+.hito .q{font-family:var(--display);font-weight:600;color:var(--marca);font-size:15px;margin:2px 0 0}
+.hito.enproceso .q{color:var(--medio)}
+.hito p:not(.est):not(.f):not(.q){font-size:13.5px;color:var(--gris);margin:4px 0 0;line-height:1.45}
+@media(min-width:900px){.hitos{grid-template-columns:repeat(3,1fr);gap:var(--e-3);margin-top:var(--e-3)}.hito .f{font-size:24px}.hito .q{font-size:17px}.hito p:not(.est):not(.f):not(.q){font-size:15px}.hito .est{font-size:12.5px}}
 
 /* ═════════ FASES ═════════ */
 .secuencia{list-style:none;padding:0;margin:var(--e-3) 0 0;display:grid;gap:var(--e-1)}
@@ -437,6 +492,21 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .riel-g{position:relative;height:15px;background:rgba(255,255,255,.14);border-radius:100px;margin-top:12px}
 .riel-g i{position:absolute;top:0;bottom:0;left:0;background:var(--lima);border-radius:100px;min-width:15px}
 .riel-g .m{position:absolute;top:-5px;bottom:-5px;width:2px;background:rgba(255,255,255,.55);border-radius:2px}
+.etapas-meta{margin-top:14px;display:grid;gap:12px}
+.eg-fila{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0;font-size:13px;color:var(--sobre-oscuro)}
+.eg-fila b{font-family:var(--display);font-weight:600;color:#fff;font-size:14px}
+.eg-fila .ok{display:inline-flex;align-items:center;gap:4px;color:var(--lima-claro);font-weight:600;white-space:nowrap}
+.eg-fila .ok svg{width:13px;height:13px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.eg-nota{margin:5px 0 0;font-size:12px;color:var(--sobre-oscuro);line-height:1.35}
+.etapas-meta .riel-g{margin-top:7px}
+.riel-g.hecha i{background:rgba(255,255,255,.34)}
+.casa-crece{margin:16px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;border-top:1px solid rgba(255,255,255,.15);padding-top:14px}
+.casa-crece li{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;color:rgba(255,255,255,.42);font-size:11px;line-height:1.25}
+.casa-crece svg{width:44px;height:34px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.casa-crece .logrado{color:var(--lima-claro)}
+.casa-crece .aqui{color:#fff}
+.casa-crece em{font-style:normal;font-family:var(--display);font-weight:600;font-size:10px;line-height:1;color:var(--hondo);background:var(--lima);border-radius:100px;padding:3px 7px;white-space:nowrap}
+@media(min-width:900px){.casa-crece li{font-size:12.5px}.casa-crece svg{width:54px;height:42px}.casa-crece em{font-size:11px}}
 .siguiente-etapa{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;color:var(--sobre-oscuro);margin:9px 0 0}
 .siguiente-etapa b{color:#fff;font-weight:500}
 .desglose{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:var(--e-2);padding-top:14px;border-top:1px solid rgba(255,255,255,.15)}
@@ -450,6 +520,7 @@ figcaption{font-size:var(--f-mini);color:var(--gris-2);margin-top:6px}
 .esc p b{color:#fff;font-weight:600}
 .esc.actual p b{color:var(--hondo)}
 .esc.logrado{border-color:var(--lima)}
+.esc.logrado .n small::after{content:" ✓"}
 .esc.actual{background:#fff;border-color:#fff}
 .esc.actual .n{color:var(--hondo)}.esc.actual .n small{color:var(--marca)}.esc.actual p{color:var(--gris)}
 @media(max-width:899px){
@@ -660,6 +731,13 @@ body.panel-abierto{overflow:hidden}
 .faq summary::after{content:"";position:absolute;right:17px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:2px solid var(--marca);border-bottom:2px solid var(--marca);transform:rotate(45deg);transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
 .faq .r{padding:0 13px 11px;font-size:13.5px;color:var(--gris);margin:0;line-height:1.45}
+/* aliados que ya suman: logos en gris, misma altura; si falta el logo se usa el nombre con el mismo tratamiento */
+.apoyos{list-style:none;padding:0;margin:var(--e-1) 0 0;display:grid;gap:10px}
+.apoyos li{display:grid;gap:2px;padding:12px 14px;border:1px solid var(--linea);border-radius:var(--r-s);background:var(--blanco)}
+.apoyos .marca-apoyo{display:flex;align-items:center;min-height:28px;font-family:var(--display);font-weight:600;font-size:15px;line-height:1.25;color:var(--gris-2)}
+.apoyos .marca-apoyo img{height:28px;width:auto;filter:grayscale(1) contrast(.9);opacity:.85}
+.apoyos .que{font-size:13px;color:var(--gris)}
+@media(min-width:900px){.apoyos .marca-apoyo{font-size:16px}.apoyos .que{font-size:14px}}
 .aliados{display:grid;gap:var(--e-2);margin-top:var(--e-2)}
 .aliado{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:var(--r-m);background:var(--hondo);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
 .aliado-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
@@ -730,16 +808,9 @@ body.panel-abierto{overflow:hidden}
   <symbol id="s-mliso" viewBox="808 938 1718 909"><path fill="currentColor" fill-rule="evenodd" d="M839.0,1827.2C839.0,1826.8 837.4,1815.5 835.5,1801.9C833.6,1788.4 831.4,1770.9 830.5,1762.9C828.3,1743.3 827.4,1690.4 828.9,1668.5C841.7,1485.4 941.9,1323.0 1100.5,1228.2C1159.7,1192.9 1228.7,1168.2 1298.0,1157.6C1328.9,1152.9 1346.9,1151.6 1383.0,1151.6C1428.1,1151.6 1459.6,1154.8 1500.5,1163.5C1597.9,1184.4 1691.4,1233.3 1761.3,1300.0L1771.8,1310.0L1810.2,1246.3C1831.3,1211.2 1879.0,1132.0 1916.1,1070.3C1967.4,984.9 1983.8,958.4 1984.6,959.3C1985.8,960.5 2507.0,1826.9 2507.0,1827.6C2507.0,1827.8 2353.1,1828.0 2165.0,1828.0C1831.7,1828.0 1823.0,1828.0 1823.0,1826.1C1823.0,1825.1 1825.0,1809.9 1827.5,1792.4C1829.9,1774.8 1832.5,1755.3 1833.2,1749.0C1834.9,1733.8 1834.9,1678.2 1833.2,1663.0C1828.0,1615.9 1818.4,1576.8 1802.3,1537.0C1796.4,1522.4 1783.1,1494.0 1782.1,1494.0C1781.8,1494.0 1736.3,1569.2 1681.0,1661.0L1580.6,1828.0L1209.8,1828.0C1005.9,1828.0 839.0,1827.7 839.0,1827.2zM1618.0,1565.8C1671.0,1477.6 1715.0,1404.5 1715.7,1403.3C1717.0,1401.3 1716.3,1400.4 1702.2,1386.3C1647.0,1331.1 1580.7,1292.0 1506.5,1271.1C1437.1,1251.5 1365.3,1248.6 1295.0,1262.6C1189.7,1283.5 1096.4,1340.6 1028.2,1425.9C1018.3,1438.2 997.3,1469.1 989.8,1482.5C960.5,1534.3 941.5,1591.2 934.0,1649.6C931.5,1669.4 929.5,1706.2 930.5,1717.3L931.2,1726.0L1226.4,1726.0L1521.7,1726.0L1618.0,1565.8zM2269.2,1631.7C2238.0,1579.9 2161.2,1452.1 2098.5,1347.8C2035.8,1243.5 1984.3,1158.1 1984.0,1158.1C1983.7,1158.0 1951.6,1211.1 1912.6,1275.9L1841.8,1393.8L1846.8,1401.1C1864.4,1427.3 1886.4,1469.4 1898.7,1500.5C1924.6,1566.0 1937.1,1630.5 1937.4,1700.7L1937.5,1726.0L2131.7,1726.0L2325.9,1726.0L2269.2,1631.7z"/></symbol>
 </svg>
 
-<!-- ═══════ DATOS DE LA CAMPAÑA — actualizar aquí los montos ═══════
-     reunido   : lo recaudado hasta hoy (S/). Es el valor de respaldo: el monto que se muestra
-                 se lee de la celda A1 de la hoja de Google (ver HOJA en el script de abajo)
-     meta      : meta total de Wawaín (memoria del proyecto)
-     submetas  : escalones intermedios, en orden
-     siguiente : la etapa que se activa con el excedente
-═══════════════════════════════════════════════════════════════════ -->
-<script id="datos-campana" type="application/json">{"reunido": 1024, "meta": 15770, "submetas": [4600, 7500, 10000], "siguiente": {"nombre": "San Rafael", "monto": 15000}}</script>
+<!-- Las cifras de la campaña se configuran en el objeto CAMPANA, al inicio del script (abajo). -->
 
-<a class="saltar" href="#contenido">Saltar al contenido</a>
+<a class="saltar" href="#contenido" data-i18n="otros.001">Saltar al contenido</a>
 
 <!-- ══════ BIENVENIDA (≈3 s, una vez por sesión) ══════ -->
 <div class="bienvenida" id="bienvenida" aria-hidden="true">
@@ -763,30 +834,32 @@ body.panel-abierto{overflow:hidden}
     <svg class="logo-ml" viewBox="0 0 2466 1456"><use href="#s-ml" width="2466" height="1456"/></svg>
   </div>
   <p class="frases">
-    <span>Comunidades de la Amazonía peruana buscan superar las brechas con procesos de autogestión.</span>
-    <span>Nosotros nos sumamos.</span>
-    <span>Te invitamos a ser parte.</span>
+    <span data-i18n="bienvenida.001">Comunidades de la Amazonía peruana buscan superar las brechas con procesos de autogestión.</span>
+    <span data-i18n="bienvenida.002">Nosotros nos sumamos.</span>
+    <span data-i18n="bienvenida.003">Te invitamos a ser parte.</span>
   </p>
-  <button type="button" class="saltar-intro" tabindex="-1">Entrar</button>
+  <div class="idioma" role="group" aria-label="Idioma / Language" data-i18n-skip><button type="button" data-idioma="es" aria-pressed="true" lang="es">ES</button><button type="button" data-idioma="en" aria-pressed="false" lang="en">EN</button></div>
+  <button type="button" class="saltar-intro" tabindex="-1" data-i18n="bienvenida.004">Entrar</button>
 </div>
 
 <!-- ══════ CABECERA FIJA ══════ -->
 <header class="top">
   <div class="wrap top-in">
-    <a class="marcas" href="#inicio" aria-label="Paisajes Educativos y Manifiesto Lab — inicio">
+    <a class="marcas" href="#inicio" aria-label="Paisajes Educativos y Manifiesto Lab — inicio" data-i18n-aria="cabecera.005.aria">
       <svg class="logo-pe" viewBox="0 0 1537 847" aria-hidden="true"><use href="#s-pe" width="1537" height="847"/></svg>
       <span class="mas" aria-hidden="true">+</span>
       <svg class="logo-ml" viewBox="0 0 2466 1456" aria-hidden="true"><use href="#s-ml" width="2466" height="1456"/></svg>
     </a>
-    <nav class="secciones" aria-label="Secciones">
-      <a href="#proyecto" data-nav="proyecto">Proyecto</a>
-      <a href="#participa" data-nav="participa">Súmate</a>
-      <a href="#transparencia" data-abrir-panel>Transparencia</a>
+    <nav class="secciones" aria-label="Secciones" data-i18n-aria="cabecera.006.aria">
+      <a href="#proyecto" data-nav="proyecto" data-i18n="cabecera.001">Proyecto</a>
+      <a href="#participa" data-nav="participa" data-i18n="cabecera.002">Súmate</a>
+      <a href="#transparencia" data-abrir-panel data-i18n="cabecera.003">Transparencia</a>
     </nav>
     <div class="top-cta">
       <a class="btn btn-linea btn-sm" href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener">Brochure</a>
-      <a class="btn btn-lima btn-sm" href="#donar">Donar</a>
+      <a class="btn btn-lima btn-sm" href="#donar" data-i18n="cabecera.004">Donar</a>
     </div>
+    <div class="idioma" role="group" aria-label="Idioma / Language" data-i18n-skip><button type="button" data-idioma="es" aria-pressed="true" lang="es">ES</button><button type="button" data-idioma="en" aria-pressed="false" lang="en">EN</button></div>
   </div>
 </header>
 
@@ -795,39 +868,60 @@ body.panel-abierto{overflow:hidden}
 <!-- ══════ PORTADA ══════ -->
 <section class="portada" id="inicio" aria-labelledby="titulo-principal">
   <div class="fondo" aria-hidden="true">
+    <!-- 5 fotos: 1 paisaje · 2 comunidad · 3 obra · 4 estudiantes/camino · 5 la casa. La primera carga de inmediato; las demás, tras la carga de la página. -->
     <picture class="capa activa">
-      <source media="(max-width:640px)" srcset="assets/img/portada-bosque-800.webp">
-      <img src="assets/img/portada-bosque-1400.webp" alt="" width="1400" height="787" fetchpriority="high">
+      <source media="(max-width:640px)" srcset="assets/img/hero/hero-1-paisaje-800.webp">
+      <img src="assets/img/hero/hero-1-paisaje-1600.webp" alt="" width="1600" height="1068" fetchpriority="high">
     </picture>
-    <img class="capa" data-src="assets/img/portada-render.webp" alt="" width="1040" height="585">
-    <img class="capa" data-src="assets/img/portada-comunidad.webp" alt="" width="420" height="560" style="object-position:center 30%">
-    <img class="capa" data-src="assets/img/portada-equipo.webp" alt="" width="880" height="576">
+    <picture class="capa">
+      <source media="(max-width:640px)" data-srcset="assets/img/hero/hero-2-comunidad-800.webp">
+      <img data-src="assets/img/hero/hero-2-comunidad-1600.webp" alt="" width="1600" height="1068">
+    </picture>
+    <picture class="capa">
+      <source media="(max-width:640px)" data-srcset="assets/img/hero/hero-3-obra-800.webp">
+      <img data-src="assets/img/hero/hero-3-obra-1600.webp" alt="" width="1600" height="1068">
+    </picture>
+    <picture class="capa">
+      <source media="(max-width:640px)" data-srcset="assets/img/hero/hero-4-camino-800.webp">
+      <img data-src="assets/img/hero/hero-4-camino-1600.webp" alt="" width="1600" height="1068">
+    </picture>
+    <picture class="capa">
+      <source media="(max-width:640px)" data-srcset="assets/img/hero/hero-5-casa-800.webp">
+      <img data-src="assets/img/hero/hero-5-casa-1600.webp" alt="" width="1600" height="1068">
+    </picture>
   </div>
   <div class="velo"></div>
   <div class="wrap portada-in">
     <div>
-      <p class="marbete"><span>Campaña de construcción comunitaria</span><b>Fase 1 en obra</b></p>
-      <h1 id="titulo-principal"><span class="l1">Sembremos espacios de</span><span class="l2">Aprendizaje Awajún</span></h1>
-      <p class="bajada"><strong>¡La construcción ya está en marcha!</strong> Te invitamos a sumarte a la creación de <strong>una residencia estudiantil</strong>, un lugar seguro donde vivir, alimentarse, descansar y seguir aprendiendo.</p>
-      <p class="lugar">Wawaín y San Rafael — Imaza, Bagua, Amazonas.</p>
+      <p class="marbete"><span data-i18n="portada.001">Campaña de construcción comunitaria</span><b data-i18n="portada.002">Etapa 2 en curso</b></p>
+      <h1 id="titulo-principal"><span class="l1" data-i18n="portada.003">Sembremos espacios de</span><span class="l2" data-i18n="portada.004">Aprendizaje Awajún</span></h1>
+      <p class="bajada" data-i18n="portada.005"><strong>¡La construcción ya está en marcha!</strong> Te invitamos a sumarte a la creación de <strong>una residencia estudiantil</strong>, un lugar seguro donde vivir, alimentarse, descansar y seguir aprendiendo.</p>
+      <p class="lugar" data-i18n="portada.006">Wawaín y San Rafael — Imaza, Bagua, Amazonas.</p>
       <div class="portada-btns">
-        <a class="btn btn-lima" href="#donar">Donar</a>
-        <a class="btn btn-linea-claro" href="#proyecto">Conocer el proyecto</a>
+        <a class="btn btn-lima" href="#donar" data-i18n="cabecera.004">Donar</a>
+        <a class="btn btn-linea-claro" href="#proyecto" data-i18n="portada.008">Conocer el proyecto</a>
       </div>
     </div>
 
-    <div class="avance" aria-label="Avance de la campaña">
-      <div class="avance-fila">
-        <p class="cifra"><span data-campo="reunido">S/ 1,024</span><small>reunidos</small></p>
-        <p class="rot">Fase 1 · Casa Semilla Awajún</p>
+    <div class="avance" aria-label="Avance de la campaña" data-i18n-aria="portada.020.aria">
+      <p class="rot" data-i18n="portada.009">Casa Semilla Awajún · residencia estudiantil</p>
+      <div class="et et1">
+        <p class="et-fila"><span data-i18n="portada.010">Etapa 1 · S/ <span data-campo="e1-meta-n">4,600</span></span><span class="et-estado"><span data-i18n="portada.011">Cubierta</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></p>
+        <div class="riel hecha" aria-hidden="true"><i style="width:100%"></i></div>
+        <p class="et-nota" data-i18n="portada.012">Con donaciones y el aporte de aliados.</p>
       </div>
-      <div class="riel" role="img" data-aria-submeta aria-label="Avance hacia la submeta actual">
-        <i data-barra-submeta style="width:22.3%"></i>
+      <div class="et et2">
+        <p class="et-fila"><span data-i18n="portada.013">Etapa 2 · en curso</span><span class="rot-e2" data-i18n="portada.014">Techado y cerramientos</span></p>
+        <p class="cifra"><span data-campo="e2-reunido">S/ 100</span><small data-i18n="portada.015">de <span data-campo="e2-meta">S/ 2,900</span></small></p>
+        <div class="riel" role="img" data-aria-e2 aria-label="Avance de la etapa 2" data-i18n-aria="portada.021.aria">
+          <i data-barra-e2 style="width:3.4%"></i>
+        </div>
+        <p class="bajo-riel"><span data-campo="pct-e2">3 %</span><span data-i18n="portada.016">de la etapa 2</span></p>
       </div>
-      <p class="bajo-riel"><span data-campo="pct-submeta">22 %</span><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></p>
       <div class="metas">
-        <p class="principal"><span>Meta Wawaín</span><span data-campo="meta">S/ 15,770</span></p>
-        <p class="siguiente"><span>Siguiente etapa: <span data-campo="sig-nombre">San Rafael</span></span><span data-campo="sig-monto">S/ 15,000</span></p>
+        <p class="principal"><span data-i18n="portada.017">Reunido en total</span><span data-campo="total">S/ 2,175</span></p>
+        <p><span data-i18n="portada.018">Meta general</span><span data-campo="meta">S/ 15,770</span></p>
+        <p class="siguiente"><span data-i18n="portada.019">Siguiente fase: <span data-campo="sig-nombre">San Rafael</span></span><span data-campo="sig-monto">S/ 15,000</span></p>
       </div>
     </div>
   </div>
@@ -835,116 +929,91 @@ body.panel-abierto{overflow:hidden}
 
 <!-- ══════════════════ EL PROYECTO ══════════════════ -->
 <section class="seccion wrap" id="proyecto" aria-labelledby="h-proyecto">
-  <div class="cabeza-seccion"><h2 id="h-proyecto">El proyecto</h2><span class="raya" aria-hidden="true"></span></div>
+  <div class="cabeza-seccion"><h2 id="h-proyecto" data-i18n="otros.002">El proyecto</h2><span class="raya" aria-hidden="true"></span></div>
 
   <!-- Casa Semilla -->
   <div class="bloque" id="casa-semilla">
     <div class="cab-bloque">
       <div>
-        <p class="eyebrow">Casa Semilla Awajún · residencia estudiantil</p>
-        <h2 class="tit tit-2">Un lugar para quedarse y seguir aprendiendo</h2>
+        <p class="eyebrow" data-i18n="portada.009">Casa Semilla Awajún · residencia estudiantil</p>
+        <h2 class="tit tit-2" data-i18n="casa-semilla.002">Un lugar para quedarse y seguir aprendiendo</h2>
       </div>
-      <p class="entrada">Un módulo de madera y bambú sobre cimentación de concreto, pensado para que niñas, niños y jóvenes de comunidades alejadas puedan <strong>dormir, alimentarse, estudiar y compartir</strong> en un espacio <strong>seguro</strong>. Su espacio flexible al centro la hace también un lugar para seguir aprendiendo.</p>
+      <p class="entrada" data-i18n="casa-semilla.003">Un módulo de madera y bambú sobre cimentación de concreto, pensado para que niñas, niños y jóvenes de comunidades alejadas puedan <strong>dormir, alimentarse, estudiar y compartir</strong> en un espacio <strong>seguro</strong>. Su espacio flexible al centro la hace también un lugar para seguir aprendiendo.</p>
     </div>
 
     <div class="par">
       <figure class="ahora">
-        <img src="assets/img/residencia-hoy-680.webp" srcset="assets/img/residencia-hoy-680.webp 680w, assets/img/residencia-hoy-1200.webp 1200w" sizes="(min-width:900px) 550px, 46vw" alt="Interior del alojamiento actual: camas bajo un techo de calamina, paredes de caña, piso de tierra y ropa tendida" loading="lazy" width="680" height="425">
-        <span class="etq">Hoy</span>
-        <figcaption>Donde duermen hoy: caña, calamina y piso de tierra, sin cocina ni servicios.</figcaption>
+        <img src="assets/img/residencia-hoy-680.webp" srcset="assets/img/residencia-hoy-680.webp 680w, assets/img/residencia-hoy-1200.webp 1200w" sizes="(min-width:900px) 550px, 46vw" alt="Interior del alojamiento actual: camas bajo un techo de calamina, paredes de caña, piso de tierra y ropa tendida" loading="lazy" width="680" height="425" data-i18n-alt="casa-semilla.017.alt">
+        <span class="etq" data-i18n="casa-semilla.004">Hoy</span>
+        <figcaption data-i18n="casa-semilla.005">Donde duermen hoy: caña, calamina y piso de tierra, sin cocina ni servicios.</figcaption>
       </figure>
       <figure class="luego">
-        <img src="assets/img/casa-semilla-render-680.webp" srcset="assets/img/casa-semilla-render-680.webp 680w, assets/img/casa-semilla-render-936.webp 936w" sizes="(min-width:900px) 550px, 46vw" alt="Render de Casa Semilla Awajún: volumen de madera y bambú con celosías, techo de calamina y alero de palma" loading="lazy" width="680" height="425">
-        <span class="etq">Lo que construimos juntos</span>
-        <figcaption>Casa Semilla Awajún: ventilación cruzada, camas protegidas y un espacio común al centro.</figcaption>
+        <img src="assets/img/casa-semilla-render-680.webp" srcset="assets/img/casa-semilla-render-680.webp 680w, assets/img/casa-semilla-render-936.webp 936w" sizes="(min-width:900px) 550px, 46vw" alt="Render de Casa Semilla Awajún: volumen de madera y bambú con celosías, techo de calamina y alero de palma" loading="lazy" width="680" height="425" data-i18n-alt="casa-semilla.018.alt">
+        <span class="etq" data-i18n="casa-semilla.006">Lo que construimos juntos</span>
+        <figcaption data-i18n="casa-semilla.007">Casa Semilla Awajún: ventilación cruzada, camas protegidas y un espacio común al centro.</figcaption>
       </figure>
     </div>
 
     <div class="specs">
-      <div class="spec"><p class="n">120 m²</p><p>área a construir</p></div>
-      <div class="spec"><p class="n">28</p><p>camas</p></div>
-      <div class="spec"><p class="n">1</p><p>cocina</p></div>
-      <div class="spec"><p class="n">1</p><p>baño</p></div>
+      <div class="spec"><p class="n" data-i18n="casa-semilla.008">120 m²</p><p data-i18n="casa-semilla.009">área a construir</p></div>
+      <div class="spec"><p class="n">28</p><p data-i18n="casa-semilla.010">camas</p></div>
+      <div class="spec"><p class="n">1</p><p data-i18n="casa-semilla.011">cocina</p></div>
+      <div class="spec"><p class="n">1</p><p data-i18n="casa-semilla.012">baño</p></div>
     </div>
 
     <div class="aporta-2">
       <div class="aporta comunidad">
-        <h3>Lo que ya puso la comunidad</h3>
-        <ul class="lista">
-          <li>Madera recolectada y curada</li>
-          <li>Bolsas de cemento</li>
-          <li>Herramientas de construcción</li>
-          <li>Las faenas organizadas y la mano de obra</li>
-        </ul>
+        <p data-i18n="casa-semilla.013"><strong>La comunidad.</strong> Wawaín decidió en asamblea construir la residencia y no esperó a tener todo resuelto. Las familias escogieron la madera, la curaron en una poza que armaron junto a la escuela, juntaron cemento y herramientas y organizaron las faenas. La obra es suya desde el primer día.</p>
       </div>
       <div class="aporta campana">
-        <h3>Lo que suma la campaña</h3>
-        <ul class="lista">
-          <li>Fijaciones y conectores estructurales</li>
-          <li>Herramientas de corte</li>
-          <li>Preservantes, mallas y cerramientos</li>
-          <li>Instalación sanitaria y eléctrica</li>
-        </ul>
-        <a class="enlace" href="#meta">Ver la meta y en qué se convierte</a>
+        <p data-i18n="casa-semilla.014"><strong>La campaña.</strong> Lo que suma la campaña es lo que el monte no da: uniones y conectores para que la estructura dure, herramientas de corte, preservantes, mallas para cerrar los ambientes y, al final, agua y luz. Cada sol se convierte en un material concreto y queda registrado con su comprobante.</p>
+        <a class="enlace" href="#meta" data-i18n="casa-semilla.015">Ver la meta y en qué se convierte</a>
       </div>
     </div>
+    <p class="acompanamos" data-i18n="casa-semilla.016"><strong>Nosotros acompañamos.</strong> Paisajes Educativos y Manifiesto Lab aportan asistencia técnica en uniones, sistema constructivo y diseño.</p>
   </div>
 
   <!-- Bitácora de obra -->
   <div class="bloque" id="bitacora">
     <div class="cab-bloque">
-      <h2 class="tit">Así avanza Wawaín</h2>
-      <p class="entrada">La comunidad ya prepara la madera. Estas son las tres etapas del trabajo que está en curso ahora mismo, antes de que llegue el material de la campaña.</p>
+      <h2 class="tit" data-i18n="bitacora.001">Así avanza Wawaín</h2>
+      <p class="entrada" data-i18n="bitacora.002">Del terreno a la estructura: la obra avanza hito por hito, desde la poza de curado hasta el armado de la estructura. Toca una foto para verla en grande.</p>
     </div>
-    <div class="carrusel bitacora" tabindex="0" aria-label="Avance de obra en Wawaín">
-      <figure>
-        <img src="assets/img/obra-1-poza.webp" alt="Poza de curado armada con estructura de caña y plástico, junto a la escuela de la comunidad" loading="lazy" width="420" height="315">
-        <figcaption><b>Se arma la poza</b>Estructura de caña y geomembrana, levantada en faena junto a la escuela.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/obra-2-faena.webp" alt="Comuneros acomodan listones de madera dentro de la poza de tratamiento" loading="lazy" width="420" height="315">
-        <figcaption><b>La faena acomoda la madera</b>Los listones recolectados por la comunidad entran a la poza, pieza por pieza.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/obra-3-curado.webp" alt="Madera sumergida en la solución de preservante dentro de la poza" loading="lazy" width="420" height="315">
-        <figcaption><b>La madera se cura</b>Sumergida en preservante, queda protegida contra hongos e insectos.</figcaption>
-      </figure>
+    <div class="galeria" id="galeria" role="list" aria-label="Fotos del avance de obra" data-i18n-aria="bitacora.016.aria">
+      <button type="button" class="miniatura" data-hito="poza" data-mes="2026-09" data-full="assets/img/galeria/g-01-1600.webp"><img src="assets/img/galeria/g-01-640.webp" alt="Poza de curado armada con estructura de caña y plástico, junto a la escuela de la comunidad" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.017.alt"><span class="mt" data-i18n="bitacora.003">Poza de curado</span></button>
+      <button type="button" class="miniatura" data-hito="poza" data-mes="2026-09" data-full="assets/img/galeria/g-02-1600.webp"><img src="assets/img/galeria/g-02-640.webp" alt="Madera sumergida en la solución de preservante dentro de la poza" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.018.alt"><span class="mt" data-i18n="bitacora.003">Poza de curado</span></button>
+      <button type="button" class="miniatura" data-hito="cimentacion" data-mes="2026-10" data-full="assets/img/galeria/g-03-1600.webp"><img src="assets/img/galeria/g-03-640.webp" alt="Comuneros y voluntarios trazan y despejan el terreno donde irá la cimentación" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.019.alt"><span class="mt" data-i18n="bitacora.005">Cimentación</span></button>
+      <button type="button" class="miniatura" data-hito="cimentacion" data-mes="2026-10" data-full="assets/img/galeria/g-04-1600.webp"><img src="assets/img/galeria/g-04-640.webp" alt="Familias de Wawaín excavan la zanja de la cimentación" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.020.alt"><span class="mt" data-i18n="bitacora.005">Cimentación</span></button>
+      <button type="button" class="miniatura" data-hito="cimentacion" data-mes="2026-10" data-full="assets/img/galeria/g-05-1600.webp"><img src="assets/img/galeria/g-05-640.webp" alt="Mezcla de concreto para la cimentación, trabajada a mano por la comunidad" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.021.alt"><span class="mt" data-i18n="bitacora.005">Cimentación</span></button>
+      <button type="button" class="miniatura" data-hito="laboratorio" data-mes="2026-10" data-full="assets/img/galeria/g-06-1600.webp"><img src="assets/img/galeria/g-06-640.webp" alt="Corte y doblado de fierro de construcción junto al campamento de obra" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.022.alt"><span class="mt" data-i18n="bitacora.008">Laboratorio constructivo</span></button>
+      <button type="button" class="miniatura" data-hito="laboratorio" data-mes="2026-10" data-full="assets/img/galeria/g-07-1600.webp"><img src="assets/img/galeria/g-07-640.webp" alt="El equipo técnico explica la maqueta de la estructura a los comuneros" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.023.alt"><span class="mt" data-i18n="bitacora.008">Laboratorio constructivo</span></button>
+      <button type="button" class="miniatura" data-hito="laboratorio" data-mes="2026-10" data-full="assets/img/galeria/g-08-1600.webp"><img src="assets/img/galeria/g-08-640.webp" alt="Asamblea al aire libre: se presenta la maqueta de la casa a la comunidad" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.024.alt"><span class="mt" data-i18n="bitacora.008">Laboratorio constructivo</span></button>
+      <button type="button" class="miniatura" data-hito="estructura" data-mes="2026-10" data-full="assets/img/galeria/g-09-1600.webp"><img src="assets/img/galeria/g-09-640.webp" alt="Parantes de la estructura en pie sobre la cimentación, con comuneros trabajando al pie" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.025.alt"><span class="mt" data-i18n="bitacora.011">Armado de la estructura</span></button>
+      <button type="button" class="miniatura" data-hito="estructura" data-mes="2026-10" data-full="assets/img/galeria/g-10-1600.webp"><img src="assets/img/galeria/g-10-640.webp" alt="Vigas de madera listas para el armado, sobre la cimentación" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.026.alt"><span class="mt" data-i18n="bitacora.011">Armado de la estructura</span></button>
+      <button type="button" class="miniatura" data-hito="estructura" data-mes="2026-10" data-full="assets/img/galeria/g-11-1600.webp"><img src="assets/img/galeria/g-11-640.webp" alt="Un comunero ensambla una viga de la estructura desde un andamio" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.027.alt"><span class="mt" data-i18n="bitacora.011">Armado de la estructura</span></button>
+      <button type="button" class="miniatura" data-hito="estructura" data-mes="2026-10" data-full="assets/img/galeria/g-12-1600.webp"><img src="assets/img/galeria/g-12-640.webp" alt="Comuneros fijan una viga con escaleras de bambú" loading="lazy" decoding="async" width="640" height="480" data-i18n-alt="bitacora.028.alt"><span class="mt" data-i18n="bitacora.011">Armado de la estructura</span></button>
     </div>
-    <p class="desliza">Desliza para ver las tres etapas.</p>
+    <!-- aquí se agrega el hito «Techado» cuando empiece -->
+    <p class="galeria-pie"><a class="enlace" href="#transparencia" data-abrir-panel data-i18n="bitacora.015">Ver en qué se usaron los aportes</a></p>
   </div>
 
   <!-- Qué es -->
   <div class="bloque" id="que-es">
     <div class="cab-bloque">
-      <h2 class="tit">Una apuesta por acortar brechas y mejorar la seguridad de nuestros niños en la Amazonía</h2>
-      <p class="entrada"><strong>En Wawaín, la comunidad awajún del distrito de Imaza decidió no esperar. Decidió construir.</strong> Se organizó, reunió madera, cemento y herramientas, y comenzó las faenas para levantar una residencia para los estudiantes que viven lejos de la escuela. <strong>Ahora necesitamos poner lo que falta:</strong> el material técnico que el territorio no puede proveer.</p>
+      <h2 class="tit" data-i18n="que-es.001">Una apuesta por acortar brechas y mejorar la seguridad de nuestros niños en la Amazonía</h2>
+      <p class="entrada" data-i18n="que-es.002"><strong>En Wawaín, la comunidad awajún del distrito de Imaza decidió no esperar. Decidió construir.</strong> Se organizó, reunió madera, cemento y herramientas, y comenzó las faenas para levantar una residencia para los estudiantes que viven lejos de la escuela. <strong>Ahora necesitamos poner lo que falta:</strong> el material técnico que el territorio no puede proveer.</p>
     </div>
-
-    <div class="carrusel trio">
-      <article class="pieza">
-        <img src="assets/img/trio-comunidad.webp" alt="Comuneros trasladan listones de madera hacia la poza de curado en Wawaín" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>La comunidad construye</h3><p>La mano de obra es comunitaria y de voluntarios. <strong>La obra es de la comunidad</strong> desde el inicio y también al terminar.</p></div>
-      </article>
-      <article class="pieza">
-        <img src="assets/img/trio-acompanamos-420.webp" srcset="assets/img/trio-acompanamos-420.webp 420w, assets/img/trio-acompanamos-720.webp 720w" sizes="(min-width:900px) 360px, 78vw" alt="Equipo de voluntarios sobre una estructura de bambú en medio del bosque" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>Nosotros acompañamos</h3><p>Paisajes Educativos y Manifiesto Lab aportan <strong>acompañamiento técnico</strong>: mejores uniones, sistemas constructivos y diseño.</p></div>
-      </article>
-      <article class="pieza">
-        <img src="assets/img/trio-campana.webp" alt="Madera sumergida en la poza de tratamiento con preservantes" loading="lazy" width="420" height="315">
-        <div class="pieza-txt"><h3>La campaña compra</h3><p>Reúne lo técnico que falta: fijaciones, herramientas de corte, preservantes y sanitarios. <strong>Entre todos podemos completarla.</strong></p></div>
-      </article>
-    </div>
-    <p class="desliza">Desliza para ver las tres piezas.</p>
 
     <details class="mas">
-      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">cómo llegamos hasta Wawaín</span></summary>
+      <summary><span class="abrir" data-i18n="que-es.003">Conoce más</span><span class="cerrar" data-i18n="que-es.004">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista" data-i18n="que-es.005">cómo llegamos hasta Wawaín</span></summary>
       <div class="mas-cuerpo">
-        <p>El proyecto no empieza con un plano: empieza con dos años de trabajo en el territorio y con lo que la propia comunidad puso sobre la mesa.</p>
+        <p data-i18n="que-es.006">El proyecto no empieza con un plano: empieza con dos años de trabajo en el territorio y con lo que la propia comunidad puso sobre la mesa.</p>
         <ol class="ruta">
-          <li><p class="cuando">El vínculo</p><h4>Enseña Perú</h4><p>La red de docentes de Enseña Perú en Imaza abre la puerta a las escuelas de la zona y al contacto con Wawaín.</p></li>
-          <li><p class="cuando">24 nov 2025</p><h4>Taller docente</h4><p>60 profesores de la zona trabajan sobre infraestructura educativa y prioridades de sus escuelas.</p></li>
-          <li><p class="cuando">2025–2026</p><h4>Talleres con la comunidad</h4><p>Madres e infancias en Umukai y estudiantes de secundaria en Chiriaco definen qué necesita la residencia.</p></li>
-          <li><p class="cuando">Feb 2026</p><h4>Aula Viva Awajún</h4><p>El workshop que traduce todo lo anterior en el diseño de Casa Semilla y en el sistema constructivo.</p></li>
+          <li><p class="cuando" data-i18n="que-es.007">El vínculo</p><h4 data-i18n="que-es.008">Enseña Perú</h4><p data-i18n="que-es.009">La red de docentes de Enseña Perú en Imaza abre la puerta a las escuelas de la zona y al contacto con Wawaín.</p></li>
+          <li><p class="cuando" data-i18n="que-es.010">24 nov 2025</p><h4 data-i18n="que-es.011">Taller docente</h4><p data-i18n="que-es.012">60 profesores de la zona trabajan sobre infraestructura educativa y prioridades de sus escuelas.</p></li>
+          <li><p class="cuando">2025–2026</p><h4 data-i18n="que-es.013">Talleres con la comunidad</h4><p data-i18n="que-es.014">Madres e infancias en Umukai y estudiantes de secundaria en Chiriaco definen qué necesita la residencia.</p></li>
+          <li><p class="cuando" data-i18n="que-es.015">Feb 2026</p><h4 data-i18n="que-es.016">Aula Viva Awajún</h4><p data-i18n="que-es.017">El workshop que traduce todo lo anterior en el diseño de Casa Semilla y en el sistema constructivo.</p></li>
+          <li class="nuevo"><p class="cuando" data-i18n="que-es.018">12–16 oct 2026</p><h4 data-i18n="que-es.019">Jornada de construcción</h4><p data-i18n="que-es.020">Nueve voluntarios y la comunidad levantaron la estructura de la casa.</p><button type="button" class="btn btn-linea btn-sm" data-abrir-galeria="estructura" data-i18n="que-es.021">Ver fotos y resultados</button></li>
         </ol>
       </div>
     </details>
@@ -952,38 +1021,39 @@ body.panel-abierto{overflow:hidden}
 
   <!-- El problema -->
   <div class="bloque" id="problema">
-    <h2 class="tit">Largas distancias y situaciones de vulnerabilidad</h2>
+    <h2 class="tit" data-i18n="problema.001">Largas distancias y situaciones de vulnerabilidad</h2>
     <div class="problema">
       <figure>
-        <img src="assets/img/problema-camino.webp" alt="Un grupo de escolares con mochilas cruza a pie un río poco profundo camino a la escuela" loading="lazy" width="410" height="274">
-        <figcaption>Llegar a clase puede significar cruzar el río.</figcaption>
+        <img src="assets/img/problema-camino.webp" alt="Un grupo de escolares con mochilas cruza a pie un río poco profundo camino a la escuela" loading="lazy" width="410" height="274" data-i18n-alt="problema.026.alt">
+        <figcaption data-i18n="problema.002">Llegar a clase puede significar cruzar el río.</figcaption>
       </figure>
       <div class="txt">
-        <p class="lema-dist">La distancia no debería ser una barrera para seguir aprendiendo.</p>
-        <p>¿Sabías que hay estudiantes que cruzan un río para llegar a la escuela? Para ellos, estudiar implica recorrer grandes distancias, atravesar caminos que no siempre son fáciles y, muchas veces, permanecer lejos de casa. <strong>Lo hacen porque quieren seguir aprendiendo.</strong></p>
-        <p>Hoy, muchos deben quedarse en espacios que no cuentan con las condiciones necesarias para dormir, alimentarse, asearse y estudiar. <strong>En Wawaín, la residencia busca cambiar esa realidad.</strong></p>
-        <p class="rotulo-datos">Wawaín, en cifras</p>
+        <p class="lema-dist" data-i18n="problema.003">La distancia no debería ser una barrera para seguir aprendiendo.</p>
+        <p data-i18n="problema.004">¿Sabías que hay estudiantes que cruzan un río para llegar a la escuela? Para ellos, estudiar implica recorrer grandes distancias, atravesar caminos que no siempre son fáciles y, muchas veces, permanecer lejos de casa. <strong>Lo hacen porque quieren seguir aprendiendo.</strong></p>
+        <p data-i18n="problema.005">Hoy, muchos deben quedarse en espacios que no cuentan con las condiciones necesarias para dormir, alimentarse, asearse y estudiar. <strong>En Wawaín, la residencia busca cambiar esa realidad.</strong></p>
+        <p data-i18n="problema.006">La escuela tiene <strong>más estudiantes que habitantes la comunidad</strong>: muchos llegan de otras comunidades, en bote por el Chiriaco y caminando.</p>
+        <p class="rotulo-datos" data-i18n="problema.007">Wawaín, en cifras</p>
         <ul class="cifras-fila">
-          <li><b>294</b><span>habitantes</span></li>
-          <li><b>334</b><span>estudiantes matriculados</span></li>
-          <li><b>3</b><span>escuelas</span></li>
-          <li><b>1 hora</b><span>de caminata, los más lejanos</span></li>
-          <li><b>En bote</b><span>por el río Chiriaco</span></li>
+          <li><b>294</b><span data-i18n="problema.008">habitantes</span></li>
+          <li><b>334</b><span data-i18n="problema.009">estudiantes matriculados</span></li>
+          <li><b>3</b><span data-i18n="problema.010">escuelas</span></li>
+          <li><b data-i18n="problema.011">1 hora</b><span data-i18n="problema.012">de caminata, los más lejanos</span></li>
+          <li><b data-i18n="problema.013">En bote</b><span data-i18n="problema.014">por el río Chiriaco</span></li>
         </ul>
       </div>
     </div>
 
     <details class="mas">
-      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">lo que pasa en la escuela rural del país</span></summary>
+      <summary><span class="abrir" data-i18n="que-es.003">Conoce más</span><span class="cerrar" data-i18n="que-es.004">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista" data-i18n="problema.017">lo que pasa en la escuela rural del país</span></summary>
       <div class="mas-cuerpo">
-        <p class="rotulo-datos">Lo que pasa en la escuela rural del país</p>
+        <p class="rotulo-datos" data-i18n="problema.018">Lo que pasa en la escuela rural del país</p>
         <div class="datos">
-          <div class="dato"><p class="n">1 de cada 5</p><p>estudiantes rurales logra aprendizajes satisfactorios. En las zonas más alejadas, 1 de cada 10.</p></div>
-          <div class="dato"><p class="n">62.2 %</p><p>de las deficiencias de infraestructura educativa se concentra en escuelas rurales.</p></div>
-          <div class="dato"><p class="n">16,917</p><p>escuelas unidocentes hay en el Perú.</p></div>
-          <div class="dato"><p class="n">Solo 7 %</p><p>de los locales educativos del país tiene cerrada su brecha de infraestructura.</p></div>
+          <div class="dato"><p class="n" data-i18n="problema.019">1 de cada 5</p><p data-i18n="problema.020">estudiantes rurales logra aprendizajes satisfactorios. En las zonas más alejadas, 1 de cada 10.</p></div>
+          <div class="dato"><p class="n">62.6 %</p><p data-i18n="problema.021">de las deficiencias de infraestructura educativa se concentra en escuelas rurales.</p></div>
+          <div class="dato"><p class="n">16,917</p><p data-i18n="problema.022">escuelas unidocentes hay en el Perú.</p></div>
+          <div class="dato"><p class="n" data-i18n="problema.023">Solo 7 %</p><p data-i18n="problema.024">de los locales educativos del país tiene cerrada su brecha de infraestructura.</p></div>
         </div>
-        <p class="nota-fuente">MINEDU (2023, 2024) · ComexPerú (2025) · PRONIED–UGM, «Innovación educativa en Frontera» (2026) · Memoria del proyecto.</p>
+        <p class="nota-fuente" data-i18n="problema.025">MINEDU (2023, 2024) · ComexPerú, análisis de datos de Minedu (dic. 2024) · PRONIED–UGM, «Innovación educativa en Frontera» (2026) · Memoria del proyecto.</p>
       </div>
     </details>
   </div>
@@ -991,45 +1061,37 @@ body.panel-abierto{overflow:hidden}
   <!-- Cronograma -->
   <div class="bloque" id="cronograma">
     <div class="cab-bloque">
-      <h2 class="tit">La campaña y la obra avanzan en paralelo</h2>
-      <p class="entrada">La recaudación no se detiene cuando empieza la construcción. La obra avanza por etapas: cada aporte que llega se destina a la etapa siguiente, y la campaña se mantiene abierta durante octubre.</p>
+      <h2 class="tit" data-i18n="cronograma.001">La campaña y la obra avanzan en paralelo</h2>
+      <p class="entrada" data-i18n="cronograma.002">La recaudación no se detiene cuando empieza la construcción. La obra avanza por etapas: cada aporte que llega se destina a la etapa siguiente, y la campaña sigue abierta hasta completar la casa.</p>
     </div>
-    <ol class="hitos" aria-label="Cronograma de la campaña y la obra">
-      <li class="hito"><p class="f">27 set</p><p class="q">Lanzamiento</p><p>Se abre la campaña y empieza la recaudación.</p></li>
-      <li class="hito obra"><p class="f">1–10 oct</p><p class="q">Excavación</p><p>Excavación de la cimentación.</p></li>
-      <li class="hito obra"><p class="f">12–17 oct</p><p class="q">Lab de construcción</p><p>El equipo técnico trabaja junto a la comunidad en obra.</p></li>
-      <li class="hito obra"><p class="f">18–31 oct</p><p class="q">Construcción comunitaria</p><p>La comunidad continúa la obra. La campaña sigue abierta.</p></li>
+    <ol class="hitos" aria-label="Cronograma de la campaña y la obra" data-i18n-aria="cronograma.014.aria">
+      <li class="hito hecho"><p class="est"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="cronograma.003">Hecho</span></p><p class="f" data-i18n="cronograma.004">Set–oct 2026</p><p class="q" data-i18n="cronograma.005">Lanzamiento y primera obra</p><p data-i18n="cronograma.006">Se lanzó la campaña. Cimentación, laboratorio de construcción y estructura, levantados junto a la comunidad.</p></li>
+      <li class="hito enproceso"><p class="est" data-i18n="cronograma.007">● En proceso</p><p class="f" data-i18n="cronograma.008">Nov–dic 2026</p><p class="q" data-i18n="cronograma.009">Segunda etapa</p><p data-i18n="cronograma.010">Techado y cerramientos. La recaudación continúa.</p></li>
+      <li class="hito futuro"><p class="est" data-i18n="cronograma.011">○ Meta</p><p class="f">2027</p><p class="q" data-i18n="cronograma.012">Casa Semilla Awajún lista</p><p data-i18n="cronograma.013">Agua, luz y acabados. Cierre de la obra e inauguración de Casa Semilla Awajún.</p></li>
     </ol>
-    <ol class="hitos-leyenda" aria-hidden="true">
-      <li><b>1</b><span><strong>Lanzamiento:</strong> se abre la campaña</span></li>
-      <li class="obra"><b>2</b><span><strong>Excavación</strong> de la cimentación</span></li>
-      <li class="obra"><b>3</b><span><strong>Lab de construcción</strong> con el equipo técnico</span></li>
-      <li class="obra"><b>4</b><span><strong>Construcción comunitaria;</strong> la campaña sigue abierta</span></li>
-    </ol>
-    <p class="leyenda" aria-hidden="true"><span><i style="background:var(--marca)"></i>Campaña</span><span><i style="background:var(--lima)"></i>Obra</span></p>
   </div>
 
   <!-- Las dos fases -->
   <div class="bloque" id="fases">
     <div class="cab-bloque">
-      <h2 class="tit">Un mismo proceso en dos etapas</h2>
-      <p class="entrada">Wawaín y San Rafael no compiten por el mismo dinero. Wawaín está en obra ahora; San Rafael arranca con el excedente de esta fase y con lo aprendido en ella.</p>
+      <h2 class="tit" data-i18n="fases.001">Un mismo proceso en dos etapas</h2>
+      <p class="entrada" data-i18n="fases.002">Wawaín y San Rafael no compiten por el mismo dinero. Wawaín está en obra ahora; San Rafael arranca con el excedente de esta fase y con lo aprendido en ella.</p>
     </div>
     <ol class="secuencia">
-      <li class="ahora"><span class="bolita" aria-hidden="true">1</span><div><p class="cuando">Fase 1 · en obra</p><h3>Wawaín</h3><p>Casa Semilla Awajún, residencia estudiantil. 120 m², 28 camas. Es la fase que esta campaña financia.</p></div></li>
-      <li class="abre" id="fase-sanrafael"><span class="bolita" aria-hidden="true">2</span><div><p class="cuando">Fase 2 · después</p><h3><button type="button" class="abre-btn" aria-controls="det-sanrafael" aria-expanded="false">San Rafael</button></h3><p>Semillero de aprendizaje. 25 m², 60 beneficiarios. Empieza con el excedente de la fase 1.</p><span class="ver-fase" aria-hidden="true">Ver el proyecto</span></div></li>
-      <li><span class="bolita" aria-hidden="true">3</span><div><p class="cuando">Más adelante</p><h3>El modelo</h3><p>Las dos obras dejan un antecedente documentado y transferible a otras comunidades amazónicas.</p></div></li>
+      <li class="ahora"><span class="bolita" aria-hidden="true">1</span><div><p class="cuando" data-i18n="fases.003">Fase 1 · en obra</p><h3>Wawaín</h3><p data-i18n="fases.004">Casa Semilla Awajún, residencia estudiantil. 120 m², 28 camas. Es la fase que esta campaña financia.</p></div></li>
+      <li class="abre" id="fase-sanrafael"><span class="bolita" aria-hidden="true">2</span><div><p class="cuando" data-i18n="fases.005">Fase 2 · después</p><h3><button type="button" class="abre-btn" aria-controls="det-sanrafael" aria-expanded="false">San Rafael</button></h3><p data-i18n="fases.006">Semillero de aprendizaje. 25 m², 60 beneficiarios. Empieza con el excedente de la fase 1.</p><span class="ver-fase" aria-hidden="true" data-i18n="fases.007">Ver el proyecto</span></div></li>
+      <li><span class="bolita" aria-hidden="true">3</span><div><p class="cuando" data-i18n="fases.008">Más adelante</p><h3 data-i18n="fases.009">El modelo</h3><p data-i18n="fases.010">Las dos obras dejan un antecedente documentado y transferible a otras comunidades amazónicas.</p></div></li>
     </ol>
     <details class="mas" id="det-sanrafael">
-      <summary><span class="abrir">Conoce más</span><span class="cerrar">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista">el proyecto de San Rafael, ya diseñado</span></summary>
+      <summary><span class="abrir" data-i18n="que-es.003">Conoce más</span><span class="cerrar" data-i18n="que-es.004">Ver menos</span><span class="flecha" aria-hidden="true"></span><span class="pista" data-i18n="fases.013">el proyecto de San Rafael, ya diseñado</span></summary>
       <div class="mas-cuerpo">
         <div class="sanrafael">
-          <img src="assets/img/san-rafael-render.webp" alt="Render del semillero de San Rafael: aula abierta en bambú con techo de palma y cerramientos verdes" loading="lazy" width="597" height="356">
+          <img src="assets/img/san-rafael-render.webp" alt="Render del semillero de San Rafael: aula abierta en bambú con techo de palma y cerramientos verdes" loading="lazy" width="597" height="356" data-i18n-alt="fases.021.alt">
           <div>
-            <h3 class="sub">Una biblioteca y un aula abierta</h3>
-            <p style="margin-top:6px">Construida en bambú Guadua con techo de palma yarina. Son aulas modulares que se adaptan a las actividades de la comunidad, donde los libros dialogan con los saberes awajún.</p>
-            <div class="mini-specs"><div><b>25 m²</b><span>área a construir</span></div><div><b>60</b><span>beneficiarios</span></div><div><b>S/ 15,000</b><span>meta de la fase 2</span></div></div>
-            <p style="margin:0"><strong>Comunidad:</strong> ≈ 700 habitantes, 3 escuelas, 255 estudiantes. <strong>Acceso:</strong> Chiriaco y río Marañón. El proyecto ya está diseñado: arranca cuando se cierre la meta de Wawaín.</p>
+            <h3 class="sub" data-i18n="fases.014">Una biblioteca y un aula abierta</h3>
+            <p style="margin-top:6px" data-i18n="fases.015">Construida en bambú Guadua con techo de palma yarina. Son aulas modulares que se adaptan a las actividades de la comunidad, donde los libros dialogan con los saberes awajún.</p>
+            <div class="mini-specs"><div><b data-i18n="fases.016">25 m²</b><span data-i18n="casa-semilla.009">área a construir</span></div><div><b>60</b><span data-i18n="fases.018">beneficiarios</span></div><div><b>S/ 15,000</b><span data-i18n="fases.019">meta de la fase 2</span></div></div>
+            <p style="margin:0" data-i18n="fases.020"><strong>Comunidad:</strong> ≈ 700 habitantes, 3 escuelas, 255 estudiantes. <strong>Acceso:</strong> Chiriaco y río Marañón. El proyecto ya está diseñado: arranca cuando se cierre la meta de Wawaín.</p>
           </div>
         </div>
       </div>
@@ -1039,37 +1101,50 @@ body.panel-abierto{overflow:hidden}
 
 <!-- ══════════════════ SÚMATE ══════════════════ -->
 <section class="seccion wrap" id="participa" aria-labelledby="h-participa">
-  <div class="cabeza-seccion"><h2 id="h-participa">Súmate</h2><span class="raya" aria-hidden="true"></span></div>
+  <div class="cabeza-seccion"><h2 id="h-participa" data-i18n="cabecera.002">Súmate</h2><span class="raya" aria-hidden="true"></span></div>
 
   <!-- La meta -->
   <div class="bloque meta" id="meta">
     <div class="meta-grid">
       <div>
-        <h2 class="tit">Qué significa esta meta</h2>
-        <p class="entrada">No es una cifra abstracta. Es la suma de los materiales, instalaciones, transporte y recursos que faltan para completar esta etapa de la residencia.</p>
+        <h2 class="tit" data-i18n="meta.001">Qué significa esta meta</h2>
+        <p class="entrada" data-i18n="meta.002">No es una cifra abstracta. Es la suma de los materiales, instalaciones, transporte y recursos que faltan para completar esta etapa de la residencia.</p>
         <div class="meta-cifras">
-          <p class="reunido"><span data-campo="reunido">S/ 1,024</span><small data-campo="pct-meta">6.5 % de la meta</small></p>
-          <p class="total">Meta Wawaín<b data-campo="meta">S/ 15,770</b></p>
+          <p class="reunido"><span data-campo="total">S/ 2,175</span><small data-i18n="meta.003">reunidos en total · <span data-campo="pct-meta">13.8 %</span> de la meta</small></p>
+          <p class="total" data-i18n="meta.004">Meta general<b data-campo="meta">S/ 15,770</b></p>
         </div>
-        <div class="riel-g" role="img" data-aria-meta aria-label="Avance de la meta">
-          <i data-barra-meta style="width:6.5%"></i>
-          <span class="m" style="left:29.2%"></span><span class="m" style="left:47.6%"></span><span class="m" style="left:63.4%"></span>
+        <div class="etapas-meta">
+          <div class="eg eg1">
+            <p class="eg-fila"><b data-i18n="portada.010">Etapa 1 · S/ <span data-campo="e1-meta-n">4,600</span></b><span class="ok"><span data-i18n="portada.011">Cubierta</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></p>
+            <div class="riel-g hecha" aria-hidden="true"><i style="width:100%"></i></div>
+            <p class="eg-nota" data-i18n="portada.012">Con donaciones y el aporte de aliados.</p>
+          </div>
+          <div class="eg eg2">
+            <p class="eg-fila"><b data-i18n="portada.013">Etapa 2 · en curso</b><span data-i18n="meta.009"><span data-campo="e2-reunido">S/ 100</span> de <span data-campo="e2-meta">S/ 2,900</span></span></p>
+            <div class="riel-g" role="img" data-aria-e2 aria-label="Avance de la etapa 2" data-i18n-aria="portada.021.aria"><i data-barra-e2 style="width:3.4%"></i></div>
+          </div>
         </div>
-        <p class="siguiente-etapa"><span><b>Siguiente etapa: <span data-campo="sig-nombre">San Rafael</span></b></span><span data-campo="sig-monto">S/ 15,000</span></p>
+        <ol class="casa-crece" aria-label="La casa crece en cuatro pasos" data-i18n-aria="meta.029.aria">
+          <li class="logrado"><svg viewBox="0 0 48 36" aria-hidden="true"><path d="M10 31V15M24 31V8M38 31V15M10 15h28M6 31h36"/></svg><span data-i18n="meta.010">Uniones y herramientas</span></li>
+          <li class="aqui"><svg viewBox="0 0 48 36" aria-hidden="true"><path d="M7 16L24 7l17 9M10 16v15h28V16M17 16v15M24 16v15M31 16v15"/></svg><span data-i18n="meta.011">Mallas y cerramientos</span><em data-i18n="meta.012">Estamos aquí</em></li>
+          <li><svg viewBox="0 0 48 36" aria-hidden="true"><path d="M10 31V16l14-9 14 9v15zM24 18c-2.5 3-4 4.5-4 7a4 4 0 008 0c0-2.5-1.5-4-4-7z"/></svg><span data-i18n="meta.013">Agua</span></li>
+          <li><svg viewBox="0 0 48 36" aria-hidden="true"><path d="M10 31V16l14-9 14 9v15zM21 26h6M22 28.5h4M24 12v1.5M16 16l1 1M32 16l-1 1"/><circle cx="24" cy="21" r="4"/></svg><span data-i18n="meta.014">Luz</span></li>
+        </ol>
+        <p class="siguiente-etapa"><span><b data-i18n="portada.019">Siguiente fase: <span data-campo="sig-nombre">San Rafael</span></b></span><span data-campo="sig-monto">S/ 15,000</span></p>
         <div class="desglose">
-          <div><p class="n">S/ 12,370</p><p>Materiales y herramientas de la obra</p></div>
-          <div><p class="n">S/ 3,400</p><p>Transporte de materiales y viáticos</p></div>
+          <div><p class="n">S/ 12,370</p><p data-i18n="meta.016">Materiales y herramientas de la obra</p></div>
+          <div><p class="n">S/ 3,400</p><p data-i18n="meta.017">Transporte de materiales y viáticos</p></div>
         </div>
       </div>
       <div>
-        <p class="intro-esc"><strong>Cuatro etapas. Un mismo objetivo.</strong> Cada nivel permite avanzar una parte de la obra, y el primero es la prioridad: sin buenas uniones y sin herramientas de corte, la estructura no se levanta bien.</p>
+        <p class="intro-esc" data-i18n="meta.018"><strong>Cuatro etapas. Un mismo objetivo.</strong> Cada una permite avanzar una parte de la obra. La primera, con uniones y herramientas de corte, ya está cubierta; ahora sumamos para cerrar la casa.</p>
         <ol class="escalones" id="escalones">
-          <li class="esc" data-monto="4600"><p class="n"><small>Submeta 1 · prioridad</small>S/ 4,600</p><p><b>Hagamos posible la estructura.</b> Fijaciones y conectores estructurales, y herramientas de corte: lo que permite ensamblar bien.</p></li>
-          <li class="esc" data-monto="7500"><p class="n"><small>Submeta 2</small>S/ 7,500</p><p><b>Protejamos lo construido.</b> Lo anterior, más la preservación de la madera, las mallas y los cerramientos.</p></li>
-          <li class="esc" data-monto="10000"><p class="n"><small>Submeta 3</small>S/ 10,000</p><p><b>Hagámosla habitable.</b> Lo anterior, más la instalación sanitaria básica de la residencia.</p></li>
-          <li class="esc" data-monto="15770"><p class="n"><small>Meta general</small><span data-campo="meta">S/ 15,770</span></p><p><b>Completemos la residencia.</b> Lo anterior, más la instalación eléctrica, los acabados y los gastos operativos.</p></li>
+          <li class="esc" data-monto="4600"><p class="n"><small data-i18n="meta.019">Etapa 1 · prioridad</small>S/ 4,600</p><p data-i18n="meta.020"><b>Hagamos posible la estructura.</b> Fijaciones y conectores estructurales, y herramientas de corte: lo que permite ensamblar bien.</p></li>
+          <li class="esc" data-monto="7500"><p class="n"><small data-i18n="meta.021">Etapa 2</small>S/ 7,500</p><p data-i18n="meta.022"><b>Protejamos lo construido.</b> Lo anterior, más la preservación de la madera, las mallas y los cerramientos.</p></li>
+          <li class="esc" data-monto="10000"><p class="n"><small data-i18n="meta.023">Etapa 3</small>S/ 10,000</p><p data-i18n="meta.024"><b>Hagámosla habitable.</b> Lo anterior, más la instalación sanitaria básica de la residencia.</p></li>
+          <li class="esc" data-monto="15770"><p class="n"><small data-i18n="portada.018">Meta general</small><span data-campo="meta">S/ 15,770</span></p><p data-i18n="meta.026"><b>Completemos la residencia.</b> Lo anterior, más la instalación eléctrica, los acabados y los gastos operativos.</p></li>
         </ol>
-        <p class="pie-meta">Si al empezar la construcción la meta no está cubierta, se arranca con lo que haya y la campaña sigue sumando.</p>
+        <p class="pie-meta" data-i18n="meta.027">La obra avanza con lo que haya y la campaña sigue sumando.</p>
       </div>
     </div>
   </div>
@@ -1077,62 +1152,62 @@ body.panel-abierto{overflow:hidden}
   <!-- Cuatro maneras de sumarse -->
   <div class="bloque" id="como">
     <div class="cab-bloque">
-      <h2 class="tit">¿Cómo quieres sumarte?</h2>
-      <p class="entrada"><strong>Tu apoyo impulsa más que una construcción, impulsa oportunidades de educación.</strong></p>
+      <h2 class="tit" data-i18n="como.001">¿Cómo quieres sumarte?</h2>
+      <p class="entrada"><strong data-i18n="como.002">Tu apoyo impulsa más que una construcción, impulsa oportunidades de educación.</strong></p>
     </div>
 
-    <div class="vias" role="tablist" aria-label="Maneras de sumarse">
+    <div class="vias" role="tablist" aria-label="Maneras de sumarse" data-i18n-aria="como.109.aria">
       <button type="button" class="via-card" role="tab" id="t-personas" aria-controls="donar" aria-selected="true" tabindex="0">
-        <span class="eyebrow">Recursos</span>
-        <span class="nom"><span class="nom-largo">Donación de personas</span><span class="nom-corto">Personas</span></span>
-        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg>Haz tu aporte</span>
-        <span class="una">Un aporte libre, sin mínimo. Lo envías por un formulario.</span>
-        <span class="ver">Ver cómo</span>
+        <span class="eyebrow" data-i18n="como.003">Recursos</span>
+        <span class="nom"><span class="nom-largo" data-i18n="como.004">Donación de personas</span><span class="nom-corto" data-i18n="como.005">Personas</span></span>
+        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg><span data-i18n="como.006">Haz tu aporte</span></span>
+        <span class="una" data-i18n="como.007">Un aporte libre, sin mínimo. Lo envías por un formulario.</span>
+        <span class="ver" data-i18n="como.008">Ver cómo</span>
       </button>
       <button type="button" class="via-card" role="tab" id="t-empresas" aria-controls="empresas" aria-selected="false" tabindex="-1">
-        <span class="eyebrow">Recursos</span>
-        <span class="nom"><span class="nom-largo">Donación de empresas</span><span class="nom-corto">Empresas</span></span>
-        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-brote"/></svg>Construye con tu empresa</span>
-        <span class="una">Tres niveles de auspicio, en dinero o en materiales de la obra. <b>Con certificado de donación.</b></span>
-        <span class="ver">Ver cómo</span>
+        <span class="eyebrow" data-i18n="como.003">Recursos</span>
+        <span class="nom"><span class="nom-largo" data-i18n="como.010">Donación de empresas</span><span class="nom-corto" data-i18n="como.011">Empresas</span></span>
+        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-brote"/></svg><span data-i18n="como.012">Construye con tu empresa</span></span>
+        <span class="una" data-i18n="como.013">Tres niveles de auspicio, en dinero o en materiales de la obra. <b>Con certificado de donación.</b></span>
+        <span class="ver" data-i18n="como.008">Ver cómo</span>
       </button>
       <button type="button" class="via-card cap" role="tab" id="t-alianzas" aria-controls="alianzas" aria-selected="false" tabindex="-1">
-        <span class="eyebrow">Capacidades</span>
-        <span class="nom"><span class="nom-largo">Formemos alianzas</span><span class="nom-corto">Alianzas</span></span>
-        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-enlace"/></svg>Trabajemos juntos</span>
-        <span class="una">Organizaciones que asumen tareas concretas del proyecto.</span>
-        <span class="ver">Ver cómo</span>
+        <span class="eyebrow" data-i18n="como.015">Capacidades</span>
+        <span class="nom"><span class="nom-largo" data-i18n="como.016">Formemos alianzas</span><span class="nom-corto" data-i18n="como.017">Alianzas</span></span>
+        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-enlace"/></svg><span data-i18n="como.018">Trabajemos juntos</span></span>
+        <span class="una" data-i18n="como.019">Organizaciones que asumen tareas concretas del proyecto.</span>
+        <span class="ver" data-i18n="como.008">Ver cómo</span>
       </button>
       <button type="button" class="via-card cap" role="tab" id="t-rsc" aria-controls="rsc" aria-selected="false" tabindex="-1">
-        <span class="eyebrow">Capacidades</span>
-        <span class="nom"><span class="nom-largo">Responsabilidad social</span><span class="nom-corto">Resp. social</span></span>
-        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-equipo"/></svg>Involucra a tu equipo</span>
-        <span class="una">Empresas que involucran a su equipo más allá del aporte.</span>
-        <span class="ver">Ver cómo</span>
+        <span class="eyebrow" data-i18n="como.015">Capacidades</span>
+        <span class="nom"><span class="nom-largo" data-i18n="como.022">Responsabilidad social</span><span class="nom-corto" data-i18n="como.023">Resp. social</span></span>
+        <span class="gancho"><svg class="ic" aria-hidden="true"><use href="#i-equipo"/></svg><span data-i18n="como.024">Involucra a tu equipo</span></span>
+        <span class="una" data-i18n="como.025">Empresas que involucran a su equipo más allá del aporte.</span>
+        <span class="ver" data-i18n="como.008">Ver cómo</span>
       </button>
     </div>
 
     <!-- Panel 1 · personas -->
     <div class="panel-via" id="donar" role="tabpanel" aria-labelledby="t-personas">
-      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg>Haz tu aporte</h3>
-      <p class="lead">Invitación abierta: cualquier persona puede sumarse con el monto que pueda, sin mínimo. Es la vía más frecuente.</p>
+      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg><span data-i18n="como.006">Haz tu aporte</span></h3>
+      <p class="lead" data-i18n="como.028">Invitación abierta: cualquier persona puede sumarse con el monto que pueda, sin mínimo. Es la vía más frecuente.</p>
       <dl class="tripleta">
-        <div><dt>Tu aporte suma</dt><dd>Un aporte libre, sin mínimo, como donación a Paisajes Educativos.</dd></div>
-        <div><dt>Tu apoyo deja huella</dt><dd>Transparencia: sumamos cada aporte al avance de la campaña y mostramos en qué se convierte, con evidencia de obra.</dd></div>
-        <div><dt>¿Quieres sumarte?</dt><dd>Envías tu donación a través del formulario, con tus datos y la imagen de tu comprobante, o lo coordinas por WhatsApp.</dd></div>
+        <div><dt data-i18n="como.029">Tu aporte suma</dt><dd data-i18n="como.030">Un aporte libre, sin mínimo, como donación a Paisajes Educativos.</dd></div>
+        <div><dt data-i18n="como.031">Tu apoyo deja huella</dt><dd data-i18n="como.032">Transparencia: sumamos cada aporte al avance de la campaña y mostramos en qué se convierte, con evidencia de obra.</dd></div>
+        <div><dt data-i18n="como.033">¿Quieres sumarte?</dt><dd data-i18n="como.034">Envías tu donación a través del formulario, con tus datos y la imagen de tu comprobante, o lo coordinas por WhatsApp.</dd></div>
       </dl>
       <div class="panel-esp">
-        <p class="nota-datos"><b>¿Por qué te pedimos tus datos?</b> Paisajes Educativos solo puede recibir dinero bajo el concepto de donación. Por eso, antes de que dones necesitamos algunos datos tuyos: así dejamos constancia de cada aporte, lo sumamos al avance de la campaña y podemos rendir cuentas. Las donaciones de personas no generan comprobante tributario.</p>
+        <p class="nota-datos" data-i18n="como.035"><b>¿Por qué te pedimos tus datos?</b> Paisajes Educativos solo puede recibir dinero bajo el concepto de donación. Por eso, antes de que dones necesitamos algunos datos tuyos: así dejamos constancia de cada aporte, lo sumamos al avance de la campaña y podemos rendir cuentas. Las donaciones de personas no generan comprobante tributario.</p>
         <div class="vias-donar">
           <div class="via-don">
-            <h4>Envía tu donación por el formulario</h4>
-            <p>Puedes enviar tu donación a través de este formulario: deja tus datos y la imagen de tu comprobante. ¡Gracias por sembrar con nosotros!</p>
-            <div class="accion"><a class="btn btn-lima btn-sm" href="https://forms.gle/t7DSD425azM6dUjV9" target="_blank" rel="noopener">Enviar mi donación</a><span class="guino"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg>Tu aporte tiene un destino. Ayúdanos a hacerlo realidad.</span></div>
+            <h4 data-i18n="como.036">Envía tu donación por el formulario</h4>
+            <p data-i18n="como.037">Puedes enviar tu donación a través de este formulario: deja tus datos y la imagen de tu comprobante. ¡Gracias por sembrar con nosotros!</p>
+            <div class="accion"><a class="btn btn-lima btn-sm" href="https://forms.gle/t7DSD425azM6dUjV9" target="_blank" rel="noopener" data-i18n="como.038">Enviar mi donación</a><span class="guino"><svg class="ic" aria-hidden="true"><use href="#i-corazon"/></svg><span data-i18n="como.039">Tu aporte tiene un destino. Ayúdanos a hacerlo realidad.</span></span></div>
           </div>
           <div class="via-don">
-            <h4>Coordina por WhatsApp</h4>
-            <p>Escríbenos y coordinamos tu donación por chat, con el equipo de la campaña.</p>
-            <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Escribir por WhatsApp</a>
+            <h4 data-i18n="como.040">Coordina por WhatsApp</h4>
+            <p data-i18n="como.041">Escríbenos y coordinamos tu donación por chat, con el equipo de la campaña.</p>
+            <a class="btn btn-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20a%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener" data-wa="como.110.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.042">Escribir por WhatsApp</span></a>
           </div>
         </div>
       </div>
@@ -1140,97 +1215,97 @@ body.panel-abierto{overflow:hidden}
 
     <!-- Panel 2 · empresas -->
     <div class="panel-via" id="empresas" role="tabpanel" aria-labelledby="t-empresas" hidden>
-      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-brote"/></svg>Construye con tu empresa</h3>
-      <p class="lead">Para empresas que pueden auspiciar la obra, en dinero o en materiales del listado técnico. Cada nivel incluye todo lo del anterior y suma algo más.</p>
+      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-brote"/></svg><span data-i18n="como.012">Construye con tu empresa</span></h3>
+      <p class="lead" data-i18n="como.044">Para empresas que pueden auspiciar la obra, en dinero o en materiales del listado técnico. Cada nivel incluye todo lo del anterior y suma algo más.</p>
       <dl class="tripleta">
-        <div><dt>Tu empresa puede sumar</dt><dd>Un monto económico o materiales de construcción valorizados a precio de mercado.</dd></div>
-        <div><dt>Tu apoyo deja huella</dt><dd>Visibilidad y reporte de impacto según el nivel; certificado de donación deducible desde el nivel Bosque.</dd></div>
-        <div><dt>¿Quieres sumarte?</dt><dd>Eliges el nivel, lo conversamos por WhatsApp y formalizamos el aporte.</dd></div>
+        <div><dt data-i18n="como.045">Tu empresa puede sumar</dt><dd data-i18n="como.046">Un monto económico o materiales de construcción valorizados a precio de mercado.</dd></div>
+        <div><dt data-i18n="como.031">Tu apoyo deja huella</dt><dd data-i18n="como.048">Visibilidad y reporte de impacto según el nivel; certificado de donación deducible desde el nivel Bosque.</dd></div>
+        <div><dt data-i18n="como.033">¿Quieres sumarte?</dt><dd data-i18n="como.050">Eliges el nivel, lo conversamos por WhatsApp y formalizamos el aporte.</dd></div>
       </dl>
       <div class="panel-esp">
-        <div class="niveles" aria-label="Niveles de auspicio">
+        <div class="niveles" aria-label="Niveles de auspicio" data-i18n-aria="como.111.aria">
           <div class="nivel n1">
             <span class="nom"><svg class="ic" aria-hidden="true"><use href="#i-brote"/></svg>Semilla</span>
             <span class="precio">S/ 100</span>
-            <span class="lema">Empieza a sembrar.</span>
+            <span class="lema" data-i18n="como.051">Empieza a sembrar.</span>
             <ul class="ben">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención en la inauguración</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención en redes sociales</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Reporte de cierre con evidencia de obra</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.052">Mención en la inauguración</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.053">Mención en redes sociales</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.054">Reporte de cierre con evidencia de obra</span></li>
             </ul>
-            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Semilla%20%28S/%20100%29." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Auspiciar</a>
+            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Semilla%20%28S/%20100%29." target="_blank" rel="noopener" data-wa="como.112.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.055">Auspiciar</span></a>
           </div>
           <div class="nivel n2">
             <span class="nom"><svg class="ic" aria-hidden="true"><use href="#i-arbol"/></svg>Bosque</span>
-            <span class="precio">S/ 500<small>o su equivalente en materiales</small></span>
-            <span class="lema">Haz crecer el impacto.</span>
+            <span class="precio">S/ 500<small data-i18n="como.056">o su equivalente en materiales</small></span>
+            <span class="lema" data-i18n="como.057">Haz crecer el impacto.</span>
             <ul class="ben">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><b>Todo lo de Semilla</b></li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Certificado de donación deducible</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Logo en materiales de campaña</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Kit de publicaciones en redes durante el proyecto</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><b data-i18n="como.058">Todo lo de Semilla</b></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.059">Certificado de donación deducible</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.060">Logo en materiales de campaña</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.061">Kit de publicaciones en redes durante el proyecto</span></li>
             </ul>
-            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Bosque%20%28S/%20500%20o%20su%20equivalente%20en%20materiales%29." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Auspiciar</a>
+            <a class="btn btn-ambar-linea btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Bosque%20%28S/%20500%20o%20su%20equivalente%20en%20materiales%29." target="_blank" rel="noopener" data-wa="como.113.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.055">Auspiciar</span></a>
           </div>
           <div class="nivel n3">
             <span class="nom"><svg class="ic" aria-hidden="true"><use href="#i-montana"/></svg>Territorio</span>
-            <span class="precio">S/ 1,000<small>a más</small></span>
-            <span class="lema">Deja una huella en el territorio.</span>
+            <span class="precio">S/ 1,000<small data-i18n="como.063">a más</small></span>
+            <span class="lema" data-i18n="como.064">Deja una huella en el territorio.</span>
             <ul class="ben">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><b>Todo lo de Bosque</b></li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Logo en la obra construida</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Historias y reel durante toda la campaña</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Kit de fotos e historia para tu comunicación</li>
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Mención especial en el video de cierre</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><b data-i18n="como.065">Todo lo de Bosque</b></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.066">Logo en la obra construida</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.067">Historias y reel durante toda la campaña</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.068">Kit de fotos e historia para tu comunicación</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="como.069">Mención especial en el video de cierre</span></li>
             </ul>
-            <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Territorio%20%28S/%201%2C000%20a%20m%C3%A1s%29." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Auspiciar</a>
+            <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20auspiciar%20la%20campa%C3%B1a%20en%20el%20nivel%20Territorio%20%28S/%201%2C000%20a%20m%C3%A1s%29." target="_blank" rel="noopener" data-wa="como.114.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.055">Auspiciar</span></a>
           </div>
         </div>
-        <p class="desliza-niveles" aria-hidden="true"><span>Semilla · Bosque · Territorio</span><span>Desliza →</span></p>
+        <p class="desliza-niveles" aria-hidden="true"><span data-i18n="como.071">Semilla · Bosque · Territorio</span><span data-i18n="como.072">Desliza →</span></p>
         <div class="frutos" id="frutos">
-          <h4>Frutos: donar materiales en vez de dinero</h4>
-          <p class="frutos-lema">¿Tu empresa puede aportar materiales? También puedes construir con lo que ya tienes.</p>
-          <p>Frutos no es un nivel aparte, es otra forma de hacer el mismo aporte. El material se valoriza a precio de mercado y ese monto ubica al donante en el nivel que le corresponde, con los mismos beneficios.</p>
+          <h4 data-i18n="como.073">Frutos: donar materiales en vez de dinero</h4>
+          <p class="frutos-lema" data-i18n="como.074">¿Tu empresa puede aportar materiales? También puedes construir con lo que ya tienes.</p>
+          <p data-i18n="como.075">Frutos no es un nivel aparte, es otra forma de hacer el mismo aporte. El material se valoriza a precio de mercado y ese monto ubica al donante en el nivel que le corresponde, con los mismos beneficios.</p>
           <ul class="chips">
-            <li>Fijaciones y tornillería</li><li>Herramientas de corte</li><li>Preservantes para madera</li><li>Mallas y cerramientos</li><li>Aparatos sanitarios</li><li>Cableado eléctrico</li>
+            <li data-i18n="como.076">Fijaciones y tornillería</li><li data-i18n="como.077">Herramientas de corte</li><li data-i18n="como.078">Preservantes para madera</li><li data-i18n="meta.011">Mallas y cerramientos</li><li data-i18n="como.080">Aparatos sanitarios</li><li data-i18n="como.081">Cableado eléctrico</li>
           </ul>
-          <p style="font-size:13px;margin-bottom:11px">Si tienes un material que no está en esta lista, también puede servir: se revisa caso por caso con logística antes de confirmar la donación.</p>
-          <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20materiales%20%28v%C3%ADa%20Frutos%29%20para%20la%20residencia%20de%20Wawa%C3%ADn." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Coordinar una donación de materiales</a>
+          <p style="font-size:13px;margin-bottom:11px" data-i18n="como.082">Si tienes un material que no está en esta lista, también puede servir: se revisa caso por caso con logística antes de confirmar la donación.</p>
+          <a class="btn btn-ambar btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20quiero%20donar%20materiales%20%28v%C3%ADa%20Frutos%29%20para%20la%20residencia%20de%20Wawa%C3%ADn." target="_blank" rel="noopener" data-wa="como.115.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.083">Coordinar una donación de materiales</span></a>
         </div>
         <div class="recibe">
-          <div><h4>Certificado de donación</h4><p>Deducible ante SUNAT, desde el nivel Bosque.</p></div>
-          <div><h4>Reporte de impacto</h4><p>Rendición con comprobantes y evidencia fotográfica de obra.</p></div>
-          <div><h4>Visibilidad</h4><p>En la obra, en materiales de campaña y en redes, según el nivel.</p></div>
+          <div><h4 data-i18n="como.084">Certificado de donación</h4><p data-i18n="como.085">Deducible ante SUNAT, desde el nivel Bosque.</p></div>
+          <div><h4 data-i18n="como.086">Reporte de impacto</h4><p data-i18n="como.087">Rendición con comprobantes y evidencia fotográfica de obra.</p></div>
+          <div><h4 data-i18n="como.088">Visibilidad</h4><p data-i18n="como.089">En la obra, en materiales de campaña y en redes, según el nivel.</p></div>
         </div>
-        <p class="nota-fuente">El detalle completo de beneficios por nivel está en el <a href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener">brochure de la campaña</a>.</p>
+        <p class="nota-fuente" data-i18n="como.090">El detalle completo de beneficios por nivel está en el <a href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener">brochure de la campaña</a>.</p>
       </div>
     </div>
 
     <!-- Panel 3 · alianzas -->
     <div class="panel-via" id="alianzas" role="tabpanel" aria-labelledby="t-alianzas" hidden>
-      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-enlace"/></svg>Trabajemos juntos</h3>
-      <p class="lead">Para organizaciones y colectivos que pueden asumir tareas concretas del proyecto, sin que medie un aporte económico.</p>
+      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-enlace"/></svg><span data-i18n="como.018">Trabajemos juntos</span></h3>
+      <p class="lead" data-i18n="como.092">Para organizaciones y colectivos que pueden asumir tareas concretas del proyecto, sin que medie un aporte económico.</p>
       <dl class="tripleta">
-        <div><dt>Tu organización puede sumar</dt><dd>Gestión, coordinación, operación o logística de una parte del proyecto.</dd></div>
-        <div><dt>Tu alianza abre oportunidades</dt><dd>Alianza conjunta, visibilidad como aliado y reporte del trabajo común.</dd></div>
-        <div><dt>¿Empezamos?</dt><dd>Agendamos una conversación de 30 minutos para definir el alcance.</dd></div>
+        <div><dt data-i18n="como.093">Tu organización puede sumar</dt><dd data-i18n="como.094">Gestión, coordinación, operación o logística de una parte del proyecto.</dd></div>
+        <div><dt data-i18n="como.095">Tu alianza abre oportunidades</dt><dd data-i18n="como.096">Alianza conjunta, visibilidad como aliado y reporte del trabajo común.</dd></div>
+        <div><dt data-i18n="como.097">¿Empezamos?</dt><dd data-i18n="como.098">Agendamos una conversación de 30 minutos para definir el alcance.</dd></div>
       </dl>
       <div class="panel-cta">
-        <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20represento%20a%20una%20organizaci%C3%B3n%20interesada%20en%20formar%20una%20alianza%20con%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Conversemos una alianza</a>
+        <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20represento%20a%20una%20organizaci%C3%B3n%20interesada%20en%20formar%20una%20alianza%20con%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener" data-wa="como.116.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.099">Conversemos una alianza</span></a>
       </div>
     </div>
 
     <!-- Panel 4 · responsabilidad social -->
     <div class="panel-via" id="rsc" role="tabpanel" aria-labelledby="t-rsc" hidden>
-      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-equipo"/></svg>Involucra a tu equipo</h3>
-      <p class="lead">Para empresas que quieren involucrar a su equipo en la obra, más allá del aporte económico.</p>
+      <h3 class="gancho-panel"><svg class="ic" aria-hidden="true"><use href="#i-equipo"/></svg><span data-i18n="como.024">Involucra a tu equipo</span></h3>
+      <p class="lead" data-i18n="como.101">Para empresas que quieren involucrar a su equipo en la obra, más allá del aporte económico.</p>
       <dl class="tripleta">
-        <div><dt>Tu equipo puede sumar</dt><dd>Tiempo, equipo o experiencia: voluntariado corporativo, asesoría técnica, logística.</dd></div>
-        <div><dt>Tu equipo deja huella</dt><dd>Una experiencia diseñada a medida con tu equipo y reporte de impacto (RSC / ESG).</dd></div>
-        <div><dt>¿Quieres sumarte?</dt><dd>Coordinamos una sesión para diseñar la experiencia y su calendario.</dd></div>
+        <div><dt data-i18n="como.102">Tu equipo puede sumar</dt><dd data-i18n="como.103">Tiempo, equipo o experiencia: voluntariado corporativo, asesoría técnica, logística.</dd></div>
+        <div><dt data-i18n="como.104">Tu equipo deja huella</dt><dd data-i18n="como.105">Una experiencia diseñada a medida con tu equipo y reporte de impacto (RSC / ESG).</dd></div>
+        <div><dt data-i18n="como.033">¿Quieres sumarte?</dt><dd data-i18n="como.107">Coordinamos una sesión para diseñar la experiencia y su calendario.</dd></div>
       </dl>
       <div class="panel-cta">
-        <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20escribo%20desde%20una%20empresa%20interesada%20en%20la%20v%C3%ADa%20de%20responsabilidad%20social%20de%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Diseñemos la experiencia</a>
+        <a class="btn btn-marca btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20escribo%20desde%20una%20empresa%20interesada%20en%20la%20v%C3%ADa%20de%20responsabilidad%20social%20de%20la%20campa%C3%B1a%20de%20Aprendizaje%20Awaj%C3%BAn." target="_blank" rel="noopener" data-wa="como.117.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.108">Diseñemos la experiencia</span></a>
       </div>
     </div>
   </div>
@@ -1238,8 +1313,8 @@ body.panel-abierto{overflow:hidden}
   <!-- Franja de confianza -->
   <div class="bloque franja-confianza">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-    <p><strong>Transparencia</strong>Paisajes Educativos y Manifiesto Lab se unen para sumar esfuerzos y aportes que hagan posible esta obra. Aquí te contamos cómo rendimos cuentas y respondemos tus dudas.<span class="temas"><span>En qué se convierte cada aporte</span><span>Preguntas frecuentes</span><span>Quiénes están detrás</span></span></p>
-    <a class="btn btn-marca btn-sm" href="#transparencia" data-abrir-panel>Ver transparencia</a>
+    <p><strong data-i18n="cabecera.003">Transparencia</strong><span data-i18n="confianza.002">Paisajes Educativos y Manifiesto Lab se unen para sumar esfuerzos y aportes que hagan posible esta obra. Aquí te contamos cómo rendimos cuentas y respondemos tus dudas.</span><span class="temas"><span data-i18n="confianza.003">En qué se convierte cada aporte</span><span data-i18n="confianza.004">Preguntas frecuentes</span><span data-i18n="confianza.005">Quiénes están detrás</span></span></p>
+    <a class="btn btn-marca btn-sm" href="#transparencia" data-abrir-panel data-i18n="confianza.006">Ver transparencia</a>
   </div>
 
   <!-- Cierre -->
@@ -1247,11 +1322,11 @@ body.panel-abierto{overflow:hidden}
     <img src="assets/img/cierre-equipo.webp" alt="" loading="lazy" width="880" height="495">
     <div class="velo"></div>
     <div class="cierre-in">
-      <h2>Con tu aporte, siembras algo que crece</h2>
-      <p>Un espacio donde niñas y niños awajún aprenden sin dejar de ser quienes son. Escríbenos para recibir el dossier completo y conversar sobre cómo sumarte.</p>
+      <h2 data-i18n="cierre.001">Con tu aporte, siembras algo que crece</h2>
+      <p data-i18n="cierre.002">Un espacio donde niñas y niños awajún aprenden sin dejar de ser quienes son. Escríbenos para recibir el dossier completo y conversar sobre cómo sumarte.</p>
       <div class="btns">
-        <a class="btn btn-lima btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20escribo%20por%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn.%20Quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>Escribir por WhatsApp</a>
-        <a class="btn btn-linea-claro btn-sm" href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener">Ver el brochure</a>
+        <a class="btn btn-lima btn-sm" href="https://wa.me/51982778028?text=Hola%2C%20escribo%20por%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn.%20Quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener" data-wa="cierre.005.wa"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="como.042">Escribir por WhatsApp</span></a>
+        <a class="btn btn-linea-claro btn-sm" href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener" data-i18n="cierre.004">Ver el brochure</a>
       </div>
     </div>
   </div>
@@ -1260,48 +1335,57 @@ body.panel-abierto{overflow:hidden}
 <!-- ══════════════════ TRANSPARENCIA (panel lateral / hoja inferior) ══════════════════ -->
 <aside class="transparencia wrap" id="transparencia" aria-labelledby="h-transparencia" tabindex="-1">
   <div class="panel-cab">
-    <h2 id="h-transparencia">Transparencia</h2>
-    <button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar transparencia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="h-transparencia" data-i18n="cabecera.003">Transparencia</h2>
+    <button type="button" class="cerrar-panel" data-cerrar-panel aria-label="Cerrar transparencia" data-i18n-aria="transparencia.043.aria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <div class="panel-cuerpo">
     <div class="bloque-p">
-      <div class="cabeza-seccion no-js-only"><h2>Transparencia</h2><span class="raya" aria-hidden="true"></span></div>
-      <h2 class="tit">En qué se convierte cada aporte</h2>
-      <p class="entrada">Los aportes se reciben a nombre de Paisajes Educativos, una asociación, no de una persona.</p>
+      <div class="cabeza-seccion no-js-only"><h2 data-i18n="cabecera.003">Transparencia</h2><span class="raya" aria-hidden="true"></span></div>
+      <h2 class="tit" data-i18n="confianza.003">En qué se convierte cada aporte</h2>
+      <p class="entrada" data-i18n="transparencia.004">Los aportes se reciben a nombre de Paisajes Educativos, una asociación, no de una persona.</p>
       <ol class="flujo">
-        <li><span class="n" aria-hidden="true">1</span><div><h3>Aporte</h3><p>Ingresa a la cuenta institucional de la asociación.</p></div></li>
-        <li><span class="n" aria-hidden="true">2</span><div><h3>Ejecución</h3><p>Compra de material con comprobante y obra junto a la comunidad.</p></div></li>
-        <li><span class="n" aria-hidden="true">3</span><div><h3>Evidencia</h3><p>Reporte periódico mientras dure la campaña, publicaciones de avance e informe final al donante.</p></div></li>
+        <li><span class="n" aria-hidden="true">1</span><div><h3 data-i18n="transparencia.005">Aporte</h3><p data-i18n="transparencia.006">Ingresa a la cuenta institucional de la asociación.</p></div></li>
+        <li><span class="n" aria-hidden="true">2</span><div><h3 data-i18n="transparencia.007">Ejecución</h3><p data-i18n="transparencia.008">Compra de material con comprobante y obra junto a la comunidad.</p></div></li>
+        <li><span class="n" aria-hidden="true">3</span><div><h3 data-i18n="transparencia.009">Evidencia</h3><p data-i18n="transparencia.010">Reporte periódico mientras dure la campaña, publicaciones de avance e informe final al donante.</p></div></li>
       </ol>
-      <p style="margin-top:10px"><a class="enlace" href="#donar" data-cerrar-panel>Ver cómo donar</a></p>
+      <p style="margin-top:10px"><a class="enlace" href="#donar" data-cerrar-panel data-i18n="transparencia.011">Ver cómo donar</a></p>
     </div>
 
     <div class="bloque-p faq">
-      <h3 class="sub">Preguntas frecuentes</h3>
+      <h3 class="sub" data-i18n="confianza.004">Preguntas frecuentes</h3>
       <div style="margin-top:10px">
-        <details><summary>¿Quién ejecuta la obra?</summary><p class="r">La comunidad, con acompañamiento técnico de Paisajes Educativos y Manifiesto Lab. La mano de obra es comunitaria y de voluntarios.</p></details>
-        <details><summary>¿De quién es la obra al terminar?</summary><p class="r">De la comunidad y de la institución educativa.</p></details>
-        <details><summary>¿Qué pasa si no se alcanza la primera submeta?</summary><p class="r">Se trabaja con lo que haya y la campaña sigue sumando. La obra avanza por etapas, así que lo que entre después se destina a la etapa siguiente.</p></details>
-        <details><summary>¿Qué pasa si se supera la meta?</summary><p class="r">El excedente inicia la Fase 2 en San Rafael. Nada sale de la campaña.</p></details>
-        <details><summary>¿Se puede donar material en vez de dinero?</summary><p class="r">Sí, es la vía Frutos. Hay un listado técnico, el material se valoriza a precio de mercado y el donante recibe los mismos beneficios del nivel que le corresponde.</p></details>
-        <details><summary>¿Qué materiales se aceptan?</summary><p class="r">Los del listado del proyecto. Un material que no esté en la lista puede aceptarse si resulta acorde a la obra: se coordina caso por caso con logística antes de confirmar la donación.</p></details>
-        <details><summary>¿Se puede pedir exclusividad o naming?</summary><p class="r">No hay precios de exclusividad. Si aparece algo extraordinario, se resuelve por acuerdo previo.</p></details>
-        <details><summary>¿Quién habla a nombre de la campaña?</summary><p class="r">Paisajes Educativos y Manifiesto Lab.</p></details>
+        <details><summary data-i18n="transparencia.013">¿Quién ejecuta la obra?</summary><p class="r" data-i18n="transparencia.014">La comunidad, con acompañamiento técnico de Paisajes Educativos y Manifiesto Lab. La mano de obra es comunitaria y de voluntarios.</p></details>
+        <details><summary data-i18n="transparencia.015">¿De quién es la obra al terminar?</summary><p class="r" data-i18n="transparencia.016">De la comunidad y de la institución educativa.</p></details>
+        <details><summary data-i18n="transparencia.017">¿Qué pasa si no se alcanza la meta de una etapa?</summary><p class="r" data-i18n="transparencia.018">Se trabaja con lo que haya y la campaña sigue sumando. La obra avanza por etapas, así que lo que entre después se destina a la etapa siguiente.</p></details>
+        <details><summary data-i18n="transparencia.019">¿Qué pasa si se supera la meta?</summary><p class="r" data-i18n="transparencia.020">El excedente inicia la Fase 2 en San Rafael. Nada sale de la campaña.</p></details>
+        <details><summary data-i18n="transparencia.021">¿Se puede donar material en vez de dinero?</summary><p class="r" data-i18n="transparencia.022">Sí, es la vía Frutos. Hay un listado técnico, el material se valoriza a precio de mercado y el donante recibe los mismos beneficios del nivel que le corresponde.</p></details>
+        <details><summary data-i18n="transparencia.023">¿Qué materiales se aceptan?</summary><p class="r" data-i18n="transparencia.024">Los del listado del proyecto. Un material que no esté en la lista puede aceptarse si resulta acorde a la obra: se coordina caso por caso con logística antes de confirmar la donación.</p></details>
+        <details><summary data-i18n="transparencia.025">¿Se puede pedir exclusividad o naming?</summary><p class="r" data-i18n="transparencia.026">No hay precios de exclusividad. Si aparece algo extraordinario, se resuelve por acuerdo previo.</p></details>
+        <details><summary data-i18n="transparencia.027">¿Quién habla a nombre de la campaña?</summary><p class="r" data-i18n="transparencia.028">Paisajes Educativos y Manifiesto Lab.</p></details>
       </div>
     </div>
 
     <div class="bloque-p">
-      <h3 class="sub">Quiénes están detrás</h3>
+      <h3 class="sub" data-i18n="transparencia.029">Aliados que ya suman</h3>
+      <!-- Logos oficiales: ponerlos en assets/img/aliados/ (SVG/PNG transparente) y cambiar el texto por <img src="assets/img/aliados/tech-studio.svg" alt="Tech Studio Coworking">. Mientras tanto va el nombre en texto. -->
+      <ul class="apoyos">
+        <li><span class="marca-apoyo" data-i18n="transparencia.030">Tech Studio Coworking</span><span class="que" data-i18n="transparencia.031">Corte láser de la maqueta e impresión de planos.</span></li>
+        <li><span class="marca-apoyo" data-i18n="transparencia.032">Servicio de Neurocirugía del Hospital Nacional Arzobispo Loayza</span><span class="que" data-i18n="transparencia.033">Donación para la obra.</span></li>
+      </ul>
+    </div>
+
+    <div class="bloque-p">
+      <h3 class="sub" data-i18n="confianza.005">Quiénes están detrás</h3>
       <div class="aliados">
         <div class="aliado">
           <img class="aliado-foto" src="assets/img/equipo-paisajes.webp" alt="" loading="lazy" width="682" height="512">
           <div class="aliado-txt">
             <h3><svg class="logo-pe" viewBox="0 0 1537 847" aria-hidden="true"><use href="#s-pe" width="1537" height="847"/></svg><span class="oculto">Paisajes Educativos</span></h3>
-            <p>Asociación de voluntariado sin fines de lucro. 5 años, 15 coordinadores, +200 voluntarios, 7 proyectos en 4 regiones.</p>
+            <p data-i18n="transparencia.035">Asociación de voluntariado sin fines de lucro. 5 años, 15 coordinadores, +200 voluntarios, 7 proyectos en 4 regiones.</p>
             <ul class="lista">
-              <li>Reconocida por el MIMP</li>
-              <li>RUC activo y cuenta institucional</li>
-              <li>Emite certificados de donación (SUNAT)</li>
+              <li data-i18n="transparencia.036">Reconocida por el MIMP</li>
+              <li data-i18n="transparencia.037">RUC activo y cuenta institucional</li>
+              <li data-i18n="transparencia.038">Emite certificados de donación (SUNAT)</li>
             </ul>
           </div>
         </div>
@@ -1309,11 +1393,11 @@ body.panel-abierto{overflow:hidden}
           <img class="aliado-foto" src="assets/img/equipo-manifiesto.webp" alt="" loading="lazy" width="848" height="636">
           <div class="aliado-txt">
             <h3><svg class="logo-ml" viewBox="0 0 2466 1456" aria-hidden="true"><use href="#s-ml" width="2466" height="1456"/></svg><span class="oculto">Manifiesto Lab</span></h3>
-            <p>Colectivo de arquitectura social y bioconstrucción, con diseño participativo en comunidades vulnerables.</p>
+            <p data-i18n="transparencia.039">Colectivo de arquitectura social y bioconstrucción, con diseño participativo en comunidades vulnerables.</p>
             <ul class="lista">
-              <li>Premio Nacional de la Juventud 2023</li>
-              <li>Especialistas en bambú y tierra</li>
-              <li>Asistencia técnica en comunidades</li>
+              <li data-i18n="transparencia.040">Premio Nacional de la Juventud 2023</li>
+              <li data-i18n="transparencia.041">Especialistas en bambú y tierra</li>
+              <li data-i18n="transparencia.042">Asistencia técnica en comunidades</li>
             </ul>
           </div>
         </div>
@@ -1334,65 +1418,824 @@ body.panel-abierto{overflow:hidden}
           <span class="mas" aria-hidden="true">+</span>
           <svg class="logo-ml" viewBox="0 0 2466 1456" role="img" aria-label="Manifiesto Lab"><use href="#s-ml" width="2466" height="1456"/></svg>
         </div>
-        <p style="max-width:40ch;margin:0">Campaña de construcción comunitaria para las comunidades awajún de Wawaín y San Rafael — Imaza, Bagua, Amazonas, Perú.</p>
+        <p style="max-width:40ch;margin:0" data-i18n="pie.001">Campaña de construcción comunitaria para las comunidades awajún de Wawaín y San Rafael — Imaza, Bagua, Amazonas, Perú.</p>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h4 data-i18n="pie.002">Contacto</h4>
         <ul class="pie-lista">
-          <li><a href="mailto:hola@paisajeseducativos.org"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Correo</a></li>
+          <li><a href="mailto:hola@paisajeseducativos.org"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="pie.003">Correo</span></a></li>
           <li><a href="tel:+51982778028"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>+51 982 778 028</a></li>
-          <li><a href="https://wa.me/51982778028?text=Hola%2C%20escribo%20por%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn.%20Quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.7-5A9 9 0 1112 21a9 9 0 01-4.3-1.1z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1.3 2 1-.5 1.6c-3.5.3-7.6-3.8-7.3-7.3l1.6-.5 1 2z"/></svg>WhatsApp</a></li>
+          <li><a href="https://wa.me/51982778028?text=Hola%2C%20escribo%20por%20la%20campa%C3%B1a%20Sembremos%20espacios%20de%20Aprendizaje%20Awaj%C3%BAn.%20Quisiera%20conocer%20m%C3%A1s." target="_blank" rel="noopener" data-wa="cierre.005.wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.7-5A9 9 0 1112 21a9 9 0 01-4.3-1.1z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1.3 2 1-.5 1.6c-3.5.3-7.6-3.8-7.3-7.3l1.6-.5 1 2z"/></svg><span data-i18n="pie.004">WhatsApp</span></a></li>
         </ul>
       </div>
       <div>
-        <h4>Más información</h4>
+        <h4 data-i18n="pie.005">Más información</h4>
         <ul class="pie-lista">
           <li><a href="https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Brochure</a></li>
-          <li><a href="https://www.instagram.com/learninglandscapes.peru/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>Instagram</a></li>
-          <li><a href="https://www.facebook.com/PaisajesEducativos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 009 6.5V9H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h2z"/></svg>Facebook</a></li>
+          <li><a href="https://www.instagram.com/learninglandscapes.peru/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg><span data-i18n="pie.006">Instagram</span></a></li>
+          <li><a href="https://www.facebook.com/PaisajesEducativos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 009 6.5V9H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h2z"/></svg><span data-i18n="pie.007">Facebook</span></a></li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <p><b>Paisajes Educativos</b> — Asociación de voluntariado sin fines de lucro.</p>
-      <p><b>Manifiesto Lab</b> — Colectivo de arquitectura social y bioconstrucción.</p>
+      <p data-i18n="pie.008"><b>Paisajes Educativos</b> — Asociación de voluntariado sin fines de lucro.</p>
+      <p data-i18n="pie.009"><b>Manifiesto Lab</b> — Colectivo de arquitectura social y bioconstrucción.</p>
     </div>
   </div>
 </footer>
 
 <!-- ══════ BARRA INFERIOR PERMANENTE ══════ -->
 <div class="barra-aporte" id="barra-aporte">
-  <p class="lema" style="margin:0">Con tu aporte, siembras algo que crece</p>
+  <p class="lema" style="margin:0" data-i18n="cierre.001">Con tu aporte, siembras algo que crece</p>
   <div class="mini" aria-hidden="true">
-    <div class="mini-cifras"><b data-campo="reunido">S/ 1,024</b><span data-campo="submeta-txt">Submeta 1: S/ 4,600</span></div>
-    <div class="mini-riel"><i data-barra-submeta style="width:22.3%"></i></div>
+    <div class="mini-cifras"><b data-campo="e2-reunido">S/ 100</b><span data-i18n="barra.002">de <span data-campo="e2-meta">S/ 2,900</span> · Etapa 2</span></div>
+    <div class="mini-riel"><i data-barra-e2 style="width:3.4%"></i></div>
   </div>
-  <a class="btn btn-lima btn-sm" href="#donar">Donar</a>
+  <a class="btn btn-lima btn-sm" href="#donar" data-i18n="cabecera.004">Donar</a>
 </div>
 
+
+<!-- ══════ VISOR DE FOTOS («Así avanza Wawaín») ══════ -->
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-labelledby="visor-tit" aria-hidden="true">
+  <div class="visor-panel">
+    <div class="visor-cab">
+      <h2 id="visor-tit" data-i18n="bitacora.001">Así avanza Wawaín</h2>
+      <button type="button" class="cerrar-panel" id="visor-cerrar" aria-label="Cerrar galería" data-i18n-aria="visor.002.aria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="visor-escena" id="visor-escena">
+      <img id="visor-img" src="" alt="" decoding="async">
+      <button type="button" class="visor-flecha prev" id="visor-prev" aria-label="Foto anterior" data-i18n-aria="visor.003.aria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="visor-flecha next" id="visor-next" aria-label="Foto siguiente" data-i18n-aria="visor.004.aria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="visor-pie"><p class="visor-leyenda" id="visor-ley" aria-live="polite"></p><p class="visor-cuenta" id="visor-cuenta"></p></div>
+  </div>
+</div>
+
+<!-- I18N:inicio -->
+<script>
+/* ═══════ TEXTOS ES / EN ═══════
+   Un diccionario por idioma, con las mismas claves y en el mismo orden (por sección) para poder revisarlos lado a lado.
+   El español es el texto base de la página; el inglés se aplica al elegir «EN» (ver «Idioma ES | EN» en el script principal).
+   Se mantienen sin traducir: nombres propios (Casa Semilla Awajún, Wawaín, Paisajes Educativos, Manifiesto Lab, Semilla/Bosque/Territorio, San Rafael),
+   el formulario de Google, los datos bancarios y los montos (S/ 2,075 se escribe igual en ambos idiomas).
+   Las claves terminadas en «.alt» son textos alternativos de imágenes; «.aria», etiquetas de accesibilidad; «.wa», mensajes precargados de WhatsApp. */
+var I18N={
+ es:{
+  "meta.title":"Sembremos espacios de Aprendizaje Awajún — Paisajes Educativos + Manifiesto Lab",
+  "meta.desc":"La comunidad awajún de Wawaín ya está construyendo Casa Semilla Awajún, su residencia estudiantil. Esta campaña suma los materiales técnicos que faltan. Imaza, Bagua, Amazonas.",
+  /* ── General ── */
+  "otros.001":"Saltar al contenido",
+  "otros.002":"El proyecto",
+  /* ── Pantalla de bienvenida ── */
+  "bienvenida.001":"Comunidades de la Amazonía peruana buscan superar las brechas con procesos de autogestión.",
+  "bienvenida.002":"Nosotros nos sumamos.",
+  "bienvenida.003":"Te invitamos a ser parte.",
+  "bienvenida.004":"Entrar",
+  /* ── Cabecera ── */
+  "cabecera.001":"Proyecto",
+  "cabecera.002":"Súmate",
+  "cabecera.003":"Transparencia",
+  "cabecera.004":"Donar",
+  "cabecera.005.aria":"Paisajes Educativos y Manifiesto Lab — inicio",
+  "cabecera.006.aria":"Secciones",
+  /* ── Portada y tarjeta de avance ── */
+  "portada.001":"Campaña de construcción comunitaria",
+  "portada.002":"Etapa 2 en curso",
+  "portada.003":"Sembremos espacios de",
+  "portada.004":"Aprendizaje Awajún",
+  "portada.005":"<strong>¡La construcción ya está en marcha!<\/strong> Te invitamos a sumarte a la creación de <strong>una residencia estudiantil<\/strong>, un lugar seguro donde vivir, alimentarse, descansar y seguir aprendiendo.",
+  "portada.006":"Wawaín y San Rafael — Imaza, Bagua, Amazonas.",
+  "portada.008":"Conocer el proyecto",
+  "portada.009":"Casa Semilla Awajún · residencia estudiantil",
+  "portada.010":"Etapa 1 · S/ <span data-campo=\"e1-meta-n\">4,600<\/span>",
+  "portada.011":"Cubierta",
+  "portada.012":"Con donaciones y el aporte de aliados.",
+  "portada.013":"Etapa 2 · en curso",
+  "portada.014":"Techado y cerramientos",
+  "portada.015":"de <span data-campo=\"e2-meta\">S/ 2,900<\/span>",
+  "portada.016":"de la etapa 2",
+  "portada.017":"Reunido en total",
+  "portada.018":"Meta general",
+  "portada.019":"Siguiente fase: <span data-campo=\"sig-nombre\">San Rafael<\/span>",
+  "portada.020.aria":"Avance de la campaña",
+  "portada.021.aria":"Avance de la etapa 2",
+  /* ── El proyecto · Casa Semilla ── */
+  "casa-semilla.002":"Un lugar para quedarse y seguir aprendiendo",
+  "casa-semilla.003":"Un módulo de madera y bambú sobre cimentación de concreto, pensado para que niñas, niños y jóvenes de comunidades alejadas puedan <strong>dormir, alimentarse, estudiar y compartir<\/strong> en un espacio <strong>seguro<\/strong>. Su espacio flexible al centro la hace también un lugar para seguir aprendiendo.",
+  "casa-semilla.004":"Hoy",
+  "casa-semilla.005":"Donde duermen hoy: caña, calamina y piso de tierra, sin cocina ni servicios.",
+  "casa-semilla.006":"Lo que construimos juntos",
+  "casa-semilla.007":"Casa Semilla Awajún: ventilación cruzada, camas protegidas y un espacio común al centro.",
+  "casa-semilla.008":"120 m²",
+  "casa-semilla.009":"área a construir",
+  "casa-semilla.010":"camas",
+  "casa-semilla.011":"cocina",
+  "casa-semilla.012":"baño",
+  "casa-semilla.013":"<strong>La comunidad.<\/strong> Wawaín decidió en asamblea construir la residencia y no esperó a tener todo resuelto. Las familias escogieron la madera, la curaron en una poza que armaron junto a la escuela, juntaron cemento y herramientas y organizaron las faenas. La obra es suya desde el primer día.",
+  "casa-semilla.014":"<strong>La campaña.<\/strong> Lo que suma la campaña es lo que el monte no da: uniones y conectores para que la estructura dure, herramientas de corte, preservantes, mallas para cerrar los ambientes y, al final, agua y luz. Cada sol se convierte en un material concreto y queda registrado con su comprobante.",
+  "casa-semilla.015":"Ver la meta y en qué se convierte",
+  "casa-semilla.016":"<strong>Nosotros acompañamos.<\/strong> Paisajes Educativos y Manifiesto Lab aportan asistencia técnica en uniones, sistema constructivo y diseño.",
+  "casa-semilla.017.alt":"Interior del alojamiento actual: camas bajo un techo de calamina, paredes de caña, piso de tierra y ropa tendida",
+  "casa-semilla.018.alt":"Render de Casa Semilla Awajún: volumen de madera y bambú con celosías, techo de calamina y alero de palma",
+  /* ── Así avanza Wawaín (galería) ── */
+  "bitacora.001":"Así avanza Wawaín",
+  "bitacora.002":"Del terreno a la estructura: la obra avanza hito por hito, desde la poza de curado hasta el armado de la estructura. Toca una foto para verla en grande.",
+  "bitacora.003":"Poza de curado",
+  "bitacora.005":"Cimentación",
+  "bitacora.008":"Laboratorio constructivo",
+  "bitacora.011":"Armado de la estructura",
+  "bitacora.015":"Ver en qué se usaron los aportes",
+  "bitacora.016.aria":"Fotos del avance de obra",
+  "bitacora.017.alt":"Poza de curado armada con estructura de caña y plástico, junto a la escuela de la comunidad",
+  "bitacora.018.alt":"Madera sumergida en la solución de preservante dentro de la poza",
+  "bitacora.019.alt":"Comuneros y voluntarios trazan y despejan el terreno donde irá la cimentación",
+  "bitacora.020.alt":"Familias de Wawaín excavan la zanja de la cimentación",
+  "bitacora.021.alt":"Mezcla de concreto para la cimentación, trabajada a mano por la comunidad",
+  "bitacora.022.alt":"Corte y doblado de fierro de construcción junto al campamento de obra",
+  "bitacora.023.alt":"El equipo técnico explica la maqueta de la estructura a los comuneros",
+  "bitacora.024.alt":"Asamblea al aire libre: se presenta la maqueta de la casa a la comunidad",
+  "bitacora.025.alt":"Parantes de la estructura en pie sobre la cimentación, con comuneros trabajando al pie",
+  "bitacora.026.alt":"Vigas de madera listas para el armado, sobre la cimentación",
+  "bitacora.027.alt":"Un comunero ensambla una viga de la estructura desde un andamio",
+  "bitacora.028.alt":"Comuneros fijan una viga con escaleras de bambú",
+  /* ── Una apuesta por acortar brechas ── */
+  "que-es.001":"Una apuesta por acortar brechas y mejorar la seguridad de nuestros niños en la Amazonía",
+  "que-es.002":"<strong>En Wawaín, la comunidad awajún del distrito de Imaza decidió no esperar. Decidió construir.<\/strong> Se organizó, reunió madera, cemento y herramientas, y comenzó las faenas para levantar una residencia para los estudiantes que viven lejos de la escuela. <strong>Ahora necesitamos poner lo que falta:<\/strong> el material técnico que el territorio no puede proveer.",
+  "que-es.003":"Conoce más",
+  "que-es.004":"Ver menos",
+  "que-es.005":"cómo llegamos hasta Wawaín",
+  "que-es.006":"El proyecto no empieza con un plano: empieza con dos años de trabajo en el territorio y con lo que la propia comunidad puso sobre la mesa.",
+  "que-es.007":"El vínculo",
+  "que-es.008":"Enseña Perú",
+  "que-es.009":"La red de docentes de Enseña Perú en Imaza abre la puerta a las escuelas de la zona y al contacto con Wawaín.",
+  "que-es.010":"24 nov 2025",
+  "que-es.011":"Taller docente",
+  "que-es.012":"60 profesores de la zona trabajan sobre infraestructura educativa y prioridades de sus escuelas.",
+  "que-es.013":"Talleres con la comunidad",
+  "que-es.014":"Madres e infancias en Umukai y estudiantes de secundaria en Chiriaco definen qué necesita la residencia.",
+  "que-es.015":"Feb 2026",
+  "que-es.016":"Aula Viva Awajún",
+  "que-es.017":"El workshop que traduce todo lo anterior en el diseño de Casa Semilla y en el sistema constructivo.",
+  "que-es.018":"12–16 oct 2026",
+  "que-es.019":"Jornada de construcción",
+  "que-es.020":"Nueve voluntarios y la comunidad levantaron la estructura de la casa.",
+  "que-es.021":"Ver fotos y resultados",
+  /* ── Largas distancias ── */
+  "problema.001":"Largas distancias y situaciones de vulnerabilidad",
+  "problema.002":"Llegar a clase puede significar cruzar el río.",
+  "problema.003":"La distancia no debería ser una barrera para seguir aprendiendo.",
+  "problema.004":"¿Sabías que hay estudiantes que cruzan un río para llegar a la escuela? Para ellos, estudiar implica recorrer grandes distancias, atravesar caminos que no siempre son fáciles y, muchas veces, permanecer lejos de casa. <strong>Lo hacen porque quieren seguir aprendiendo.<\/strong>",
+  "problema.005":"Hoy, muchos deben quedarse en espacios que no cuentan con las condiciones necesarias para dormir, alimentarse, asearse y estudiar. <strong>En Wawaín, la residencia busca cambiar esa realidad.<\/strong>",
+  "problema.006":"La escuela tiene <strong>más estudiantes que habitantes la comunidad<\/strong>: muchos llegan de otras comunidades, en bote por el Chiriaco y caminando.",
+  "problema.007":"Wawaín, en cifras",
+  "problema.008":"habitantes",
+  "problema.009":"estudiantes matriculados",
+  "problema.010":"escuelas",
+  "problema.011":"1 hora",
+  "problema.012":"de caminata, los más lejanos",
+  "problema.013":"En bote",
+  "problema.014":"por el río Chiriaco",
+  "problema.017":"lo que pasa en la escuela rural del país",
+  "problema.018":"Lo que pasa en la escuela rural del país",
+  "problema.019":"1 de cada 5",
+  "problema.020":"estudiantes rurales logra aprendizajes satisfactorios. En las zonas más alejadas, 1 de cada 10.",
+  "problema.021":"de las deficiencias de infraestructura educativa se concentra en escuelas rurales.",
+  "problema.022":"escuelas unidocentes hay en el Perú.",
+  "problema.023":"Solo 7 %",
+  "problema.024":"de los locales educativos del país tiene cerrada su brecha de infraestructura.",
+  "problema.025":"MINEDU (2023, 2024) · ComexPerú, análisis de datos de Minedu (dic. 2024) · PRONIED–UGM, «Innovación educativa en Frontera» (2026) · Memoria del proyecto.",
+  "problema.026.alt":"Un grupo de escolares con mochilas cruza a pie un río poco profundo camino a la escuela",
+  /* ── Cronograma ── */
+  "cronograma.001":"La campaña y la obra avanzan en paralelo",
+  "cronograma.002":"La recaudación no se detiene cuando empieza la construcción. La obra avanza por etapas: cada aporte que llega se destina a la etapa siguiente, y la campaña sigue abierta hasta completar la casa.",
+  "cronograma.003":"Hecho",
+  "cronograma.004":"Set–oct 2026",
+  "cronograma.005":"Lanzamiento y primera obra",
+  "cronograma.006":"Se lanzó la campaña. Cimentación, laboratorio de construcción y estructura, levantados junto a la comunidad.",
+  "cronograma.007":"● En proceso",
+  "cronograma.008":"Nov–dic 2026",
+  "cronograma.009":"Segunda etapa",
+  "cronograma.010":"Techado y cerramientos. La recaudación continúa.",
+  "cronograma.011":"○ Meta",
+  "cronograma.012":"Casa Semilla Awajún lista",
+  "cronograma.013":"Agua, luz y acabados. Cierre de la obra e inauguración de Casa Semilla Awajún.",
+  "cronograma.014.aria":"Cronograma de la campaña y la obra",
+  /* ── Dos fases ── */
+  "fases.001":"Un mismo proceso en dos etapas",
+  "fases.002":"Wawaín y San Rafael no compiten por el mismo dinero. Wawaín está en obra ahora; San Rafael arranca con el excedente de esta fase y con lo aprendido en ella.",
+  "fases.003":"Fase 1 · en obra",
+  "fases.004":"Casa Semilla Awajún, residencia estudiantil. 120 m², 28 camas. Es la fase que esta campaña financia.",
+  "fases.005":"Fase 2 · después",
+  "fases.006":"Semillero de aprendizaje. 25 m², 60 beneficiarios. Empieza con el excedente de la fase 1.",
+  "fases.007":"Ver el proyecto",
+  "fases.008":"Más adelante",
+  "fases.009":"El modelo",
+  "fases.010":"Las dos obras dejan un antecedente documentado y transferible a otras comunidades amazónicas.",
+  "fases.013":"el proyecto de San Rafael, ya diseñado",
+  "fases.014":"Una biblioteca y un aula abierta",
+  "fases.015":"Construida en bambú Guadua con techo de palma yarina. Son aulas modulares que se adaptan a las actividades de la comunidad, donde los libros dialogan con los saberes awajún.",
+  "fases.016":"25 m²",
+  "fases.018":"beneficiarios",
+  "fases.019":"meta de la fase 2",
+  "fases.020":"<strong>Comunidad:<\/strong> ≈ 700 habitantes, 3 escuelas, 255 estudiantes. <strong>Acceso:<\/strong> Chiriaco y río Marañón. El proyecto ya está diseñado: arranca cuando se cierre la meta de Wawaín.",
+  "fases.021.alt":"Render del semillero de San Rafael: aula abierta en bambú con techo de palma y cerramientos verdes",
+  /* ── Súmate · qué significa la meta ── */
+  "meta.001":"Qué significa esta meta",
+  "meta.002":"No es una cifra abstracta. Es la suma de los materiales, instalaciones, transporte y recursos que faltan para completar esta etapa de la residencia.",
+  "meta.003":"reunidos en total · <span data-campo=\"pct-meta\">13.8 %<\/span> de la meta",
+  "meta.004":"Meta general<b data-campo=\"meta\">S/ 15,770<\/b>",
+  "meta.009":"<span data-campo=\"e2-reunido\">S/ 100<\/span> de <span data-campo=\"e2-meta\">S/ 2,900<\/span>",
+  "meta.010":"Uniones y herramientas",
+  "meta.011":"Mallas y cerramientos",
+  "meta.012":"Estamos aquí",
+  "meta.013":"Agua",
+  "meta.014":"Luz",
+  "meta.016":"Materiales y herramientas de la obra",
+  "meta.017":"Transporte de materiales y viáticos",
+  "meta.018":"<strong>Cuatro etapas. Un mismo objetivo.<\/strong> Cada una permite avanzar una parte de la obra. La primera, con uniones y herramientas de corte, ya está cubierta; ahora sumamos para cerrar la casa.",
+  "meta.019":"Etapa 1 · prioridad",
+  "meta.020":"<b>Hagamos posible la estructura.<\/b> Fijaciones y conectores estructurales, y herramientas de corte: lo que permite ensamblar bien.",
+  "meta.021":"Etapa 2",
+  "meta.022":"<b>Protejamos lo construido.<\/b> Lo anterior, más la preservación de la madera, las mallas y los cerramientos.",
+  "meta.023":"Etapa 3",
+  "meta.024":"<b>Hagámosla habitable.<\/b> Lo anterior, más la instalación sanitaria básica de la residencia.",
+  "meta.026":"<b>Completemos la residencia.<\/b> Lo anterior, más la instalación eléctrica, los acabados y los gastos operativos.",
+  "meta.027":"La obra avanza con lo que haya y la campaña sigue sumando.",
+  "meta.029.aria":"La casa crece en cuatro pasos",
+  /* ── ¿Cómo quieres sumarte? (incluye mensajes de WhatsApp) ── */
+  "como.001":"¿Cómo quieres sumarte?",
+  "como.002":"Tu apoyo impulsa más que una construcción, impulsa oportunidades de educación.",
+  "como.003":"Recursos",
+  "como.004":"Donación de personas",
+  "como.005":"Personas",
+  "como.006":"Haz tu aporte",
+  "como.007":"Un aporte libre, sin mínimo. Lo envías por un formulario.",
+  "como.008":"Ver cómo",
+  "como.010":"Donación de empresas",
+  "como.011":"Empresas",
+  "como.012":"Construye con tu empresa",
+  "como.013":"Tres niveles de auspicio, en dinero o en materiales de la obra. <b>Con certificado de donación.<\/b>",
+  "como.015":"Capacidades",
+  "como.016":"Formemos alianzas",
+  "como.017":"Alianzas",
+  "como.018":"Trabajemos juntos",
+  "como.019":"Organizaciones que asumen tareas concretas del proyecto.",
+  "como.022":"Responsabilidad social",
+  "como.023":"Resp. social",
+  "como.024":"Involucra a tu equipo",
+  "como.025":"Empresas que involucran a su equipo más allá del aporte.",
+  "como.028":"Invitación abierta: cualquier persona puede sumarse con el monto que pueda, sin mínimo. Es la vía más frecuente.",
+  "como.029":"Tu aporte suma",
+  "como.030":"Un aporte libre, sin mínimo, como donación a Paisajes Educativos.",
+  "como.031":"Tu apoyo deja huella",
+  "como.032":"Transparencia: sumamos cada aporte al avance de la campaña y mostramos en qué se convierte, con evidencia de obra.",
+  "como.033":"¿Quieres sumarte?",
+  "como.034":"Envías tu donación a través del formulario, con tus datos y la imagen de tu comprobante, o lo coordinas por WhatsApp.",
+  "como.035":"<b>¿Por qué te pedimos tus datos?<\/b> Paisajes Educativos solo puede recibir dinero bajo el concepto de donación. Por eso, antes de que dones necesitamos algunos datos tuyos: así dejamos constancia de cada aporte, lo sumamos al avance de la campaña y podemos rendir cuentas. Las donaciones de personas no generan comprobante tributario.",
+  "como.036":"Envía tu donación por el formulario",
+  "como.037":"Puedes enviar tu donación a través de este formulario: deja tus datos y la imagen de tu comprobante. ¡Gracias por sembrar con nosotros!",
+  "como.038":"Enviar mi donación",
+  "como.039":"Tu aporte tiene un destino. Ayúdanos a hacerlo realidad.",
+  "como.040":"Coordina por WhatsApp",
+  "como.041":"Escríbenos y coordinamos tu donación por chat, con el equipo de la campaña.",
+  "como.042":"Escribir por WhatsApp",
+  "como.044":"Para empresas que pueden auspiciar la obra, en dinero o en materiales del listado técnico. Cada nivel incluye todo lo del anterior y suma algo más.",
+  "como.045":"Tu empresa puede sumar",
+  "como.046":"Un monto económico o materiales de construcción valorizados a precio de mercado.",
+  "como.048":"Visibilidad y reporte de impacto según el nivel; certificado de donación deducible desde el nivel Bosque.",
+  "como.050":"Eliges el nivel, lo conversamos por WhatsApp y formalizamos el aporte.",
+  "como.051":"Empieza a sembrar.",
+  "como.052":"Mención en la inauguración",
+  "como.053":"Mención en redes sociales",
+  "como.054":"Reporte de cierre con evidencia de obra",
+  "como.055":"Auspiciar",
+  "como.056":"o su equivalente en materiales",
+  "como.057":"Haz crecer el impacto.",
+  "como.058":"Todo lo de Semilla",
+  "como.059":"Certificado de donación deducible",
+  "como.060":"Logo en materiales de campaña",
+  "como.061":"Kit de publicaciones en redes durante el proyecto",
+  "como.063":"a más",
+  "como.064":"Deja una huella en el territorio.",
+  "como.065":"Todo lo de Bosque",
+  "como.066":"Logo en la obra construida",
+  "como.067":"Historias y reel durante toda la campaña",
+  "como.068":"Kit de fotos e historia para tu comunicación",
+  "como.069":"Mención especial en el video de cierre",
+  "como.071":"Semilla · Bosque · Territorio",
+  "como.072":"Desliza →",
+  "como.073":"Frutos: donar materiales en vez de dinero",
+  "como.074":"¿Tu empresa puede aportar materiales? También puedes construir con lo que ya tienes.",
+  "como.075":"Frutos no es un nivel aparte, es otra forma de hacer el mismo aporte. El material se valoriza a precio de mercado y ese monto ubica al donante en el nivel que le corresponde, con los mismos beneficios.",
+  "como.076":"Fijaciones y tornillería",
+  "como.077":"Herramientas de corte",
+  "como.078":"Preservantes para madera",
+  "como.080":"Aparatos sanitarios",
+  "como.081":"Cableado eléctrico",
+  "como.082":"Si tienes un material que no está en esta lista, también puede servir: se revisa caso por caso con logística antes de confirmar la donación.",
+  "como.083":"Coordinar una donación de materiales",
+  "como.084":"Certificado de donación",
+  "como.085":"Deducible ante SUNAT, desde el nivel Bosque.",
+  "como.086":"Reporte de impacto",
+  "como.087":"Rendición con comprobantes y evidencia fotográfica de obra.",
+  "como.088":"Visibilidad",
+  "como.089":"En la obra, en materiales de campaña y en redes, según el nivel.",
+  "como.090":"El detalle completo de beneficios por nivel está en el <a href=\"https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view\" target=\"_blank\" rel=\"noopener\">brochure de la campaña<\/a>.",
+  "como.092":"Para organizaciones y colectivos que pueden asumir tareas concretas del proyecto, sin que medie un aporte económico.",
+  "como.093":"Tu organización puede sumar",
+  "como.094":"Gestión, coordinación, operación o logística de una parte del proyecto.",
+  "como.095":"Tu alianza abre oportunidades",
+  "como.096":"Alianza conjunta, visibilidad como aliado y reporte del trabajo común.",
+  "como.097":"¿Empezamos?",
+  "como.098":"Agendamos una conversación de 30 minutos para definir el alcance.",
+  "como.099":"Conversemos una alianza",
+  "como.101":"Para empresas que quieren involucrar a su equipo en la obra, más allá del aporte económico.",
+  "como.102":"Tu equipo puede sumar",
+  "como.103":"Tiempo, equipo o experiencia: voluntariado corporativo, asesoría técnica, logística.",
+  "como.104":"Tu equipo deja huella",
+  "como.105":"Una experiencia diseñada a medida con tu equipo y reporte de impacto (RSC / ESG).",
+  "como.107":"Coordinamos una sesión para diseñar la experiencia y su calendario.",
+  "como.108":"Diseñemos la experiencia",
+  "como.109.aria":"Maneras de sumarse",
+  "como.110.wa":"Hola, quiero donar a la campaña Sembremos espacios de Aprendizaje Awajún.",
+  "como.111.aria":"Niveles de auspicio",
+  "como.112.wa":"Hola, quiero auspiciar la campaña en el nivel Semilla (S/ 100).",
+  "como.113.wa":"Hola, quiero auspiciar la campaña en el nivel Bosque (S/ 500 o su equivalente en materiales).",
+  "como.114.wa":"Hola, quiero auspiciar la campaña en el nivel Territorio (S/ 1,000 a más).",
+  "como.115.wa":"Hola, quiero donar materiales (vía Frutos) para la residencia de Wawaín.",
+  "como.116.wa":"Hola, represento a una organización interesada en formar una alianza con la campaña de Aprendizaje Awajún.",
+  "como.117.wa":"Hola, escribo desde una empresa interesada en la vía de responsabilidad social de la campaña de Aprendizaje Awajún.",
+  /* ── Franja de transparencia ── */
+  "confianza.002":"Paisajes Educativos y Manifiesto Lab se unen para sumar esfuerzos y aportes que hagan posible esta obra. Aquí te contamos cómo rendimos cuentas y respondemos tus dudas.",
+  "confianza.003":"En qué se convierte cada aporte",
+  "confianza.004":"Preguntas frecuentes",
+  "confianza.005":"Quiénes están detrás",
+  "confianza.006":"Ver transparencia",
+  /* ── Cierre ── */
+  "cierre.001":"Con tu aporte, siembras algo que crece",
+  "cierre.002":"Un espacio donde niñas y niños awajún aprenden sin dejar de ser quienes son. Escríbenos para recibir el dossier completo y conversar sobre cómo sumarte.",
+  "cierre.004":"Ver el brochure",
+  "cierre.005.wa":"Hola, escribo por la campaña Sembremos espacios de Aprendizaje Awajún. Quisiera conocer más.",
+  /* ── Panel de transparencia ── */
+  "transparencia.004":"Los aportes se reciben a nombre de Paisajes Educativos, una asociación, no de una persona.",
+  "transparencia.005":"Aporte",
+  "transparencia.006":"Ingresa a la cuenta institucional de la asociación.",
+  "transparencia.007":"Ejecución",
+  "transparencia.008":"Compra de material con comprobante y obra junto a la comunidad.",
+  "transparencia.009":"Evidencia",
+  "transparencia.010":"Reporte periódico mientras dure la campaña, publicaciones de avance e informe final al donante.",
+  "transparencia.011":"Ver cómo donar",
+  "transparencia.013":"¿Quién ejecuta la obra?",
+  "transparencia.014":"La comunidad, con acompañamiento técnico de Paisajes Educativos y Manifiesto Lab. La mano de obra es comunitaria y de voluntarios.",
+  "transparencia.015":"¿De quién es la obra al terminar?",
+  "transparencia.016":"De la comunidad y de la institución educativa.",
+  "transparencia.017":"¿Qué pasa si no se alcanza la meta de una etapa?",
+  "transparencia.018":"Se trabaja con lo que haya y la campaña sigue sumando. La obra avanza por etapas, así que lo que entre después se destina a la etapa siguiente.",
+  "transparencia.019":"¿Qué pasa si se supera la meta?",
+  "transparencia.020":"El excedente inicia la Fase 2 en San Rafael. Nada sale de la campaña.",
+  "transparencia.021":"¿Se puede donar material en vez de dinero?",
+  "transparencia.022":"Sí, es la vía Frutos. Hay un listado técnico, el material se valoriza a precio de mercado y el donante recibe los mismos beneficios del nivel que le corresponde.",
+  "transparencia.023":"¿Qué materiales se aceptan?",
+  "transparencia.024":"Los del listado del proyecto. Un material que no esté en la lista puede aceptarse si resulta acorde a la obra: se coordina caso por caso con logística antes de confirmar la donación.",
+  "transparencia.025":"¿Se puede pedir exclusividad o naming?",
+  "transparencia.026":"No hay precios de exclusividad. Si aparece algo extraordinario, se resuelve por acuerdo previo.",
+  "transparencia.027":"¿Quién habla a nombre de la campaña?",
+  "transparencia.028":"Paisajes Educativos y Manifiesto Lab.",
+  "transparencia.029":"Aliados que ya suman",
+  "transparencia.030":"Tech Studio Coworking",
+  "transparencia.031":"Corte láser de la maqueta e impresión de planos.",
+  "transparencia.032":"Servicio de Neurocirugía del Hospital Nacional Arzobispo Loayza",
+  "transparencia.033":"Donación para la obra.",
+  "transparencia.035":"Asociación de voluntariado sin fines de lucro. 5 años, 15 coordinadores, +200 voluntarios, 7 proyectos en 4 regiones.",
+  "transparencia.036":"Reconocida por el MIMP",
+  "transparencia.037":"RUC activo y cuenta institucional",
+  "transparencia.038":"Emite certificados de donación (SUNAT)",
+  "transparencia.039":"Colectivo de arquitectura social y bioconstrucción, con diseño participativo en comunidades vulnerables.",
+  "transparencia.040":"Premio Nacional de la Juventud 2023",
+  "transparencia.041":"Especialistas en bambú y tierra",
+  "transparencia.042":"Asistencia técnica en comunidades",
+  "transparencia.043.aria":"Cerrar transparencia",
+  /* ── Pie de página ── */
+  "pie.001":"Campaña de construcción comunitaria para las comunidades awajún de Wawaín y San Rafael — Imaza, Bagua, Amazonas, Perú.",
+  "pie.002":"Contacto",
+  "pie.003":"Correo",
+  "pie.004":"WhatsApp",
+  "pie.005":"Más información",
+  "pie.006":"Instagram",
+  "pie.007":"Facebook",
+  "pie.008":"<b>Paisajes Educativos<\/b> — Asociación de voluntariado sin fines de lucro.",
+  "pie.009":"<b>Manifiesto Lab<\/b> — Colectivo de arquitectura social y bioconstrucción.",
+  /* ── Barra inferior ── */
+  "barra.002":"de <span data-campo=\"e2-meta\">S/ 2,900<\/span> · Etapa 2",
+  /* ── Visor de fotos ── */
+  "visor.002.aria":"Cerrar galería",
+  "visor.003.aria":"Foto anterior",
+  "visor.004.aria":"Foto siguiente"
+ },
+ en:{
+  "meta.title":"Let's Plant Awajún Learning Spaces — Paisajes Educativos + Manifiesto Lab",
+  "meta.desc":"The Awajún community of Wawaín is already building Casa Semilla Awajún, its student residence. This campaign adds the technical materials still missing. Imaza, Bagua, Amazonas, Peru.",
+  /* ── General ── */
+  "otros.001":"Skip to content",
+  "otros.002":"The project",
+  /* ── Pantalla de bienvenida ── */
+  "bienvenida.001":"Communities in the Peruvian Amazon are working to close the gaps through self-managed processes.",
+  "bienvenida.002":"We're joining in.",
+  "bienvenida.003":"We invite you to be part of it.",
+  "bienvenida.004":"Enter",
+  /* ── Cabecera ── */
+  "cabecera.001":"Project",
+  "cabecera.002":"Join in",
+  "cabecera.003":"Transparency",
+  "cabecera.004":"Donate",
+  "cabecera.005.aria":"Paisajes Educativos and Manifiesto Lab — home",
+  "cabecera.006.aria":"Sections",
+  /* ── Portada y tarjeta de avance ── */
+  "portada.001":"Community building campaign",
+  "portada.002":"Stage 2 underway",
+  "portada.003":"Let's plant spaces for",
+  "portada.004":"Awajún Learning",
+  "portada.005":"<strong>Construction is already underway!<\/strong> We invite you to join in creating <strong>a student residence<\/strong>, a safe place to live, eat, rest and keep learning.",
+  "portada.006":"Wawaín and San Rafael — Imaza, Bagua, Amazonas.",
+  "portada.008":"Learn about the project",
+  "portada.009":"Casa Semilla Awajún · student residence",
+  "portada.010":"Stage 1 · S/ <span data-campo=\"e1-meta-n\">4,600<\/span>",
+  "portada.011":"Covered",
+  "portada.012":"Through donations and support from partners.",
+  "portada.013":"Stage 2 · underway",
+  "portada.014":"Roofing and enclosures",
+  "portada.015":"of <span data-campo=\"e2-meta\">S/ 2,900<\/span>",
+  "portada.016":"of stage 2",
+  "portada.017":"Raised in total",
+  "portada.018":"Overall goal",
+  "portada.019":"Next phase: <span data-campo=\"sig-nombre\">San Rafael<\/span>",
+  "portada.020.aria":"Campaign progress",
+  "portada.021.aria":"Stage 2 progress",
+  /* ── El proyecto · Casa Semilla ── */
+  "casa-semilla.002":"A place to stay and keep learning",
+  "casa-semilla.003":"A timber and bamboo module on a concrete foundation, designed so that girls, boys and young people from distant communities can <strong>sleep, eat, study and spend time together<\/strong> in a <strong>safe<\/strong> space. Its flexible central space also makes it a place to keep learning.",
+  "casa-semilla.004":"Today",
+  "casa-semilla.005":"Where they sleep today: cane walls, corrugated metal roof and a dirt floor, with no kitchen or services.",
+  "casa-semilla.006":"What we're building together",
+  "casa-semilla.007":"Casa Semilla Awajún: cross ventilation, protected beds and a shared space in the center.",
+  "casa-semilla.008":"120 m²",
+  "casa-semilla.009":"floor area to build",
+  "casa-semilla.010":"beds",
+  "casa-semilla.011":"kitchen",
+  "casa-semilla.012":"bathroom",
+  "casa-semilla.013":"<strong>The community.<\/strong> Wawaín decided in assembly to build the residence, and it didn't wait to have everything figured out. Families chose the timber, cured it in a pool they built next to the school, gathered cement and tools, and organized the work parties. The building has been theirs from day one.",
+  "casa-semilla.014":"<strong>The campaign.<\/strong> The campaign adds what the forest can't provide: connectors so the structure lasts, cutting tools, preservatives, screens to enclose the rooms and, finally, water and power. Every sol becomes a specific material and is recorded with its receipt.",
+  "casa-semilla.015":"See the goal and what it turns into",
+  "casa-semilla.016":"<strong>We accompany.<\/strong> Paisajes Educativos and Manifiesto Lab provide technical assistance on joints, the building system and design.",
+  "casa-semilla.017.alt":"Inside the current lodging: beds under a corrugated metal roof, cane walls, a dirt floor and laundry hanging to dry",
+  "casa-semilla.018.alt":"Rendering of Casa Semilla Awajún: a timber and bamboo volume with lattice screens, a corrugated metal roof and a palm-thatch eave",
+  /* ── Así avanza Wawaín (galería) ── */
+  "bitacora.001":"Progress in Wawaín",
+  "bitacora.002":"From bare ground to structure: the work moves forward milestone by milestone, from the curing pool to the assembly of the structure. Tap a photo to see it larger.",
+  "bitacora.003":"Curing pool",
+  "bitacora.005":"Foundations",
+  "bitacora.008":"Construction lab",
+  "bitacora.011":"Structure assembly",
+  "bitacora.015":"See how the contributions were used",
+  "bitacora.016.aria":"Photos of construction progress",
+  "bitacora.017.alt":"Curing pool built with a cane frame and plastic sheeting, next to the community school",
+  "bitacora.018.alt":"Timber submerged in the preservative solution inside the pool",
+  "bitacora.019.alt":"Community members and volunteers mark out and clear the ground where the foundations will go",
+  "bitacora.020.alt":"Families from Wawaín dig the foundation trench",
+  "bitacora.021.alt":"Concrete for the foundations, mixed by hand by the community",
+  "bitacora.022.alt":"Cutting and bending rebar next to the building site camp",
+  "bitacora.023.alt":"The technical team explains the structure's scale model to community members",
+  "bitacora.024.alt":"Open-air assembly: the scale model of the house is presented to the community",
+  "bitacora.025.alt":"The structure's posts standing on the foundations, with community members working at their base",
+  "bitacora.026.alt":"Timber beams ready for assembly, on top of the foundations",
+  "bitacora.027.alt":"A community member assembles a structural beam from a scaffold",
+  "bitacora.028.alt":"Community members fix a beam in place using bamboo ladders",
+  /* ── Una apuesta por acortar brechas ── */
+  "que-es.001":"A bet on closing gaps and improving the safety of our children in the Amazon",
+  "que-es.002":"<strong>In Wawaín, the Awajún community in the Imaza district decided not to wait. It decided to build.<\/strong> It organized itself, gathered timber, cement and tools, and started the work parties to raise a residence for students who live far from the school. <strong>Now we need to provide what's missing:<\/strong> the technical materials the land can't supply.",
+  "que-es.003":"Learn more",
+  "que-es.004":"Show less",
+  "que-es.005":"how we got to Wawaín",
+  "que-es.006":"The project doesn't start with a blueprint: it starts with two years of work in the territory and with what the community itself put on the table.",
+  "que-es.007":"The connection",
+  "que-es.008":"Enseña Perú",
+  "que-es.009":"Enseña Perú's network of teachers in Imaza opens the door to the area's schools and to contact with Wawaín.",
+  "que-es.010":"24 Nov 2025",
+  "que-es.011":"Teachers' workshop",
+  "que-es.012":"60 teachers from the area work on school infrastructure and their schools' priorities.",
+  "que-es.013":"Workshops with the community",
+  "que-es.014":"Mothers and children in Umukai and high school students in Chiriaco define what the residence needs.",
+  "que-es.015":"Feb 2026",
+  "que-es.016":"Aula Viva Awajún",
+  "que-es.017":"The workshop that turns all of the above into the design of Casa Semilla and its building system.",
+  "que-es.018":"12–16 Oct 2026",
+  "que-es.019":"Building week",
+  "que-es.020":"Nine volunteers and the community raised the structure of the house.",
+  "que-es.021":"See photos and results",
+  /* ── Largas distancias ── */
+  "problema.001":"Long distances and vulnerable situations",
+  "problema.002":"Getting to class can mean crossing the river.",
+  "problema.003":"Distance shouldn't be a barrier to keep learning.",
+  "problema.004":"Did you know some students cross a river to get to school? For them, studying means covering long distances, taking paths that aren't always easy and, often, staying far from home. <strong>They do it because they want to keep learning.<\/strong>",
+  "problema.005":"Today, many have to stay in places that lack the conditions needed to sleep, eat, wash and study. <strong>In Wawaín, the residence aims to change that reality.<\/strong>",
+  "problema.006":"The school has <strong>more students than the village has residents<\/strong>: many come from other communities, by boat on the Chiriaco River and on foot.",
+  "problema.007":"Wawaín in numbers",
+  "problema.008":"residents",
+  "problema.009":"enrolled students",
+  "problema.010":"schools",
+  "problema.011":"1 hour",
+  "problema.012":"on foot, for those farthest away",
+  "problema.013":"By boat",
+  "problema.014":"on the Chiriaco River",
+  "problema.017":"what happens in rural schools across the country",
+  "problema.018":"What happens in rural schools across the country",
+  "problema.019":"1 in 5",
+  "problema.020":"rural students reach satisfactory learning levels. In the most remote areas, 1 in 10.",
+  "problema.021":"of educational infrastructure deficiencies are concentrated in rural schools.",
+  "problema.022":"single-teacher schools in Peru.",
+  "problema.023":"Only 7%",
+  "problema.024":"of the country's school buildings have closed their infrastructure gap.",
+  "problema.025":"MINEDU (2023, 2024) · ComexPerú, analysis of Minedu data (Dec. 2024) · PRONIED–UGM, “Educational innovation at the Frontier” (2026) · Project report.",
+  "problema.026.alt":"A group of schoolchildren with backpacks wade across a shallow river on their way to school",
+  /* ── Cronograma ── */
+  "cronograma.001":"The campaign and the building move forward in parallel",
+  "cronograma.002":"Fundraising doesn't stop when construction begins. The work moves forward in stages: each contribution that arrives goes to the next stage, and the campaign stays open until the house is complete.",
+  "cronograma.003":"Done",
+  "cronograma.004":"Sep–Oct 2026",
+  "cronograma.005":"Launch and first works",
+  "cronograma.006":"The campaign was launched. Foundations, construction lab and structure, built together with the community.",
+  "cronograma.007":"● In progress",
+  "cronograma.008":"Nov–Dec 2026",
+  "cronograma.009":"Second stage",
+  "cronograma.010":"Roofing and enclosures. Fundraising continues.",
+  "cronograma.011":"○ Goal",
+  "cronograma.012":"Casa Semilla Awajún complete",
+  "cronograma.013":"Water, power and finishes. Completion of the building and opening of Casa Semilla Awajún.",
+  "cronograma.014.aria":"Campaign and construction timeline",
+  /* ── Dos fases ── */
+  "fases.001":"One process in two phases",
+  "fases.002":"Wawaín and San Rafael don't compete for the same money. Wawaín is under construction now; San Rafael starts with the surplus from this phase and with what was learned in it.",
+  "fases.003":"Phase 1 · under construction",
+  "fases.004":"Casa Semilla Awajún, student residence. 120 m², 28 beds. This is the phase this campaign funds.",
+  "fases.005":"Phase 2 · afterwards",
+  "fases.006":"Learning seedbed. 25 m², 60 beneficiaries. It starts with the surplus from phase 1.",
+  "fases.007":"See the project",
+  "fases.008":"Later on",
+  "fases.009":"The model",
+  "fases.010":"Both projects leave a documented precedent that can be transferred to other Amazonian communities.",
+  "fases.013":"the San Rafael project, already designed",
+  "fases.014":"A library and an open classroom",
+  "fases.015":"Built from Guadua bamboo with a yarina palm roof. These are modular classrooms that adapt to the community's activities, where books converse with Awajún knowledge.",
+  "fases.016":"25 m²",
+  "fases.018":"beneficiaries",
+  "fases.019":"phase 2 goal",
+  "fases.020":"<strong>Community:<\/strong> ≈ 700 residents, 3 schools, 255 students. <strong>Access:<\/strong> Chiriaco and the Marañón River. The project is already designed: it starts when Wawaín's goal is closed.",
+  "fases.021.alt":"Rendering of the San Rafael seedbed: an open bamboo classroom with a palm roof and green enclosures",
+  /* ── Súmate · qué significa la meta ── */
+  "meta.001":"What this goal means",
+  "meta.002":"It's not an abstract number. It's the sum of the materials, installations, transport and resources still missing to complete this stage of the residence.",
+  "meta.003":"raised in total · <span data-campo=\"pct-meta\">13.8 %<\/span> of the goal",
+  "meta.004":"Overall goal<b data-campo=\"meta\">S/ 15,770<\/b>",
+  "meta.009":"<span data-campo=\"e2-reunido\">S/ 100<\/span> of <span data-campo=\"e2-meta\">S/ 2,900<\/span>",
+  "meta.010":"Joints and tools",
+  "meta.011":"Screens and enclosures",
+  "meta.012":"We are here",
+  "meta.013":"Water",
+  "meta.014":"Power",
+  "meta.016":"Materials and tools for the building",
+  "meta.017":"Transport of materials and travel expenses",
+  "meta.018":"<strong>Four stages. One shared goal.<\/strong> Each one moves a part of the building forward. The first, with joints and cutting tools, is already covered; now we're raising funds to close up the house.",
+  "meta.019":"Stage 1 · priority",
+  "meta.020":"<b>Let's make the structure possible.<\/b> Fasteners and structural connectors, and cutting tools: what makes it possible to assemble well.",
+  "meta.021":"Stage 2",
+  "meta.022":"<b>Let's protect what's built.<\/b> The above, plus timber preservation, screens and enclosures.",
+  "meta.023":"Stage 3",
+  "meta.024":"<b>Let's make it livable.<\/b> The above, plus the residence's basic plumbing and sanitation.",
+  "meta.026":"<b>Let's complete the residence.<\/b> The above, plus the electrical installation, finishes and operating costs.",
+  "meta.027":"Construction moves forward with what's available and the campaign keeps adding up.",
+  "meta.029.aria":"The house grows in four steps",
+  /* ── ¿Cómo quieres sumarte? (incluye mensajes de WhatsApp) ── */
+  "como.001":"How would you like to join in?",
+  "como.002":"Your support drives more than a building: it drives educational opportunities.",
+  "como.003":"Resources",
+  "como.004":"Donations from individuals",
+  "como.005":"Individuals",
+  "como.006":"Make your contribution",
+  "como.007":"A free contribution, no minimum. You send it through a form.",
+  "como.008":"See how",
+  "como.010":"Donations from companies",
+  "como.011":"Companies",
+  "como.012":"Build with your company",
+  "como.013":"Three sponsorship levels, in money or in building materials. <b>With a donation certificate.<\/b>",
+  "como.015":"Skills",
+  "como.016":"Let's build partnerships",
+  "como.017":"Partnerships",
+  "como.018":"Let's work together",
+  "como.019":"Organizations that take on specific tasks of the project.",
+  "como.022":"Social responsibility",
+  "como.023":"Social resp.",
+  "como.024":"Involve your team",
+  "como.025":"Companies that involve their team beyond the contribution.",
+  "como.028":"Open invitation: anyone can join in with whatever amount they can, no minimum. It's the most common path.",
+  "como.029":"Your contribution adds up",
+  "como.030":"A free contribution, no minimum, as a donation to Paisajes Educativos.",
+  "como.031":"Your support leaves a mark",
+  "como.032":"Transparency: we add every contribution to the campaign's progress and show what it turns into, with evidence from the building site.",
+  "como.033":"Want to join in?",
+  "como.034":"You send your donation through the form, with your details and a picture of your receipt, or you arrange it over WhatsApp.",
+  "como.035":"<b>Why do we ask for your details?<\/b> Paisajes Educativos can only receive money as a donation. That's why, before you donate, we need a few details from you: this lets us keep a record of every contribution, add it to the campaign's progress and be accountable. Donations from individuals don't generate a tax receipt.",
+  "como.036":"Send your donation through the form",
+  "como.037":"You can send your donation through this form: leave your details and a picture of your receipt. Thank you for planting with us!",
+  "como.038":"Send my donation",
+  "como.039":"Your contribution has a destination. Help us make it real.",
+  "como.040":"Arrange it over WhatsApp",
+  "como.041":"Write to us and we'll arrange your donation by chat, with the campaign team.",
+  "como.042":"Message us on WhatsApp",
+  "como.044":"For companies that can sponsor the building, in money or in materials from the technical list. Each level includes everything in the previous one and adds more.",
+  "como.045":"Your company can contribute",
+  "como.046":"A sum of money or building materials valued at market price.",
+  "como.048":"Visibility and an impact report depending on the level; a tax-deductible donation certificate from the Bosque level.",
+  "como.050":"You choose the level, we talk it over on WhatsApp and formalize the contribution.",
+  "como.051":"Start planting.",
+  "como.052":"Mention at the opening",
+  "como.053":"Mention on social media",
+  "como.054":"Closing report with evidence from the building site",
+  "como.055":"Sponsor",
+  "como.056":"or its equivalent in materials",
+  "como.057":"Grow the impact.",
+  "como.058":"Everything in Semilla",
+  "como.059":"Tax-deductible donation certificate",
+  "como.060":"Logo on campaign materials",
+  "como.061":"Social media post kit during the project",
+  "como.063":"and up",
+  "como.064":"Leave a mark on the territory.",
+  "como.065":"Everything in Bosque",
+  "como.066":"Logo on the finished building",
+  "como.067":"Stories and a reel throughout the campaign",
+  "como.068":"Photo and story kit for your communications",
+  "como.069":"Special mention in the closing video",
+  "como.071":"Semilla · Bosque · Territorio",
+  "como.072":"Swipe →",
+  "como.073":"Frutos: donate materials instead of money",
+  "como.074":"Can your company contribute materials? You can also build with what you already have.",
+  "como.075":"Frutos is not a separate level, it's another way of making the same contribution. The material is valued at market price and that amount places the donor in the matching level, with the same benefits.",
+  "como.076":"Fasteners and hardware",
+  "como.077":"Cutting tools",
+  "como.078":"Wood preservatives",
+  "como.080":"Sanitary fixtures",
+  "como.081":"Electrical wiring",
+  "como.082":"If you have a material that isn't on this list, it may also work: it's reviewed case by case with logistics before the donation is confirmed.",
+  "como.083":"Arrange a materials donation",
+  "como.084":"Donation certificate",
+  "como.085":"Tax-deductible with SUNAT (Peru's tax authority), from the Bosque level.",
+  "como.086":"Impact report",
+  "como.087":"An accounting with receipts and photographic evidence from the building site.",
+  "como.088":"Visibility",
+  "como.089":"On the building, on campaign materials and on social media, depending on the level.",
+  "como.090":"The full details of benefits by level are in the <a href=\"https://drive.google.com/file/d/1ft0l8s3AHtfAesB6y1yOY41ICTYBZy40/view\" target=\"_blank\" rel=\"noopener\">campaign brochure<\/a>.",
+  "como.092":"For organizations and collectives that can take on specific tasks of the project, with no financial contribution involved.",
+  "como.093":"Your organization can contribute",
+  "como.094":"Management, coordination, operations or logistics for part of the project.",
+  "como.095":"Your partnership opens opportunities",
+  "como.096":"A joint partnership, visibility as a partner and a report on the shared work.",
+  "como.097":"Shall we start?",
+  "como.098":"We schedule a 30-minute conversation to define the scope.",
+  "como.099":"Let's talk about a partnership",
+  "como.101":"For companies that want to involve their team in the building, beyond the financial contribution.",
+  "como.102":"Your team can contribute",
+  "como.103":"Time, equipment or expertise: corporate volunteering, technical advice, logistics.",
+  "como.104":"Your team leaves a mark",
+  "como.105":"An experience tailored with your team, and an impact report (CSR / ESG).",
+  "como.107":"We set up a session to design the experience and its schedule.",
+  "como.108":"Let's design the experience",
+  "como.109.aria":"Ways to join in",
+  "como.110.wa":"Hello, I'd like to donate to the campaign Sembremos espacios de Aprendizaje Awajún (Let's Plant Awajún Learning Spaces).",
+  "como.111.aria":"Sponsorship levels",
+  "como.112.wa":"Hello, I'd like to sponsor the campaign at the Semilla level (S/ 100).",
+  "como.113.wa":"Hello, I'd like to sponsor the campaign at the Bosque level (S/ 500 or its equivalent in materials).",
+  "como.114.wa":"Hello, I'd like to sponsor the campaign at the Territorio level (S/ 1,000 and up).",
+  "como.115.wa":"Hello, I'd like to donate materials (through Frutos) for the Wawaín residence.",
+  "como.116.wa":"Hello, I represent an organization interested in forming a partnership with the Awajún Learning campaign.",
+  "como.117.wa":"Hello, I'm writing from a company interested in the social responsibility path of the Awajún Learning campaign.",
+  /* ── Franja de transparencia ── */
+  "confianza.002":"Paisajes Educativos and Manifiesto Lab are joining forces to bring together the efforts and contributions that will make this building possible. Here we explain how we are accountable and answer your questions.",
+  "confianza.003":"What each contribution turns into",
+  "confianza.004":"Frequently asked questions",
+  "confianza.005":"Who is behind this",
+  "confianza.006":"See transparency",
+  /* ── Cierre ── */
+  "cierre.001":"With your contribution, you plant something that grows",
+  "cierre.002":"A space where Awajún girls and boys learn without ceasing to be who they are. Write to us to receive the full dossier and talk about how to join in.",
+  "cierre.004":"See the brochure",
+  "cierre.005.wa":"Hello, I'm writing about the campaign Sembremos espacios de Aprendizaje Awajún (Let's Plant Awajún Learning Spaces). I'd like to know more.",
+  /* ── Panel de transparencia ── */
+  "transparencia.004":"Contributions are received in the name of Paisajes Educativos, an association, not an individual.",
+  "transparencia.005":"Contribution",
+  "transparencia.006":"It goes into the association's institutional account.",
+  "transparencia.007":"Execution",
+  "transparencia.008":"Materials are bought with a receipt and the work is done together with the community.",
+  "transparencia.009":"Evidence",
+  "transparencia.010":"Regular reports for as long as the campaign lasts, progress posts and a final report to the donor.",
+  "transparencia.011":"See how to donate",
+  "transparencia.013":"Who carries out the building work?",
+  "transparencia.014":"The community, with technical support from Paisajes Educativos and Manifiesto Lab. The labor is provided by the community and volunteers.",
+  "transparencia.015":"Who owns the building when it's finished?",
+  "transparencia.016":"The community and the educational institution.",
+  "transparencia.017":"What happens if a stage's goal isn't reached?",
+  "transparencia.018":"We work with what we have and the campaign keeps adding up. The building moves forward in stages, so whatever comes in later goes to the next stage.",
+  "transparencia.019":"What happens if the goal is exceeded?",
+  "transparencia.020":"The surplus starts Phase 2 in San Rafael. Nothing leaves the campaign.",
+  "transparencia.021":"Can I donate materials instead of money?",
+  "transparencia.022":"Yes, that's the Frutos path. There's a technical list, the material is valued at market price and the donor receives the same benefits as the matching level.",
+  "transparencia.023":"Which materials are accepted?",
+  "transparencia.024":"Those on the project list. A material that isn't on the list may be accepted if it suits the building: it's arranged case by case with logistics before the donation is confirmed.",
+  "transparencia.025":"Can I ask for exclusivity or naming rights?",
+  "transparencia.026":"There are no exclusivity prices. If something extraordinary comes up, it's resolved by prior agreement.",
+  "transparencia.027":"Who speaks on behalf of the campaign?",
+  "transparencia.028":"Paisajes Educativos and Manifiesto Lab.",
+  "transparencia.029":"Partners already on board",
+  "transparencia.030":"Tech Studio Coworking",
+  "transparencia.031":"Laser cutting of the scale model and printing of the plans.",
+  "transparencia.032":"Neurosurgery Service, Hospital Nacional Arzobispo Loayza",
+  "transparencia.033":"Donation to the project.",
+  "transparencia.035":"A non-profit volunteer association. 5 years, 15 coordinators, 200+ volunteers, 7 projects in 4 regions.",
+  "transparencia.036":"Recognized by MIMP (Peru's Ministry of Women)",
+  "transparencia.037":"Active tax ID (RUC) and institutional account",
+  "transparencia.038":"Issues donation certificates (SUNAT)",
+  "transparencia.039":"A social architecture and bioconstruction collective, working with participatory design in vulnerable communities.",
+  "transparencia.040":"National Youth Award 2023",
+  "transparencia.041":"Bamboo and earth specialists",
+  "transparencia.042":"Technical assistance in communities",
+  "transparencia.043.aria":"Close transparency",
+  /* ── Pie de página ── */
+  "pie.001":"A community building campaign for the Awajún communities of Wawaín and San Rafael — Imaza, Bagua, Amazonas, Peru.",
+  "pie.002":"Contact",
+  "pie.003":"Email",
+  "pie.004":"WhatsApp",
+  "pie.005":"More information",
+  "pie.006":"Instagram",
+  "pie.007":"Facebook",
+  "pie.008":"<b>Paisajes Educativos<\/b> — A non-profit volunteer association.",
+  "pie.009":"<b>Manifiesto Lab<\/b> — A social architecture and bioconstruction collective.",
+  /* ── Barra inferior ── */
+  "barra.002":"of <span data-campo=\"e2-meta\">S/ 2,900<\/span> · Stage 2",
+  /* ── Visor de fotos ── */
+  "visor.002.aria":"Close gallery",
+  "visor.003.aria":"Previous photo",
+  "visor.004.aria":"Next photo"
+ }
+};
+</script>
+<!-- I18N:fin -->
 
 <script>
 (function(){
   'use strict';
   var root=document.documentElement;
   root.classList.add('js');
+
+  /* ══════ CONFIGURACIÓN DE LA CAMPAÑA — actualizar aquí ══════
+     totalFuente        : 'excel' = el monto general se lee de la celda A1 de la hoja de Google (ver HOJA más abajo; no tocar)
+     totalRespaldo      : lo que se muestra si la hoja no responde
+     etapa1             : cerrada; se muestra completa y no se borra
+     etapa2.reunido     : lo reunido para la etapa 2 (provisional hasta que las donaciones nuevas entren a la hoja)
+     etapa2.meta        : tramo 4,600 → 7,500
+     sumarEtapa2AlTotal : true mientras la hoja NO incluya la etapa 2; ponerlo en false cuando ya la incluya (evita contarla dos veces)
+     metaGeneral        : meta de Wawaín
+     escalones          : metas acumuladas de las etapas 1, 2 y 3 (la 4.ª es la meta general) */
+  var CAMPANA={
+    totalFuente:'excel',
+    totalRespaldo:2075,
+    etapa1:{ meta:4600, estado:'cubierta' },
+    etapa2:{ reunido:100, meta:2900 },
+    sumarEtapa2AlTotal:true,
+    metaGeneral:15770,
+    escalones:[4600,7500,10000],
+    siguiente:{ nombre:'San Rafael', monto:15000 }
+  };
   var reducir=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(s,c){return (c||document).querySelector(s);}
   function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
 
   /* ── Cifras de la campaña ──
-     El monto reunido se lee de la celda A1 de la hoja de Google, así se actualiza sin tocar la web.
-     Si la hoja no responde se usa el número guardado en #datos-campana.
-     Al aparecer en pantalla cada bloque cuenta de 0 al monto, con sus barras y porcentajes. */
+     El monto general se lee de la celda A1 de la hoja de Google, así se actualiza sin tocar la web.
+     Si la hoja no responde se usa CAMPANA.totalRespaldo.
+     Total reunido = hoja + etapa 2 (mientras CAMPANA.sumarEtapa2AlTotal sea true). Nada se resta.
+     Al aparecer en pantalla cada bloque cuenta de 0 a su valor, con sus barras y porcentajes. */
   var HOJA='1cE6oD6t3Mxhg7oxOojrgpJP1DvN6cruCvssBCl4-rIE', LIMITE=1e7;
-  (function(){
-    var d; try{ d=JSON.parse($('#datos-campana').textContent); }catch(e){ return; }
-    var meta=Number(d.meta)||1, subs=(d.submetas||[]).map(Number).concat([meta]);
+  var campana=(function(){
+    var C=CAMPANA, meta=Number(C.metaGeneral)||1;
+    var e2r=Number(C.etapa2.reunido)||0, e2m=Number(C.etapa2.meta)||1, e1m=Number(C.etapa1.meta)||0;
+    var subs=(C.escalones||[]).map(Number).concat([meta]);
     var fmt=function(n){return 'S/ '+Math.round(n).toLocaleString('en-US');};
+    var en=function(){ return (root.lang||'es')==='en'; };
+    var pct=function(n){ var t=String(Math.round(n*10)/10); return en()?t+'%':t+' %'; };
     var set=function(campo,val){ $$('[data-campo="'+campo+'"]').forEach(function(el){el.textContent=val;}); };
-    var r=Number(d.reunido)||0, idx=0, objetivo=1;
+    var excel=Number(C.totalRespaldo)||0, total=0, k0=1;
+    function calcular(){ total=excel+(C.sumarEtapa2AlTotal?e2r:0); }
+    calcular();
 
-    /* ── lectura de la hoja ── */
+    /* ── lectura de la hoja (sin cambios) ── */
     function primerCampo(linea){ var m=/^\s*(?:"([^"]*)"|([^,]*))/.exec(linea); return m?(m[1]!==undefined?m[1]:m[2]):''; }
     function aNumero(t){
       t=String(t||'').replace(/["\s]|S\/\.?/gi,'').replace(/[^0-9.,-]/g,'');
@@ -1423,51 +2266,55 @@ body.panel-abierto{overflow:hidden}
       return probar(0);
     }
 
-    /* ── lo que depende del monto final: etiquetas, accesibilidad y estado de las etapas ── */
+    /* ── lo que no se anima: textos fijos, accesibilidad y estado de las etapas ── */
     function fijar(v){
-      r=v; idx=0; while(idx<subs.length-1 && r>=subs[idx]) idx++;
-      objetivo=subs[idx];
-      var esFinal=(idx===subs.length-1);
-      var pctSub=Math.min(100,r/objetivo*100), pctMeta=Math.min(100,r/meta*100);
-      var txtSub=esFinal?('Meta: '+fmt(meta)):('Submeta '+(idx+1)+': '+fmt(objetivo));
-      set('meta',fmt(meta)); set('submeta-txt',txtSub);
-      if(d.siguiente){ set('sig-nombre',d.siguiente.nombre); set('sig-monto',fmt(d.siguiente.monto)); }
-      $$('[data-aria-submeta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos. '+txtSub+', '+Math.floor(pctSub)+' por ciento.');});
-      $$('[data-aria-meta]').forEach(function(el){el.setAttribute('aria-label',fmt(r)+' reunidos de '+fmt(meta)+', '+(Math.round(pctMeta*10)/10)+' por ciento.');});
-      var marcas=$$('.riel-g .m'); (d.submetas||[]).forEach(function(s,i){ if(marcas[i]) marcas[i].style.left=(s/meta*100)+'%'; });
+      excel=v; calcular();
+      set('meta',fmt(meta)); set('e1-meta-n',Math.round(e1m).toLocaleString('en-US')); set('e2-meta',fmt(e2m));
+      if(C.siguiente){ set('sig-nombre',C.siguiente.nombre); set('sig-monto',fmt(C.siguiente.monto)); }
+      var cubiertas=[C.etapa1.estado==='cubierta', e2r>=e2m];
+      var actual=0; while(actual<subs.length && cubiertas[actual]) actual++;
       $$('#escalones .esc').forEach(function(li,i){
         if(i===subs.length-1) li.setAttribute('data-monto',meta);
         li.classList.remove('logrado','actual');
-        if(r>=subs[i]) li.classList.add('logrado'); else if(i===idx) li.classList.add('actual');
+        if(cubiertas[i]) li.classList.add('logrado'); else if(i===actual) li.classList.add('actual');
       });
+      etiquetas();
+    }
+    function etiquetas(){      /* textos que dependen del idioma */
+      var tx=en()
+        ? {e2:fmt(e2r)+' of '+fmt(e2m)+' for stage 2, ',t:'collected in total'}
+        : {e2:fmt(e2r)+' de '+fmt(e2m)+' para la etapa 2, ',t:'reunidos en total'};
+      var pe2=Math.min(100,e2r/e2m*100), pm=Math.min(100,total/meta*100);
+      $$('[data-aria-e2]').forEach(function(el){ el.setAttribute('aria-label',tx.e2+Math.floor(pe2)+(en()?' percent.':' por ciento.')); });
+      $$('[data-aria-meta]').forEach(function(el){ el.setAttribute('aria-label',fmt(total)+' '+tx.t+', '+pct(pm)); });
     }
 
-    /* ── lo que se ve mientras cuenta: número, porcentajes y barras de un bloque ── */
-    function pintar(cont,v){
-      var pctSub=Math.min(100,v/objetivo*100), pctMeta=Math.min(100,v/meta*100);
-      $$('[data-campo="reunido"]',cont).forEach(function(el){el.textContent=fmt(v);});
-      $$('[data-campo="pct-submeta"]',cont).forEach(function(el){el.textContent=Math.floor(pctSub)+' %';});
-      $$('[data-campo="pct-meta"]',cont).forEach(function(el){el.textContent=(Math.round(pctMeta*10)/10)+' % de la meta';});
-      $$('[data-barra-submeta]',cont).forEach(function(el){el.style.width=pctSub+'%';});
-      $$('[data-barra-meta]',cont).forEach(function(el){el.style.width=pctMeta+'%';});
+    /* ── lo que se ve mientras cuenta: k va de 0 a 1 ── */
+    function pintar(cont,k){
+      var pe2=Math.min(100,e2r*k/e2m*100), pm=Math.min(100,total*k/meta*100);
+      $$('[data-campo="total"]',cont).forEach(function(el){el.textContent=fmt(total*k);});
+      $$('[data-campo="e2-reunido"]',cont).forEach(function(el){el.textContent=fmt(e2r*k);});
+      $$('[data-campo="pct-e2"]',cont).forEach(function(el){el.textContent=pct(Math.floor(pe2));});
+      $$('[data-campo="pct-meta"]',cont).forEach(function(el){el.textContent=pct(pm);});
+      $$('[data-barra-e2]',cont).forEach(function(el){el.style.width=pe2+'%';});
     }
     var grupos=[];
-    function grupo(sel){ var el=$(sel); if(!el) return null; var g={el:el,mostrado:0,anim:null,iniciado:false}; grupos.push(g); return g; }
+    function grupo(sel){ var el=$(sel); if(!el) return null; var g={el:el,k:0,anim:null,iniciado:false}; grupos.push(g); return g; }
     function contar(g,hasta,ms){
       if(g.anim) cancelAnimationFrame(g.anim);
-      var desde=g.mostrado, t0=null;
+      var desde=g.k, t0=null;
       if(desde===hasta){ g.anim=null; pintar(g.el,hasta); return; }
       function paso(t){
         if(t0===null) t0=t;
-        var k=Math.min(1,(t-t0)/ms), e=1-Math.pow(1-k,3);
-        g.mostrado=k<1?desde+(hasta-desde)*e:hasta; pintar(g.el,g.mostrado);
-        g.anim=k<1?requestAnimationFrame(paso):null;
+        var p=Math.min(1,(t-t0)/ms), e=1-Math.pow(1-p,3);
+        g.k=p<1?desde+(hasta-desde)*e:hasta; pintar(g.el,g.k);
+        g.anim=p<1?requestAnimationFrame(paso):null;
       }
       g.anim=requestAnimationFrame(paso);
     }
-    function iniciar(g){ if(!g||g.iniciado) return; g.iniciado=true; contar(g,r,reducir?1000:1900); }
+    function iniciar(g){ if(!g||g.iniciado) return; g.iniciado=true; contar(g,1,reducir?1000:1900); }
 
-    fijar(r);
+    fijar(excel);
     var gPortada=[grupo('.avance'),grupo('#barra-aporte')], gMeta=grupo('#meta');
     grupos.forEach(function(g){ pintar(g.el,0); });          /* arrancan en 0 */
 
@@ -1481,12 +2328,14 @@ body.panel-abierto{overflow:hidden}
         io.observe(gMeta.el);
       } else iniciar(gMeta);
     }
-    leerHoja().then(function(v){
-      if(v===null||v===r){ arrancarPortada(); return; }
-      fijar(v);
+    if(C.totalFuente==='excel') leerHoja().then(function(v){
+      if(v===null||v===excel){ arrancarPortada(); return; }
+      var antes=total; fijar(v);
       if(!portadaLista) arrancarPortada();
-      else grupos.forEach(function(g){ if(g.iniciado) contar(g,v,700); });   /* llegó tarde: se reajusta suave */
-    });
+      else grupos.forEach(function(g){ if(g.iniciado){ g.k=g.k*antes/(total||1); contar(g,1,700); } });   /* llegó tarde: se reajusta suave */
+    }); else arrancarPortada();
+    /* al cambiar de idioma se repintan los textos con su formato */
+    return { refrescar:function(){ fijar(excel); grupos.forEach(function(g){ pintar(g.el,g.iniciado?g.k:0); }); } };
   })();
 
   /* ── Bienvenida: las frases se suman una a una y todo se desvanece hacia la portada (≈7,5 s, una vez por sesión, saltable) ── */
@@ -1507,7 +2356,7 @@ body.panel-abierto{overflow:hidden}
     t.push(setTimeout(function(){ var p=$('.personajes',b); if(p) p.classList.add('ver'); },900));
     t.push(setTimeout(fin,6500));
     $('.saltar-intro',b).addEventListener('click',fin);
-    b.addEventListener('click',fin);
+    b.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('.idioma')) return; fin(); });
     document.addEventListener('keydown',function k(){fin();document.removeEventListener('keydown',k);});
   })();
 
@@ -1515,7 +2364,9 @@ body.panel-abierto{overflow:hidden}
   (function(){
     var capas=$$('.portada .capa'); if(capas.length<2) return;
     var i=0, timer=null, visible=true, cargadas=false;
-    function cargar(){ if(cargadas) return; cargadas=true; capas.forEach(function(c){ var src=c.getAttribute('data-src'); if(src){ c.src=src; c.removeAttribute('data-src'); } }); }
+    function cargar(){ if(cargadas) return; cargadas=true; capas.forEach(function(c){
+      $$('source[data-srcset]',c).forEach(function(so){ so.srcset=so.getAttribute('data-srcset'); so.removeAttribute('data-srcset'); });
+      var im=c.tagName==='IMG'?c:$('img',c); var src=im&&im.getAttribute('data-src'); if(src){ im.src=src; im.removeAttribute('data-src'); } }); }
     function siguiente(){ capas[i].classList.remove('activa'); i=(i+1)%capas.length; capas[i].classList.add('activa'); }
     function arrancar(){ if(timer||!visible||document.hidden) return; timer=setInterval(siguiente,5000); }
     function parar(){ clearInterval(timer); timer=null; }
@@ -1618,6 +2469,72 @@ body.panel-abierto{overflow:hidden}
     desplegables.forEach(function(d){ ioMas.observe(d); });
   }
 
+  /* ── Visor de fotos «Así avanza Wawaín» ──
+     Casi pantalla completa, cierra con la X, con Esc o tocando fuera de la foto. Pasa solo cada 5 s
+     (se pausa al pasar el mouse, tocar o usar las flechas, y vuelve a andar unos segundos después;
+     no avanza solo con «reducir movimiento»). Flechas, deslizar con el dedo y contador «3 / 12». */
+  var visor=(function(){
+    var V=$('#visor'); if(!V) return null;
+    var miniaturas=$$('#galeria .miniatura'); if(!miniaturas.length) return null;
+    var img=$('#visor-img'), ley=$('#visor-ley'), cuenta=$('#visor-cuenta'), escena=$('#visor-escena'), cerrarBtn=$('#visor-cerrar');
+    var i=0, abierto=false, ritmo=null, retoma=null, foco=null;
+    var MESES={es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+               en:['January','February','March','April','May','June','July','August','September','October','November','December']};
+    function mes(ym){ var p=String(ym||'').split('-'); if(p.length<2) return ''; var l=(root.lang==='en')?'en':'es'; return MESES[l][(+p[1])-1]+' '+p[0]; }
+    function mostrar(n){
+      i=(n+miniaturas.length)%miniaturas.length;
+      var m=miniaturas[i], mi=$('img',m);
+      img.src=m.getAttribute('data-full'); img.alt=mi?mi.alt:'';
+      ley.textContent=$('.mt',m).textContent+' · '+mes(m.getAttribute('data-mes'));
+      cuenta.textContent=(i+1)+' / '+miniaturas.length;
+      var sig=new Image(); sig.src=miniaturas[(i+1)%miniaturas.length].getAttribute('data-full');   /* la siguiente ya queda cargada */
+    }
+    function parar(){ clearInterval(ritmo); ritmo=null; }
+    function andar(){ if(reducir||!abierto||ritmo) return; ritmo=setInterval(function(){ mostrar(i+1); },5000); }
+    function pausa(retomar){ parar(); clearTimeout(retoma); if(retomar&&!reducir) retoma=setTimeout(andar,retomar); }
+    function abrirEn(n,desde){
+      foco=desde||document.activeElement; mostrar(n); abierto=true;
+      V.classList.add('abierto'); V.setAttribute('aria-hidden','false'); document.body.classList.add('visor-abierto');
+      setTimeout(function(){ cerrarBtn.focus(); },30); andar();
+    }
+    function cerrarV(){
+      if(!abierto) return; abierto=false; pausa(0);
+      V.classList.remove('abierto'); V.setAttribute('aria-hidden','true'); document.body.classList.remove('visor-abierto');
+      if(foco&&foco.focus) foco.focus();
+    }
+    miniaturas.forEach(function(m,n){ m.addEventListener('click',function(){ abrirEn(n,m); }); });
+    $$('[data-abrir-galeria]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var h=b.getAttribute('data-abrir-galeria'), n=miniaturas.findIndex(function(m){ return m.getAttribute('data-hito')===h; });
+        abrirEn(n>=0?n:0,b);
+      });
+    });
+    $('#visor-prev').addEventListener('click',function(){ mostrar(i-1); pausa(6000); });
+    $('#visor-next').addEventListener('click',function(){ mostrar(i+1); pausa(6000); });
+    cerrarBtn.addEventListener('click',cerrarV);
+    V.addEventListener('click',function(e){ if(e.target===V||e.target===escena) cerrarV(); });        /* fuera de la foto */
+    escena.addEventListener('mouseenter',function(){ pausa(0); });
+    escena.addEventListener('mouseleave',function(){ pausa(2500); });
+    var x0=null;
+    escena.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; pausa(0); },{passive:true});
+    escena.addEventListener('touchend',function(e){
+      if(x0!==null){ var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) mostrar(dx<0?i+1:i-1); }
+      x0=null; pausa(6000);
+    },{passive:true});
+    document.addEventListener('keydown',function(e){
+      if(!abierto) return;
+      if(e.key==='Escape'){ e.preventDefault(); cerrarV(); }
+      else if(e.key==='ArrowRight'){ mostrar(i+1); pausa(6000); }
+      else if(e.key==='ArrowLeft'){ mostrar(i-1); pausa(6000); }
+      else if(e.key==='Tab'){                                    /* el foco se queda dentro del visor */
+        var f=[cerrarBtn,$('#visor-prev'),$('#visor-next')], a=document.activeElement, p=f.indexOf(a);
+        e.preventDefault(); f[(p+(e.shiftKey?-1:1)+f.length)%f.length].focus();
+      }
+    });
+    document.addEventListener('idioma',function(){ if(abierto) mostrar(i); });
+    return { abrir:abrirEn };
+  })();
+
   /* ── Panel de transparencia ── */
   var panel=$('#transparencia'), velo=$('.velo-panel'), ultimoFoco=null;
   function abrir(){ ultimoFoco=document.activeElement; panel.classList.add('abierta'); velo.classList.add('visible'); document.body.classList.add('panel-abierto'); panel.setAttribute('role','dialog'); panel.setAttribute('aria-modal','true'); setTimeout(function(){ $('.cerrar-panel',panel).focus(); },50); }
@@ -1631,6 +2548,33 @@ body.panel-abierto{overflow:hidden}
     if(!f.length) return; var a=f[0], z=f[f.length-1];
     if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}
   });
+
+  /* ── Idioma ES | EN ──
+     El español es el idioma de base (el HTML no se toca). Al elegir inglés, cada elemento con data-i18n,
+     data-i18n-alt, data-i18n-aria o data-wa toma su texto del diccionario I18N (más arriba, en este mismo archivo).
+     Se recuerda la elección en localStorage; <html lang>, <title> y la meta descripción cambian con el idioma. */
+  (function(){
+    if(typeof I18N==='undefined') return;
+    var botones=$$('.idioma [data-idioma]'), meta=$('meta[name="description"]');
+    $$('a[data-wa]').forEach(function(a){ a.setAttribute('data-wa-base',a.getAttribute('href').split('?')[0]); });
+    function aplicar(l,guardar){
+      var D=I18N[l]; if(!D) return;
+      root.lang=l;
+      $$('[data-i18n]').forEach(function(el){ var v=D[el.getAttribute('data-i18n')]; if(v!==undefined) el.innerHTML=v; });
+      [['alt','data-i18n-alt'],['aria-label','data-i18n-aria']].forEach(function(p){
+        $$('['+p[1]+']').forEach(function(el){ var v=D[el.getAttribute(p[1])]; if(v!==undefined) el.setAttribute(p[0],v); });
+      });
+      $$('a[data-wa]').forEach(function(a){ var v=D[a.getAttribute('data-wa')]; if(v!==undefined) a.setAttribute('href',a.getAttribute('data-wa-base')+'?text='+encodeURIComponent(v)); });
+      document.title=D['meta.title']; if(meta) meta.setAttribute('content',D['meta.desc']);
+      botones.forEach(function(b){ b.setAttribute('aria-pressed',b.getAttribute('data-idioma')===l?'true':'false'); });
+      if(guardar){ try{ localStorage.setItem('idioma',l); }catch(e){} }
+      if(campana) campana.refrescar();                 /* cifras con el formato del idioma */
+      document.dispatchEvent(new Event('idioma'));
+    }
+    botones.forEach(function(b){ b.addEventListener('click',function(e){ e.stopPropagation(); aplicar(b.getAttribute('data-idioma'),true); }); });
+    var g=null; try{ g=localStorage.getItem('idioma'); }catch(e){}
+    if(g==='en') aplicar('en',false);
+  })();
 
   /* ── Enlaces internos: desplazar sin cambiar la URL ── */
   function irA(id){
